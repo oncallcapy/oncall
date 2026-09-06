@@ -64,9 +64,18 @@ Reporting checklists help expose missing reporting; checklist completion does no
 
 ## Publication states and human review
 
-**Draft** means work in progress and is kept outside the site's publication collection. **Human review required** means the evidence extraction and planned text are ready for scrutiny; it is still unpublished. **Published** requires a named human clinical/editorial reviewer, review date, scope of review, decision, relevant expertise and conflicts of interest, and a recorded approval for the exact revision. Disagreements and unresolved material limitations must be visible before approval.
+**Draft** means work in progress and normally remains outside the Science
+collection. **Human review required** means the evidence extraction and planned
+text are ready for scrutiny; a reviewable source dossier in this state may live
+in the Science collection and static review build. That inclusion does not make
+it public, published or clinically reviewed. Production deployment and
+publication require paired `reviewer` and `reviewedAt` metadata **and** an
+explicit named human approval for the exact revision, including review scope,
+decision, relevant expertise and conflicts of interest. Metadata alone never
+establishes or permits a claim of clinical review. Disagreements and unresolved
+material limitations must be visible before approval.
 
-**Corrected** means the current published text carries a dated correction notice linked to the superseded revision, reason and review decision. **Retracted/withdrawn** means the text is no longer relied upon: remove it from normal publication listings and retain a clear notice, reasons and historical links. These are editorial workflow states, not fields currently enforced by the website schema. Maintainers must keep drafts and unapproved work out of the publication collection; the present renderer does not implement a review queue or withdrawal workflow.
+**Corrected** means the current published text carries a dated correction notice linked to the superseded revision, reason and review decision. **Retracted/withdrawn** means the text is no longer relied upon: remove it from normal publication listings and retain a clear notice, reasons and historical links. These are editorial workflow states, not fields currently enforced by the website schema. The present renderer does not implement a review queue or withdrawal workflow.
 
 Open a [science review issue](../.github/ISSUE_TEMPLATE/science-note-review.md) for review or a [correction issue](../.github/ISSUE_TEMPLATE/correction.md) for a problem. Urgent factual or broken-link corrections can be made promptly with a visible record; new scientific conclusions still require human review.
 
