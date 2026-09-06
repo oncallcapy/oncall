@@ -42,3 +42,22 @@ DONE
 ## Concerns
 
 None within Task 1 scope. PAR eligibility, route availability, and launch state remain outside this task.
+
+## Provenance correction
+
+`b6c0f36` is an amend of the implementation commit originally recorded as
+`1f99912`. The amend changed only this report: it added the build result and
+replaced the pending commit placeholder with the commit hash. It did not change
+the product code, test, or copied asset files that were tested.
+
+Evidence was run from the reviewed worktree with:
+
+```text
+git diff --quiet 1f99912 b6c0f36 -- ':!.superpowers/sdd/2026-09-06-oncall-cinematic-ux-prototype/task-1-report.md' && echo 'IDENTICAL: product code, tests, and assets' && git diff --name-only 1f99912 b6c0f36
+IDENTICAL: product code, tests, and assets
+.superpowers/sdd/2026-09-06-oncall-cinematic-ux-prototype/task-1-report.md
+```
+
+Therefore the focused/full tests, build, hash, alpha-channel, and diff checks
+recorded above apply to the exact product/test/assets tree in reviewed head
+`b6c0f36`; the only intervening change from `1f99912` is this report content.
