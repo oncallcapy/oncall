@@ -33,19 +33,22 @@ test('opening keeps the HTML heading and hero line in the desktop first viewport
   await expect(page.getByText('NIGHT SHIFT FOR THE TERMINALLY ONLINE.', { exact: true })).toBeInViewport({ ratio: 1 });
 });
 
-test('opening leaves every file link visible and hit-testable at tablet width', async ({ page }) => {
-  await page.setViewportSize({ width: 1024, height: 768 });
-  await page.goto('/');
-  const links = page.locator('[data-file-link]');
-  await expect(links).toHaveCount(8);
-  for (const link of await links.all()) {
-    await expect(link).toBeVisible();
-    expect(await link.evaluate((element) => {
-      const rect = element.getBoundingClientRect();
-      const hit = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2);
-      return hit === element || element.contains(hit);
-    })).toBe(true);
-  }
-  await page.getByRole('link', { name: 'SCIENCE NOTES', exact: true }).click();
-  await expect(page).toHaveURL(/\/science\/$/);
-});
+for (const width of [768, 800, 900, 1024]) {
+  test(`opening leaves every file link visible and hit-testable at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 768 });
+    await page.goto('/');
+    const links = page.locator('[data-file-link]');
+    await expect(links).toHaveCount(8);
+    for (const link of await links.all()) {
+      await expect(link).toBeVisible();
+      await expect(link).toBeInViewport({ ratio: 1 });
+      expect(await link.evaluate((element) => {
+        const rect = element.getBoundingClientRect();
+        const hit = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2);
+        return hit === element || element.contains(hit);
+      })).toBe(true);
+    }
+    await page.getByRole('link', { name: 'SCIENCE NOTES', exact: true }).click();
+    await expect(page).toHaveURL(/\/science\/$/);
+  });
+}

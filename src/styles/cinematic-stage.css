@@ -1,7 +1,7 @@
 .cinematic-stage {
   position: relative;
   isolation: isolate;
-  min-height: min(48rem, 92vh);
+  min-height: min(48rem, 92vh, calc(100svh - 6rem));
   overflow: clip;
   background: var(--desk);
 }
