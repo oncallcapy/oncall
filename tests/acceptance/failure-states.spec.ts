@@ -94,12 +94,11 @@ for (const [index, route] of routes.entries()) {
   });
 }
 
-test('reduced motion preserves the opening skip control and hides it on file views', async ({ page }) => {
+test('reduced motion hides the opening skip control and leaves case files accessible', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  for (const [route, opening] of [['/', true], ['/science/', false], ['/night-shift/', false]] as const) {
+  for (const route of ['/', '/science/', '/night-shift/']) {
     await page.goto(route);
-    if (opening) await expect(page.locator('#cinematic-skip')).toBeVisible();
-    else await expect(page.locator('#cinematic-skip')).toBeHidden();
+    await expect(page.locator('#cinematic-skip')).toBeHidden();
     await expect(page.getByRole('navigation').getByRole('link')).toHaveCount(8);
   }
 });

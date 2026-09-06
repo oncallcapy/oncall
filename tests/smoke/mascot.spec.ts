@@ -14,10 +14,10 @@ test("shows the decorative opening scene without JavaScript", async ({ browser }
   }
 });
 
-test("keeps the opening control available for reduced motion and preserves keyboard focus visibility", async ({ page }) => {
+test("hides the opening control for reduced motion and preserves keyboard focus visibility", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
-  await expect(page.locator('#cinematic-skip')).toBeVisible();
+  await expect(page.locator('#cinematic-skip')).toBeHidden();
   await page.keyboard.press("Tab");
   const skipLink = page.getByRole("link", { name: /skip/i });
   await expect(skipLink).toBeFocused();

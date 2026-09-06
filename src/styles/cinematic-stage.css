@@ -42,3 +42,7 @@
   .cinematic-stage { min-height: 0; padding-top: min(84vw, 31rem); }
   .scene-plate { height: min(84vw, 31rem); }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  #cinematic-skip { display: none; }
+}
