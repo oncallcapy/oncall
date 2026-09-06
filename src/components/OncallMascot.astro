@@ -1,0 +1,27 @@
+---
+import '../styles/mascot.css';
+
+interface Props {
+  context: 'hero' | 'note' | 'market';
+  alt?: string;
+}
+
+const {
+  context,
+  alt = 'ONCALL, a calm capybara in teal scrubs with a stethoscope, holding a coffee mug.',
+} = Astro.props;
+---
+
+<div class="oncall-mascot" data-testid="oncall-mascot" data-context={context}>
+  <img
+    src="/brand/oncall-hero-static.png"
+    alt={alt}
+    width="415"
+    height="594"
+    loading={context === 'hero' ? 'eager' : 'lazy'}
+    fetchpriority={context === 'hero' ? 'high' : 'auto'}
+    decoding="async"
+  />
+  <!-- Reserved for a future decorative vector rig; the raster remains intact. -->
+  <div class="oncall-mascot__overlay" aria-hidden="true"><slot name="rig" /></div>
+</div>

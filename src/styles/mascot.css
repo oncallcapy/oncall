@@ -1,0 +1,32 @@
+.oncall-mascot {
+  position: relative;
+  width: min(100%, 16rem);
+  aspect-ratio: 415 / 594;
+  margin-block: 0.75rem;
+  animation: oncall-breathe 6s ease-in-out infinite;
+}
+
+.oncall-mascot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.oncall-mascot__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+@keyframes oncall-breathe {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .oncall-mascot {
+    animation: none !important;
+    animation-duration: 0s !important;
+    transform: none;
+  }
+}
