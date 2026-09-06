@@ -48,6 +48,11 @@ Read the durable research layer:
 
 The dossiers are inspectable source-led review material. Repository inclusion and a successful build do not establish clinical review. Scientific publication requires named human review of the exact revision; no reviewer or review date is invented here.
 
+The release records make that boundary auditable:
+
+- [Science review packet and unresolved human gate](docs/release/2026-09-06-science-review.md)
+- [Accepted visual direction, asset hashes and 3D boundary](docs/release/2026-09-06-visual-acceptance.md)
+
 ## Five selected quote records
 
 Robinhood’s official assets API reported these five Stock Token deployments as `ASSET_STATUS_ACTIVE` on chain ID `4663` at **2026-09-06T15:38:34Z**. This is a dated metadata observation. It does not establish current PAR priceability, route depth, executable liquidity or an ONCALL pool.
@@ -78,6 +83,8 @@ Desktop and mobile use separately composed opening plates:
 </table>
 
 Approved concept assets and their role are documented in [assets/github](assets/github/README.md). Motion respects reduced-motion preferences; the physical folder labels remain ordinary links and the content remains usable without client-side animation.
+
+The recorded visual acceptance covers the clinical-file metaphor, opening and opened-Science compositions, capybara turntable, responsive text-free plates and spine-parallel live labels. The current motion is a rendered-plate prototype; the turntable is not a rigged 3D model.
 
 ## Local development
 
