@@ -44,7 +44,21 @@ describe('launch Science dossiers', () => {
   it('retains required correction and sponsor-access warnings', () => {
     const byStudyId = new Map(dossiers.flatMap((dossier) => dossier.studies).map((study) => [study.id, study]));
 
+    const correctionIdentities = dossiers
+      .flatMap((dossier) => dossier.studies)
+      .filter((study) => study.correction)
+      .map((study) => [study.id, study.correction]);
+    expect(correctionIdentities).toHaveLength(4);
+    expect(correctionIdentities.map(([id]) => id)).toEqual([
+      'look-ahead-cardiovascular-events',
+      'orbita-sham-controlled-pci',
+      'blinding-meta-epidemiology',
+      'regional-diagnostic-practices',
+    ]);
+
     expect(byStudyId.get('look-ahead-cardiovascular-events')?.correction).toContain('10.1056/NEJMx140022');
+    expect(byStudyId.get('orbita-sham-controlled-pci')?.correction).toContain('10.1016/S0140-6736(17)33366-4');
+    expect(byStudyId.get('orbita-sham-controlled-pci')?.correction).toContain('full erratum text was inaccessible');
     expect(byStudyId.get('blinding-meta-epidemiology')?.correction).toContain('10.1136/bmj.m358');
     expect(byStudyId.get('regional-diagnostic-practices')?.correction).toContain('10.1056/NEJMx100034');
     expect(byStudyId.get('select-cardiovascular-outcomes')?.limits).toContain('industry funded');

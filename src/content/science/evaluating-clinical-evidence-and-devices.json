@@ -36,8 +36,19 @@
           "doi": "10.1016/S0140-6736(17)32714-9",
           "pmid": "29103656",
           "authoritativeSource": "PubMed abstract and bibliographic record"
+        },
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29323656/",
+          "title": "Erratum for the ORBITA publication",
+          "authorOrGroup": "The Lancet",
+          "year": 2018,
+          "accessedAt": "2026-09-07",
+          "doi": "10.1016/S0140-6736(17)33366-4",
+          "pmid": "29323656",
+          "authoritativeSource": "PubMed erratum record; the page triggered an access challenge during the latest check and the full erratum text was not accessible"
         }
-      ]
+      ],
+      "correction": "PubMed links an erratum at DOI 10.1016/S0140-6736(17)33366-4, PMID 29323656. The full erratum text was inaccessible during review; its content is not inferred and no possibly affected detail is transferred from the erratum."
     },
     {
       "id": "best-living-fluid-meta-analysis",
