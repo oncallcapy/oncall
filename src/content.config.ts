@@ -6,8 +6,9 @@ const scienceDossierFiles = glob({ pattern: '*.json', base: './src/content/scien
 
 export const collections = {
   science: defineCollection({
-    // Five dossier JSON records belong here. No unvalidated Markdown body can
-    // bypass the framing contract. Schema validity alone is not review approval.
+    // Five reviewable dossier JSON records belong here. Collection inclusion or
+    // a static build is not public deployment or human clinical/editorial review.
+    // No unvalidated Markdown body can bypass the framing contract.
     loader: {
       name: 'science-dossiers',
       async load(context) {

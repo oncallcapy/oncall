@@ -22,7 +22,11 @@ Public repository: [github.com/oncallcapy/oncall](https://github.com/oncallcapy/
 - [Risk register](risk/README.md)
 - [Contributing and corrections](CONTRIBUTING.md)
 
-No reviewed Science Note is published yet. The empty science collection is intentional: a passing content schema is not a clinical review.
+No reviewed Science Note is published yet. A Science dossier may be included in
+the repository collection and static build as reviewable source material before
+human approval; neither action is public deployment or a clinical review. A
+production deployment requires both the named reviewer and review date, and a
+renderer must not describe an unreviewed dossier as reviewed.
 
 ## Five selected pairs
 

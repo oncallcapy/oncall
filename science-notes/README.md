@@ -34,8 +34,11 @@ recommendation or a systematic review.
 
 `reviewer` and `reviewedAt` are optional while a dossier is prepared, but they
 must be supplied together when an editorial review is recorded. Do not invent a
-reviewer or review date. Publication still requires the named human clinical or
-editorial review described below; schema validity cannot grant that approval.
+reviewer or review date. A dossier may enter the repository collection and a
+static build as reviewable source material before that review; neither action is
+public deployment, clinical review or publication approval. The production
+deployment gate must require both fields and the renderer must never describe a
+dossier without both as reviewed. Schema validity cannot grant that approval.
 
 Every planned note must contain these visible sections, even where the honest answer is that evidence is insufficient:
 

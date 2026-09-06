@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { scienceDossierSchema } from '../../src/content/schemas/scienceNote';
+import { hasRecordedHumanReview, scienceDossierSchema } from '../../src/content/schemas/scienceNote';
 
 // Synthetic schema fixture only; this is not a reviewed or publishable dossier.
 const reference = {
@@ -56,6 +56,30 @@ describe('science dossier schema', () => {
     expect(scienceDossierSchema.safeParse(validDossier).success).toBe(true);
   });
 
+  it('accepts only the canonical selected ticker-company metadata tuple', () => {
+    expect(scienceDossierSchema.safeParse(validDossier).success).toBe(true);
+    expect(scienceDossierSchema.safeParse({ ...validDossier, pair: { ticker: 'LLY', company: 'Moderna' } }).success).toBe(false);
+  });
+
+  it.each(['Eli Lilly', 'Lilly', 'Hims & Hers', 'UnitedHealth'])('rejects selected-company alias in scientific framing: %s', (alias) => {
+    expect(scienceDossierSchema.safeParse({ ...validDossier, title: `${alias} evidence summary` }).success).toBe(false);
+    expect(scienceDossierSchema.safeParse({
+      ...validDossier,
+      studies: validDossier.studies.map((record) => ({ ...record, finding: `${alias} finding summary` })),
+    }).success).toBe(false);
+  });
+
+  it('keeps original publication title and citation outside scientific framing exclusions', () => {
+    expect(scienceDossierSchema.safeParse({
+      ...validDossier,
+      studies: validDossier.studies.map((record) => ({
+        ...record,
+        originalTitle: 'Lilly publication title retained exactly',
+        citation: 'Lilly author group. Publication citation retained exactly.',
+      })),
+    }).success).toBe(true);
+  });
+
   it('allows biological lowercase mRNA while blocking ticker framing in study records', () => {
     expect(scienceDossierSchema.safeParse({
       ...validDossier,
@@ -72,5 +96,19 @@ describe('science dossier schema', () => {
     expect(scienceDossierSchema.safeParse({ ...validDossier, reviewer: 'Dr Example' }).success).toBe(false);
     expect(scienceDossierSchema.safeParse({ ...validDossier, reviewedAt: '2026-09-06' }).success).toBe(false);
     expect(scienceDossierSchema.safeParse({ ...validDossier, reviewer: 'Dr Example', reviewedAt: '2026-09-06' }).success).toBe(true);
+    expect(scienceDossierSchema.safeParse({ ...validDossier, reviewer: '   ', reviewedAt: '2026-09-06' }).success).toBe(false);
+    expect(hasRecordedHumanReview(scienceDossierSchema.parse(validDossier))).toBe(false);
+    expect(hasRecordedHumanReview(scienceDossierSchema.parse({ ...validDossier, reviewer: 'Dr Example', reviewedAt: '2026-09-06' }))).toBe(true);
+  });
+
+  it('rejects blank correction records after trimming', () => {
+    expect(scienceDossierSchema.safeParse({
+      ...validDossier,
+      studies: validDossier.studies.map((record) => ({ ...record, correction: '            ' })),
+    }).success).toBe(false);
+    expect(scienceDossierSchema.safeParse({
+      ...validDossier,
+      correctionHistory: [{ date: '2026-09-06', note: '        ' }],
+    }).success).toBe(false);
   });
 });

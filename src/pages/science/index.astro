@@ -17,7 +17,7 @@ const notes = (await getCollection('science')).sort((a, b) => b.data.publishedAt
     <ul class="themes">{Object.values(SCIENCE_THEMES).map((label) => <li>{label}</li>)}</ul>
   </section>
   {notes.length > 0 && <section aria-labelledby="notes-heading">
-    <h2 id="notes-heading">Reviewed notes</h2>
+    <h2 id="notes-heading">Science dossiers</h2>
     {notes.map((note) => <ScienceNoteCard note={note} />)}
   </section>}
   <p class="routing">Looking for company identities or company-specific reporting? Open <a href="/pairs/">FIVE PAIRS</a> or <a href="/market-rounds/">MARKET ROUNDS</a>.</p>
