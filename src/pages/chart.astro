@@ -1,14 +1,12 @@
 ---
 import ChartLayout from '../layouts/ChartLayout.astro';
-import FactRow from '../components/FactRow.astro';
 import OncallMascot from '../components/OncallMascot.astro';
-import { PROJECT_FACTS } from '../data/projectFacts';
 ---
-<ChartLayout title="The Chart | ONCALL" description="Working identity, unresolved launch facts and explicit limits for ONCALL.">
+<ChartLayout title="The Chart | ONCALL" description="ONCALL project record, evidence boundaries and explicit limits.">
   <p class="meta">Case file 02 / Admission record</p>
   <h1>The Chart</h1>
   <div class="identity"><div><p class="meta">Project identity / review required</p><p class="intro">ONCALL. Night shift. Clear head. Question everything.</p><p>An original mascot-led project about medicine, science and market culture, with a proposed meme token. Name and handle availability have not been established.</p></div><OncallMascot context="note" /></div>
-  <section aria-labelledby="facts-heading"><h2 id="facts-heading">Launch facts, still open</h2><p>Project identity is not an immutable token record. No ONCALL launch has been executed. Each field below requires final review and evidence.</p><dl>{PROJECT_FACTS.map((fact) => <FactRow fact={fact} />)}</dl></section>
+  <section aria-labelledby="facts-heading"><h2 id="facts-heading">Launch record boundary</h2><p>Project identity is not an immutable token record. No ONCALL launch has been executed, and this public file does not publish token, pool, route, fee, or transaction values.</p></section>
   <aside class="notice"><h2>Review before the irreversible step</h2><p>Final name, symbol, image, description, and social links must all be reviewed before launch. PAR states that it writes these at launch and they cannot be changed afterward. <a href="https://par.family/docs">PAR launch documentation</a>.</p></aside>
   <section aria-labelledby="limits-heading"><h2 id="limits-heading">What this file does not establish</h2><p>ONCALL is not a medical product, investment product, index fund, or collateralized asset. The selected quote markets do not guarantee tracking, returns, or safety. Educational content is not diagnosis or treatment advice; market content is not financial advice.</p><p>Read the <a href="/pairs/">selected pair quote files</a> and the <a href="/sources-and-risks/">source and risk ledger</a> before drawing conclusions.</p></section>
 </ChartLayout>

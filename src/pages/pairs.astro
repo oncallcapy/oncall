@@ -3,17 +3,17 @@ import ChartLayout from '../layouts/ChartLayout.astro';
 import PairCaseCard from '../components/PairCaseCard.astro';
 import { PAIR_SELECTIONS, ASSET_OBSERVATION } from '../data/pairSelections';
 ---
-<ChartLayout title="Five Pairs | ONCALL" description="Five selected Stock Token pair identities, their research domains, dated official observations and pending technical checks.">
+<ChartLayout title="Five Pairs | ONCALL" description="Five selected Stock Token pair identities, research domains, and dated official observations.">
   <p class="meta">Case file 03 / Selected pair register</p>
   <h1>Five Pairs</h1>
-  <p class="intro">Five selected pairs. Technical launch checks require final verification.</p>
+  <p class="intro">Five selected pairs, with evidence boundaries kept explicit.</p>
   <section class="selection-register" aria-labelledby="selected-register-heading">
     <h2 id="selected-register-heading">Selected pair register</h2>
-    <p class="meta">SELECTED / TECHNICAL CHECK REQUIRED</p>
+    <p class="meta">SELECTED / EDITORIAL MAP</p>
     <ul>{PAIR_SELECTIONS.map((pair) => <li><a href={`#pair-${pair.symbol}`}><strong>{pair.symbol}</strong> {pair.displayName}</a></li>)}</ul>
   </section>
   <p>LLY, JNJ, HIMS, MRNA and UNH are the project’s selected and intended five pair identities. The official Robinhood asset API listed their deployments as active on chain 4663 at <time datetime={ASSET_OBSERVATION.observedAt}>{ASSET_OBSERVATION.observedAt}</time>. This is a dated API observation, not a live status feed or proof of an ONCALL market.</p>
-  <aside class="notice"><p><strong>Five quote markets do not create direct share ownership, collateral backing of ONCALL, an index fund, guaranteed tracking, issuer endorsement, or a recommendation.</strong></p><p>Every PAR priceability and route/depth check requires fresh verification. Fresh measurements are required close to launch; an active API entry does not establish route depth, liquidity, suitability, or investment merit.</p><p><strong>A failed technical check blocks launch</strong> and requires a documented public decision before the selected set can change. No silent substitution.</p></aside>
+  <aside class="notice"><p><strong>Five quote markets do not create direct share ownership, collateral backing of ONCALL, an index fund, guaranteed tracking, issuer endorsement, or a recommendation.</strong></p><p>An active API entry does not establish priceability, route depth, liquidity, suitability, or investment merit. Launch settings are not published in this file.</p><p><strong>A failed technical check blocks launch</strong> and requires a documented public decision before the selected set can change. No silent substitution.</p></aside>
   <p class="scope">Stock Tokens are tokenized debt securities issued by Robinhood Assets (Jersey) Limited. They provide economic exposure and do not grant legal or beneficial rights in the issuer of the underlying security. Availability and jurisdiction restrictions apply. <a href="https://robinhood.com/rhj/stocktokens/">Official Stock Token explanation</a>.</p>
   {PAIR_SELECTIONS.map((pair, index) => <PairCaseCard pair={pair} index={index} />)}
   <p class="closing">The research program follows the domains represented by these five selected pairs. Pair associations are metadata for editorial organization, never sponsorship, endorsement, clinical validation, or investment analysis. Scientific article titles, claims and conclusions remain brand-neutral and source-led. Company-specific coverage belongs in <a href="/market-rounds/">Market Rounds</a>; <a href="/science/">Science Notes</a> cover medicine directly. Review the <a href="/sources-and-risks/">full source and risk ledger</a>.</p>

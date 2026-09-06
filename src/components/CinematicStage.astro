@@ -26,3 +26,10 @@ const fileId = resolveFileId(currentPath);
   <button id="cinematic-skip" type="button">Skip opening</button>
   <FolderStack currentPath={currentPath} />
 </section>
+
+<script>
+  document.addEventListener('click', (event) => {
+    const target = event.target instanceof Element ? event.target.closest('#cinematic-skip') : null;
+    if (target instanceof HTMLButtonElement) document.querySelector<HTMLElement>('[data-file-content]')?.focus();
+  });
+</script>

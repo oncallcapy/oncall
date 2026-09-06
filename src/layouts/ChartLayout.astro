@@ -14,6 +14,7 @@ const {
   title = 'ONCALL',
   description = 'ONCALL night-shift case files: medicine, science and market culture.',
 } = Astro.props;
+const isOpening = (Astro.url.pathname.replace(/\/+$/, '') || '/') === '/';
 ---
 
 <!doctype html>
@@ -30,7 +31,7 @@ const {
     <div class="site-shell">
       <ChartHeader />
       <CinematicStage />
-      <main id="main-content" class="editorial-file" data-file-content tabindex="-1">
+      <main id="main-content" class:list={['editorial-file', { 'editorial-file--opening': isOpening }]} data-file-content tabindex="-1">
         <slot />
         <footer class="editorial-file-footer meta">
           <span>ONCALL / Evidence first. Memes after rounds.</span>
