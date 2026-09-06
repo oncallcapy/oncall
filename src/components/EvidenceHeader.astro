@@ -13,13 +13,13 @@ const { dossier } = Astro.props;
   <p class="dek">{dossier.dek}</p>
 
   <section class="editorial-mapping" data-dossier-section="editorial-mapping" aria-labelledby="editorial-map-heading">
-    <p class="meta" id="editorial-map-heading">Editorial mapping</p>
+    <h2 class="meta" id="editorial-map-heading">Editorial mapping</h2>
     <p><strong>{dossier.pair.ticker}</strong> / {dossier.pair.company}</p>
     <p class="mapping-limit">The company association indexes this file within the five-pair editorial system. It does not indicate sponsorship, endorsement, or a scientific conclusion.</p>
   </section>
 
   <section class="clinical-question" data-dossier-section="clinical-question" aria-labelledby="clinical-question-heading">
-    <p class="meta question-label" id="clinical-question-heading">Clinical question</p>
+    <h2 class="meta question-label" id="clinical-question-heading">Clinical question</h2>
     <p data-scientific-conclusion>{dossier.clinicalQuestion}</p>
   </section>
 

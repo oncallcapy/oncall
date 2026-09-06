@@ -30,6 +30,8 @@ for (const dossier of dossiers) {
   test(`${dossier.slug} is a complete, source-led long-form record`, async ({ page }) => {
     await page.goto(`/science/${dossier.slug}/`);
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 2, name: 'Editorial mapping' })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 2, name: 'Clinical question' })).toBeVisible();
 
     const sections = page.locator('[data-dossier-section]');
     expect(await sections.evaluateAll(elements => elements.map(element => element.getAttribute('data-dossier-section')))).toEqual([
@@ -81,6 +83,14 @@ test('correction notices and access limits stay attached to their evidence files
 
   await page.goto('/science/health-systems-and-recorded-outcomes/');
   await expect(page.locator('[data-study-record]').filter({ hasText: 'Regional Variations' })).toContainText('Correction record');
+});
+
+test('a Science dossier is materially longer than a top-level file summary', async ({ page }) => {
+  await page.goto('/chart/');
+  const summaryHeight = await page.locator('main').evaluate(element => element.scrollHeight);
+  await page.goto('/science/beyond-weight-and-cardiometabolic-outcomes/');
+  const dossierHeight = await page.locator('main').evaluate(element => element.scrollHeight);
+  expect(dossierHeight).toBeGreaterThan(summaryHeight + 1500);
 });
 
 test('Science record remains a readable paper at 390px', async ({ page }) => {
