@@ -1,0 +1,50 @@
+---
+import ChartLayout from '../layouts/ChartLayout.astro';
+import { ASSET_OBSERVATION } from '../data/pairCandidates';
+const sources = [
+  { title: 'PAR launch mechanics and contract risk', url: 'https://par.family/docs', note: 'Pool structure, quote eligibility, immutable launch metadata and unaudited-contract statement.' },
+  { title: 'Robinhood Chain overview', url: 'https://docs.robinhood.com/chain/', note: 'Platform description: permissionless, Ethereum-compatible Layer 2.' },
+  { title: 'Connecting to Robinhood Chain', url: 'https://docs.robinhood.com/chain/connecting/', note: 'Mainnet chain ID 4663; ETH gas.' },
+  { title: 'Stock Token API documentation', url: 'https://docs.robinhood.com/chain/stock-token-apis/', note: 'Official read-only metadata and deployment endpoint.' },
+  { title: 'Official assets API', url: ASSET_OBSERVATION.sourceUrl, note: 'Dated active-status observations for the five candidate contracts; no PAR eligibility inference.' },
+  { title: 'Stock Token legal and product explanation', url: 'https://robinhood.com/rhj/stocktokens/', note: 'Economic exposure, debt-security structure, rights and availability limits.' },
+  { title: 'Canonical Stock Token contract directory', url: 'https://docs.robinhood.com/chain/contracts/', note: 'Official reference for quote-asset contracts; not evidence of ONCALL deployment.' },
+  { title: 'Robinhood Chain explorer', url: 'https://robinhoodchain.blockscout.com/', note: 'Public chain lookup; ONCALL launch links remain pending.' },
+  { title: 'Robinhood Chain brand guidelines', url: 'https://docs.robinhood.com/chain/brand-guidelines/', note: 'Naming and brand-use boundaries. No platform or company logos are used here.' },
+];
+const risks = [
+  { id: 'unaudited', title: 'Unaudited contracts', text: 'PAR states that its contracts are unaudited. Documentation and a successful transaction cannot establish the absence of bugs or loss risk. Re-check current contracts and documentation before any launch decision.' },
+  { id: 'volatility', title: 'Volatility', text: 'ONCALL and its quote assets may change sharply in value. Five markets do not guarantee diversification, tracking, returns, or safety. Loss of value remains possible.' },
+  { id: 'quote-assets', title: 'Quote-asset structure', text: 'Stock Tokens are tokenized debt securities issued by Robinhood Assets (Jersey) Limited, providing economic exposure without legal or beneficial rights in the underlying issuer. This structure does not give ONCALL holders share ownership or collateral backing.' },
+  { id: 'routing', title: 'Liquidity and routing', text: 'All PAR priceability and route/depth states are pending. Active API status does not establish executable liquidity. Route availability, in-range depth and execution conditions need fresh measurement close to launch.' },
+  { id: 'irreversible', title: 'Irreversible transactions', text: 'Launch and chain transactions require careful review before signing. PAR says the name, symbol, image, description and social links are written at launch and cannot be changed afterward. No launch or wallet connection has been performed for this site.' },
+  { id: 'jurisdiction', title: 'Jurisdiction and availability', text: 'Stock Token availability and jurisdiction restrictions apply. An accessible public contract address is not proof that a product is available or permitted for a particular person or location. Consult the official product terms.' },
+  { id: 'advice', title: 'No medical or financial advice', text: 'Science Notes are education, not diagnosis, treatment advice, or clinical validation. Market Rounds are context, not investment recommendations. Night Shift is fictional mascot humour. ONCALL is not a medical product, investment product, index fund, or guaranteed tracker. No issuer endorsement is claimed.' },
+];
+---
+<ChartLayout title="Sources & Risks | ONCALL" description="Official sources, dated verification boundaries and the material risks of the proposed ONCALL project.">
+  <p class="meta">Case file 08 / Evidence ledger</p>
+  <h1>Sources & Risks</h1>
+  <p class="intro">A source is a starting point. Its limits belong in the same file.</p>
+  <section aria-labelledby="sources-heading"><h2 id="sources-heading">Official source register</h2><p>Access date: <time datetime="2026-09-06">6 September 2026</time>. Platform statements are attributed to their documentation. A dated API observation is not ongoing monitoring or an ONCALL launch verification.</p><ol class="sources">{sources.map((source) => <li><h3><a href={source.url}>{source.title}</a></h3><p>{source.note}</p><a class="source-url" href={source.url}>{source.url}</a><p class="meta">Accessed <time datetime="2026-09-06">2026-09-06</time></p></li>)}</ol></section>
+  <aside class="observation"><h2>Asset observation receipt</h2><p>Read-only official API response observed at <time datetime={ASSET_OBSERVATION.observedAt}>{ASSET_OBSERVATION.observedAt}</time>: {ASSET_OBSERVATION.responseBytes.toLocaleString('en-US')} bytes. All five candidate entries reported ASSET_STATUS_ACTIVE on chain {ASSET_OBSERVATION.chainId}. This establishes the API deployment/status observation only.</p><p class="meta">Response SHA-256</p><code>{ASSET_OBSERVATION.responseSha256}</code><p>It does not establish PAR priceability, current route depth, liquidity, suitability, issuer endorsement, or investment merit. See the <a href="/pairs/">individual candidate files</a>.</p></aside>
+  <section aria-labelledby="risks-heading"><h2 id="risks-heading">Risk register</h2><div class="risks">{risks.map((risk, index) => <article aria-labelledby={`risk-${risk.id}`}><p class="meta">Risk {String(index + 1).padStart(2, '0')}</p><h3 id={`risk-${risk.id}`}>{risk.title}</h3><p>{risk.text}</p></article>)}</div></section>
+</ChartLayout>
+<style>
+  h1 { font-size: clamp(2.6rem, 6vw, 5rem); margin-block: 0.75rem 1.5rem; }
+  h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+  h3 { font-size: 1.35rem; line-height: 1.15; margin-bottom: 0.65rem; }
+  .intro { font-size: 1.45rem; }
+  section, .observation { margin-top: 2.5rem; }
+  .sources { padding-left: 1.5rem; }
+  .sources li { padding-block: 1.1rem; border-bottom: 1px solid var(--rule); }
+  .source-url, code { font-family: var(--font-meta); font-size: 0.75rem; overflow-wrap: anywhere; word-break: break-word; }
+  .source-url { display: inline-block; margin-block: 0.5rem; }
+  .observation { padding: 1.5rem; background: var(--paper-raised); border: 1px solid var(--ink); }
+  .observation p + p, .observation code + p { margin-top: 1rem; }
+  code { display: block; margin-top: 0.3rem; }
+  .risks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+  .risks article { border-top: 3px solid var(--coral); padding-top: 1rem; }
+  .risks h3 { margin-top: 0.5rem; }
+  @media (max-width: 42rem) { .risks { grid-template-columns: minmax(0, 1fr); } }
+</style>

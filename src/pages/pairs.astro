@@ -1,0 +1,24 @@
+---
+import ChartLayout from '../layouts/ChartLayout.astro';
+import PairCaseCard from '../components/PairCaseCard.astro';
+import { PAIR_CANDIDATES, ASSET_OBSERVATION } from '../data/pairCandidates';
+---
+<ChartLayout title="Five Pairs | ONCALL" description="Five proposed Stock Token quote candidates, dated official observations and pending PAR checks.">
+  <p class="meta">Case file 03 / Candidate register</p>
+  <h1>Five Pairs</h1>
+  <p class="intro">Five candidates. Eligibility still to be measured.</p>
+  <p>LLY, JNJ, HIMS, MRNA and UNH are the proposed quote set. The official Robinhood asset API listed their deployments as active on chain 4663 at <time datetime={ASSET_OBSERVATION.observedAt}>{ASSET_OBSERVATION.observedAt}</time>. This is a dated API observation, not a live status feed or proof of an ONCALL market.</p>
+  <aside class="notice"><p><strong>Five quote markets do not create direct share ownership, collateral backing of ONCALL, an index fund, guaranteed tracking, issuer endorsement, or a recommendation.</strong></p><p>Every PAR priceability and route/depth check remains PENDING. Final selection requires fresh measurements close to launch; an active API entry does not establish route depth, liquidity, suitability, or investment merit.</p></aside>
+  <p class="scope">Stock Tokens are tokenized debt securities issued by Robinhood Assets (Jersey) Limited. They provide economic exposure and do not grant legal or beneficial rights in the issuer of the underlying security. Availability and jurisdiction restrictions apply. <a href="https://robinhood.com/rhj/stocktokens/">Official Stock Token explanation</a>.</p>
+  {PAIR_CANDIDATES.map((pair, index) => <PairCaseCard pair={pair} index={index} />)}
+  <p class="closing">Themes identify evidence-only editorial subjects. Company-specific coverage belongs in <a href="/market-rounds/">Market Rounds</a>; <a href="/science/">Science Notes</a> cover medicine directly. Review the <a href="/sources-and-risks/">full source and risk ledger</a>.</p>
+</ChartLayout>
+<style>
+  h1 { font-size: clamp(2.6rem, 6vw, 5rem); margin-block: 0.75rem 1.5rem; }
+  .intro { font-size: 1.45rem; margin-bottom: 1rem; }
+  .notice { margin-block: 1.75rem; border-left: 4px solid var(--coral); padding: 1.25rem; background: var(--paper-raised); }
+  .notice p + p { margin-top: 0.8rem; }
+  .scope { font-size: 1rem; }
+  .closing { margin-top: 2rem; }
+  time { overflow-wrap: anywhere; }
+</style>

@@ -1,0 +1,22 @@
+---
+import type { ProjectFact } from '../data/projectFacts';
+interface Props { fact: ProjectFact; }
+const { fact } = Astro.props;
+---
+<div class="fact-row">
+  <dt>{fact.label}</dt>
+  <dd>
+    <span class="status meta">{fact.displayValue}</span>
+    <p>{fact.note}</p>
+    {fact.status === 'verified' && fact.evidenceUrl ? <a href={fact.evidenceUrl}>View evidence</a> : <span class="meta evidence">Launch evidence / PENDING</span>}
+  </dd>
+</div>
+<style>
+  .fact-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr); gap: 1rem; padding-block: 1.25rem; border-top: 1px solid var(--rule); }
+  dt { font-weight: 700; }
+  dd { margin: 0; min-width: 0; }
+  .status { display: inline-block; padding: 0.15rem 0.5rem; border: 1px solid var(--ink); background: var(--paper-raised); }
+  p { margin-top: 0.5rem; }
+  .evidence { display: block; margin-top: 0.5rem; color: var(--muted-ink); }
+  @media (max-width: 35rem) { .fact-row { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; } }
+</style>

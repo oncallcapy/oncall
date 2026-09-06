@@ -1,0 +1,25 @@
+---
+import ChartLayout from '../layouts/ChartLayout.astro';
+import ChainDiagram from '../components/ChainDiagram.astro';
+---
+<ChartLayout title="Robinhood Chain | ONCALL" description="The proposed ONCALL market structure, platform statements and the boundary of verified launch evidence.">
+  <p class="meta">Case file 04 / Infrastructure record</p>
+  <h1>Robinhood Chain</h1>
+  <p class="intro">Read the structure. Check the evidence.</p>
+  <section aria-labelledby="platform-heading"><p class="meta">Documentation / Accessed 06 Sep 2026</p><h2 id="platform-heading">Platform statement</h2><p>Robinhood describes Robinhood Chain as a permissionless, Ethereum-compatible Layer 2. Its mainnet uses chain ID 4663 and ETH for gas. <a href="https://docs.robinhood.com/chain/">Chain documentation</a> · <a href="https://docs.robinhood.com/chain/connecting/">Network settings</a>.</p><p>PAR says one multi-market launch opens 1–5 ordinary Uniswap v4 pools in one transaction, splits supply equally, and uses one opening market capitalization across the books. Non-ETH quote routes must pass its pricer and in-range depth rule. These mechanics describe the platform; ONCALL’s eligibility is still pending. PAR states its contracts are unaudited. <a href="https://par.family/docs">PAR documentation</a>.</p></section>
+  <ChainDiagram />
+  <section class="evidence" aria-labelledby="verified-heading"><p class="meta">Project record / Pre-launch</p><h2 id="verified-heading">Verified on-chain</h2><p><strong>No ONCALL contract, pools, or launch receipt exists for this project.</strong> There is no verified ONCALL on-chain deployment to link. The proposed diagram above is not a transaction record.</p><dl><div><dt>ONCALL token contract</dt><dd>PENDING</dd></div><div><dt>Five ONCALL pools</dt><dd>PENDING</dd></div><div><dt>ONCALL launch receipt</dt><dd>PENDING</dd></div></dl><p>The <a href="/pairs/">candidate register</a> links official quote-asset contracts. Their active API observation is separate from verification of an ONCALL launch.</p></section>
+  <section aria-labelledby="stock-heading"><h2 id="stock-heading">What the quote assets represent</h2><p>Stock Tokens are tokenized debt securities issued by Robinhood Assets (Jersey) Limited. They provide economic exposure, not legal or beneficial rights in the issuer of the underlying security. Availability and jurisdiction restrictions apply. <a href="https://robinhood.com/rhj/stocktokens/">Official Stock Token explanation</a>.</p><p>A quote pool does not make ONCALL collateralized by the underlying security, an index fund, or a guaranteed tracker. No affiliation or issuer endorsement is claimed.</p></section>
+  <p class="closing"><a href="https://docs.robinhood.com/chain/contracts/">Official contract directory</a> · <a href="https://robinhoodchain.blockscout.com/">Chain explorer</a> · <a href="/sources-and-risks/">Sources & Risks</a></p>
+</ChartLayout>
+<style>
+  h1 { font-size: clamp(2.6rem, 6vw, 5rem); margin-block: 0.75rem 1.5rem; overflow-wrap: anywhere; }
+  h2 { font-size: 1.8rem; margin-block: 0.6rem 1rem; }
+  .intro { font-size: 1.45rem; }
+  section, .closing { margin-top: 2.5rem; }
+  p + p { margin-top: 1rem; }
+  .evidence { padding: 1.5rem; border-left: 4px solid var(--coral); background: var(--paper-raised); }
+  dl { font-family: var(--font-meta); font-size: 0.8rem; }
+  dl > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1rem; padding-block: 0.7rem; border-top: 1px solid var(--rule); }
+  dd { margin: 0; font-weight: 700; }
+</style>

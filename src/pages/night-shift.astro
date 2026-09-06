@@ -1,0 +1,20 @@
+---
+import ChartLayout from '../layouts/ChartLayout.astro';
+import OncallMascot from '../components/OncallMascot.astro';
+---
+<ChartLayout title="Night Shift | ONCALL" description="Original ONCALL mascot humour. The publication archive is currently empty.">
+  <p class="meta">Case file 07 / After rounds</p>
+  <h1>Night Shift</h1>
+  <p class="intro">The chart is open. The coffee is under review.</p>
+  <p>Original mascot humour about work, night shifts, internet life and market culture. Jokes are not medical evidence or financial advice.</p>
+  <section class="empty-state" aria-labelledby="empty-heading"><div><p class="meta">Publication status / Empty archive</p><h2 id="empty-heading">Nothing on the noticeboard. Yet.</h2><p>No Night Shift post has been published in this archive. Prepared social drafts remain drafts; publication on X has not been verified.</p></div><OncallMascot context="hero" /></section>
+  <p class="closing">The mascot is an original fictional character. For sourced medicine, open <a href="/science/">SCIENCE NOTES</a>; for the project’s current status, open <a href="/chart/">THE CHART</a>.</p>
+</ChartLayout>
+<style>
+  h1 { font-size: clamp(2.6rem, 6vw, 5rem); margin-block: 0.75rem 1.5rem; }
+  .intro { font-size: 1.45rem; margin-bottom: 1rem; }
+  h2 { font-size: 2rem; margin-block: 0.75rem 1rem; }
+  .empty-state { display: flex; align-items: center; gap: 1.5rem; border-block: 1px solid var(--rule); padding-block: 2rem; margin-top: 2.5rem; }
+  .closing { margin-top: 2rem; }
+  @media (max-width: 35rem) { .empty-state { flex-direction: column; align-items: start; } }
+</style>
