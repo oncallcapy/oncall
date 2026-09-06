@@ -16,6 +16,27 @@ Choose a focused evidence question within a topic. Article titles, summaries, fi
 
 ## Required note structure
 
+The launch collection is a five-dossier programme: one dossier for each fixed
+selected-pair research track and exactly three source-led study records in each
+dossier, for 15 study records in total. The pair ticker and company name are
+mapping metadata only. They must not frame a dossier title, question, methods,
+findings, synthesis or limitations. A study's original publication title and
+bibliographic citation remain intact, including a necessary author, sponsor or
+manufacturer identity. Lowercase biological `mRNA` remains scientific language;
+the selected-pair ticker `MRNA` is not scientific framing.
+
+Every dossier records its search date. Every study record needs a direct HTTPS
+source link and an access date, together with its persistent identifier or
+authoritative-source classification. A correction record identifies what changed
+and when; an initial dossier records an empty correction history. The selected
+study set is an editorial evidence file, not a clinical guideline, treatment
+recommendation or a systematic review.
+
+`reviewer` and `reviewedAt` are optional while a dossier is prepared, but they
+must be supplied together when an editorial review is recorded. Do not invent a
+reviewer or review date. Publication still requires the named human clinical or
+editorial review described below; schema validity cannot grant that approval.
+
 Every planned note must contain these visible sections, even where the honest answer is that evidence is insufficient:
 
 1. **Clinical question:** population, intervention or exposure, comparator, relevant outcomes and time horizon.
