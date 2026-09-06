@@ -1,11 +1,10 @@
 ---
 import ChartLayout from '../layouts/ChartLayout.astro';
-import OncallMascot from '../components/OncallMascot.astro';
 ---
 <ChartLayout title="The Chart | ONCALL" description="ONCALL project record, evidence boundaries and explicit limits.">
   <p class="meta">Case file 02 / Admission record</p>
   <h1>The Chart</h1>
-  <div class="identity"><div><p class="meta">Project identity / review required</p><p class="intro">ONCALL. Night shift. Clear head. Question everything.</p><p>An original mascot-led project about medicine, science and market culture, with a proposed meme token. Name and handle availability have not been established.</p></div><OncallMascot context="note" /></div>
+  <div><p class="meta">Project identity / review required</p><p class="intro">ONCALL. Night shift. Clear head. Question everything.</p><p>An original mascot-led project about medicine, science and market culture, with a proposed meme token. Name and handle availability have not been established.</p></div>
   <section aria-labelledby="facts-heading"><h2 id="facts-heading">Launch record boundary</h2><p>Project identity is not an immutable token record. No ONCALL launch has been executed, and this public file does not publish token, pool, route, fee, or transaction values.</p></section>
   <aside class="notice"><h2>Review before the irreversible step</h2><p>Final name, symbol, image, description, and social links must all be reviewed before launch. PAR states that it writes these at launch and they cannot be changed afterward. <a href="https://par.family/docs">PAR launch documentation</a>.</p></aside>
   <section aria-labelledby="limits-heading"><h2 id="limits-heading">What this file does not establish</h2><p>ONCALL is not a medical product, investment product, index fund, or collateralized asset. The selected quote markets do not guarantee tracking, returns, or safety. Educational content is not diagnosis or treatment advice; market content is not financial advice.</p><p>Read the <a href="/pairs/">selected pair quote files</a> and the <a href="/sources-and-risks/">source and risk ledger</a> before drawing conclusions.</p></section>
@@ -15,8 +14,6 @@ import OncallMascot from '../components/OncallMascot.astro';
   h2 { font-size: 1.7rem; margin-bottom: 1rem; }
   p + p { margin-top: 1rem; }
   .intro { font-size: 1.45rem; margin-block: 0.5rem 1rem; }
-  .identity { display: flex; align-items: center; gap: 1.5rem; }
   section, .notice { margin-top: 2.5rem; }
   .notice { border-left: 4px solid var(--coral); padding: 1.5rem; background: var(--paper-raised); }
-  @media (max-width: 35rem) { .identity { flex-direction: column; align-items: start; } }
 </style>

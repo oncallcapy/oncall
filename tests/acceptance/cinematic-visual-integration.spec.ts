@@ -41,7 +41,7 @@ test('finishing the intro transfers focus before the focused skip disappears', a
 });
 
 test('public files omit internal publication workflow and old flat mascot artwork', async ({ page }) => {
-  for (const path of ['/science/', '/market-rounds/', '/night-shift/']) {
+  for (const path of ['/chart/', '/science/', '/market-rounds/', '/night-shift/']) {
     await page.goto(path);
     await expect(page.locator('main img[src="/brand/oncall-hero-static.png"]')).toHaveCount(0);
     await expect(page.locator('.empty-state')).toHaveCount(0);
@@ -85,3 +85,38 @@ for (const width of [1440, 1024, 390, 320]) {
     }
   });
 }
+
+for (const width of [1440, 390]) {
+  test(`pulling a spine masks its paper boundary and retains the stationary stack at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/');
+    const measured = await page.locator('[data-file-link][data-file-id="pairs"]').evaluate((el: HTMLAnchorElement) => {
+      el.click();
+      document.querySelector('[data-cinematic-stage]')!.getAnimations({ subtree: true }).forEach(animation => {
+        animation.pause();
+        animation.currentTime = 130;
+      });
+      return {
+        paperClip: getComputedStyle(el, '::before').clipPath,
+        stackImage: getComputedStyle(el.parentElement!, '::before').backgroundImage,
+        anchorClip: getComputedStyle(el).clipPath,
+        targetHeight: el.getBoundingClientRect().height,
+        printSlope: new DOMMatrix(getComputedStyle(el.querySelector('.file-print')!).transform).b,
+      };
+    });
+    expect(measured.paperClip).toMatch(/^polygon\(/);
+    expect(measured.stackImage).toContain('text-free-approved');
+    expect(measured.anchorClip).toBe('none');
+    expect(measured.targetHeight).toBe(44);
+    expect(measured.printSlope).toBeLessThan(0);
+  });
+}
+
+test('Chart preserves its factual boundaries without the flat mascot', async ({ page }) => {
+  await page.goto('/chart/');
+  await expect(page.getByRole('heading', { name: 'The Chart', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Launch record boundary' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'What this file does not establish' })).toBeVisible();
+  await expect(page.locator('main')).toContainText('No ONCALL launch has been executed');
+  await expect(page.locator('main img[src="/brand/oncall-hero-static.png"]')).toHaveCount(0);
+});
