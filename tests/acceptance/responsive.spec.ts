@@ -42,7 +42,7 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
         });
         expect(overflow).toEqual({ documentOverflow: 0, outside: [] });
         const image = page.locator('[data-scene-plate] img');
-        if (await image.count()) {
+        if (await image.count() && route !== '/') {
           const art = (await image.boundingBox())!;
           for (const target of await page.locator('main h1, main button, .intake-note').all()) {
             const box = (await target.boundingBox())!;
@@ -50,6 +50,12 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
             expect(overlaps, `Mascot overlaps ${await target.innerText()}`).toBe(false);
           }
         }
+      }
+      if (route === '/' && viewport.width !== 1440) {
+        const hero = (await page.locator('.triage-hero').boundingBox())!;
+        const folder = (await page.locator('[data-file-stack]').boundingBox())!;
+        // The HTML hero now occupies the approved plate's blank wall, above the stack.
+        expect(hero.y + hero.height).toBeLessThan(folder.y);
       }
       if (captureRoutes.includes(route)) {
         const directory = `${evidenceRoot}/${viewport.width === 1440 ? 'desktop' : 'mobile'}`;

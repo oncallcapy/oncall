@@ -14,7 +14,8 @@ describe('cinematic route contract', () => {
   });
 
   it('uses only approved, locally served scene assets', () => {
-    expect(CINEMATIC_ASSETS.opening).toBe('/brand/cinematic/oncall-opening-approved-v1.png');
+    expect(CINEMATIC_ASSETS.opening).toBe('/brand/cinematic/oncall-opening-desktop-text-free-approved-v1.png');
+    expect(CINEMATIC_ASSETS.openingMobile).toBe('/brand/cinematic/oncall-opening-mobile-text-free-approved-v1.png');
     expect(CINEMATIC_ASSETS.openFile).toBe('/brand/cinematic/oncall-open-file-scene-plate-v1.png');
     expect(Object.values(CINEMATIC_ASSETS).every(path => path.startsWith('/brand/cinematic/'))).toBe(true);
   });

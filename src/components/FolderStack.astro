@@ -12,16 +12,19 @@ const currentFileId = resolveFileId(currentPath);
 
 <nav class="file-stack" data-file-stack aria-label="ONCALL case files">
   <ol>
-    {NAV_ITEMS.map((item) => (
-      <li data-file-id={item.id}>
+    {NAV_ITEMS.map((item, index) => (
+      <li data-file-id={item.id} style={`--spine-index: ${index}`}>
         <a
           href={item.href}
           data-file-link
           data-file-id={item.id}
           aria-current={item.id === currentFileId ? 'page' : undefined}
         >
-          <span class="file-number" aria-hidden="true">{item.shortLabel}</span>
-          <span class="file-label">{item.label}</span>
+          <span class="file-print">
+            <span class="file-accent" aria-hidden="true"></span>
+            <span class="file-number" aria-hidden="true">{item.shortLabel}</span>
+            <span class="file-label">{item.label}</span>
+          </span>
         </a>
       </li>
     ))}

@@ -8,8 +8,8 @@ import ChartLayout from '../layouts/ChartLayout.astro';
     <h1 id="oncall-title">ONCALL</h1>
     <p class="hero-line">NIGHT SHIFT FOR THE TERMINALLY ONLINE.</p>
     <p class="status-line">STATUS / ON SHIFT</p>
-    <p class="hero-intro">Science gets its sources. Markets get their context. The mascot gets the late shift.</p>
   </section>
+  <p class="hero-intro">Science gets its sources. Markets get their context. The mascot gets the late shift.</p>
   <section class="intake-note" aria-labelledby="intake-heading">
     <h2 id="intake-heading" class="meta">Intake note</h2>
     <p>Open a file for sourced science, market context, original night-shift humour, and the project record.</p>
@@ -17,17 +17,21 @@ import ChartLayout from '../layouts/ChartLayout.astro';
 </ChartLayout>
 
 <style>
-  .triage-hero { padding-block: clamp(1rem, 4vw, 3rem) 2.5rem; }
-  .eyebrow { margin-bottom: 0.8rem; color: var(--ink); font-family: var(--font-meta); font-size: 0.6875rem; letter-spacing: 0.075em; line-height: 1.6; }
-  h1 { font-size: clamp(4.5rem, 8.8vw, 8.75rem); font-weight: 900; letter-spacing: -0.055em; line-height: 0.95; }
-  .hero-line { max-width: 32rem; margin-top: 1.5rem; font-family: var(--font-display); font-size: clamp(2rem, 3.2vw, 3rem); font-weight: 750; line-height: 1.06; letter-spacing: -0.025em; }
-  .status-line { display: inline-block; margin-top: 1.5rem; padding: 0.45rem 0.65rem; background: var(--coral); color: var(--ink); font-family: var(--font-meta); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; }
-  .hero-intro { max-width: 38rem; margin-top: 1.5rem; font-size: 1.125rem; }
+  .triage-hero { position: absolute; z-index: 3; top: 6cqw; left: 6cqw; width: 45cqw; color: var(--paper-raised); }
+  .eyebrow { margin-bottom: 1rem; font-family: var(--font-meta); font-size: clamp(0.55rem, 0.8cqw, 0.75rem); letter-spacing: 0.06em; line-height: 1.5; }
+  h1 { font-size: 10cqw; font-weight: 900; letter-spacing: -0.04em; line-height: 0.95; }
+  .hero-line { max-width: 38cqw; margin-top: 1rem; font-family: var(--font-display); font-size: 3.2cqw; font-weight: 750; line-height: 1.08; letter-spacing: -0.02em; }
+  .status-line { display: inline-block; margin-top: 1.25rem; color: var(--coral); font-family: var(--font-meta); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; }
+  .hero-intro { max-width: 44rem; margin-bottom: 2rem; font-size: 1.2rem; }
   .intake-note { display: grid; grid-template-columns: 7rem 1fr; gap: 1.5rem; padding-block: 1rem; border-block: 1px solid var(--rule); }
   .intake-note h2 { padding-top: 0.3rem; font-weight: 400; }
-  .intake-note p { max-width: 35rem; font-size: 1.1rem; }
+  .intake-note p { max-width: 40rem; font-size: 1.1rem; }
   @media (max-width: 47.999rem) {
-    h1 { font-size: clamp(4.5rem, 18vw, 7rem); }
+    .triage-hero { top: 5cqw; left: 6cqw; width: 45cqw; }
+    h1 { font-size: 13cqw; }
+    .eyebrow { font-size: 0.55rem; margin-bottom: 0.6rem; }
+    .hero-line { max-width: 45cqw; font-size: 5.5cqw; margin-top: 0.6rem; }
+    .status-line { margin-top: 0.8rem; font-size: 0.6rem; }
     .intake-note { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; }
   }
 </style>

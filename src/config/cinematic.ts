@@ -1,7 +1,8 @@
 export type CinematicSurface = 'opening' | 'file' | 'article';
 
 export const CINEMATIC_ASSETS = {
-  opening: '/brand/cinematic/oncall-opening-approved-v1.png',
+  opening: '/brand/cinematic/oncall-opening-desktop-text-free-approved-v1.png',
+  openingMobile: '/brand/cinematic/oncall-opening-mobile-text-free-approved-v1.png',
   openFile: '/brand/cinematic/oncall-open-file-scene-plate-v1.png',
   idlePose: '/brand/cinematic/oncall-idle-pose-approved-v1.png',
 } as const;

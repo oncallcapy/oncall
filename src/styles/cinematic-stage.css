@@ -1,82 +1,52 @@
-.cinematic-stage {
-  position: relative;
-  isolation: isolate;
-  min-height: min(48rem, 92vh, calc(100svh - 6rem));
-  overflow: clip;
-  background: var(--desk);
-}
-
-.scene-plate,
-.scene-plate img {
-  width: 100%;
-  height: 100%;
-}
-
-.scene-plate { position: absolute; inset: 0; z-index: -1; }
+.site-shell { position: relative; container-type: inline-size; }
+.site-shell--opening { margin-top: 0; }
+.cinematic-stage { position: relative; isolation: isolate; min-height: min(48rem, 92vh, calc(100svh - 6rem)); overflow: clip; background: #071715; }
+.scene-plate, .scene-plate img { width: 100%; height: 100%; }
+.scene-plate { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
 .scene-plate img { object-fit: cover; object-position: center; }
-
-.cinematic-stage::after {
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-  content: '';
-  pointer-events: none;
-  background: rgb(8 24 23 / 24%);
-}
-
-#cinematic-skip {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  padding: 0.6rem 0.8rem;
-  border: 1px solid var(--paper-raised);
-  background: rgb(24 60 60 / 78%);
-  color: var(--paper-raised);
-  font-family: var(--font-meta);
-  font-size: 0.7rem;
-}
-
-.cinematic-stage:not([data-surface='opening']) #cinematic-skip { display: none; }
-
-@media (max-width: 47.999rem) {
-  .cinematic-stage { min-height: 0; padding-top: min(84vw, 31rem); }
-  .scene-plate { height: min(84vw, 31rem); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #cinematic-skip { display: none; }
-}
-
-/* The stage persists while the ordinary HTML file is swapped by Astro. */
-.cinematic-stage[data-motion='walk'] .scene-plate img { transform-origin: 35% 65%; }
-.cinematic-stage[data-motion='inspect'] .scene-plate img { transform-origin: 50% 55%; }
-#cinematic-skip { z-index: 4; cursor: pointer; }
+.cinematic-stage::after { position: absolute; z-index: 0; inset: 0; content: ''; pointer-events: none; background: rgb(8 24 23 / 14%); }
+.cinematic-stage[data-plate='opening'] { min-height: 0; height: max(56.28cqw, calc(35cqw + 22rem + 1rem)); }
+.cinematic-stage[data-plate='opening'] .scene-plate { height: 56.28cqw; }
+.cinematic-stage[data-plate='opening'] .scene-plate img { height: auto; object-fit: contain; }
+.cinematic-stage[data-plate='opening']::after { display: none; }
+#cinematic-skip { position: absolute; z-index: 4; top: 1rem; right: 1rem; padding: 0.6rem 0.8rem; border: 1px solid var(--paper-raised); background: rgb(24 60 60 / 78%); color: var(--paper-raised); font-family: var(--font-meta); font-size: 0.7rem; cursor: pointer; }
 #cinematic-skip:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.cinematic-stage:not([data-plate='opening']) #cinematic-skip,
 .cinematic-stage:not([data-enhanced]) #cinematic-skip,
 .cinematic-stage[data-opening='settled'] #cinematic-skip { display: none; }
+.cinematic-stage[data-motion='walk'] .scene-plate img { transform-origin: 35% 65%; }
+.cinematic-stage[data-motion='inspect'] .scene-plate img { transform-origin: 50% 55%; }
 
-@media (prefers-reduced-motion: reduce) {
-  .cinematic-stage *, .cinematic-stage *::before, .cinematic-stage *::after {
-    animation: none !important;
-    transition: none !important;
-  }
+/* The opening copy is real HTML on the unprinted wall; supporting prose stays
+   below the scene. The opened file is a readable HTML sheet in document flow. */
+.site-shell--opening .editorial-file--opening {
+  position: static;
+  width: min(100% - 2rem, 74rem);
+  margin: 0 auto 4rem;
+  padding: 2rem;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  color: var(--paper-raised);
 }
-
 @media (min-width: 48rem) {
-  /* Real HTML sits on the opened paper; long files continue down the document. */
   .cinematic-stage:not([data-surface='opening']) ~ .editorial-file {
-    position: relative;
-    z-index: 3;
-    width: min(61vw, 58rem);
+    position: relative; z-index: 3; width: min(61cqw, 58rem);
     margin-top: calc(-1 * min(48rem, 92vh, calc(100svh - 6rem)) + 6rem);
-    margin-left: clamp(1.5rem, 4vw, 4rem);
-    margin-right: auto;
-    padding: clamp(1.5rem, 3vw, 3rem);
-    background: rgb(244 240 230 / 96%);
+    margin-left: clamp(1.5rem, 4cqw, 4rem); margin-right: auto;
+    padding: clamp(1.5rem, 3cqw, 3rem); background: rgb(244 240 230 / 96%);
   }
 }
-
 @media (max-width: 47.999rem) {
-  .cinematic-stage:not([data-surface='opening']) { padding-top: 48vw; }
-  .cinematic-stage:not([data-surface='opening']) .scene-plate { height: 48vw; }
+  .cinematic-stage { min-height: 0; padding-top: 48cqw; padding-bottom: 1rem; }
+  .scene-plate { height: 48cqw; }
+  .cinematic-stage[data-plate='opening'] { height: calc(99.89cqw + 22rem + 1.5rem); padding: 0; }
+  /* Preserve the whole head, paw and folder lid at their natural proportions.
+     Only the eight rectangular paper spines below are expanded to 44px each. */
+  .cinematic-stage[data-plate='opening'] .scene-plate { height: 99.89cqw; }
+  .site-shell--opening .editorial-file--opening { width: 100%; padding: 1.5rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #cinematic-skip { display: none; }
+  .cinematic-stage *, .cinematic-stage *::before, .cinematic-stage *::after { animation: none !important; transition: none !important; }
 }

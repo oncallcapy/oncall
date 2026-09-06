@@ -28,8 +28,8 @@ const isOpening = (Astro.url.pathname.replace(/\/+$/, '') || '/') === '/';
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <div class="site-shell">
-      <ChartHeader />
+    <div class:list={['site-shell', { 'site-shell--opening': isOpening }]}>
+      {!isOpening && <ChartHeader />}
       <CinematicStage />
       <main id="main-content" class:list={['editorial-file', { 'editorial-file--opening': isOpening }]} data-file-content tabindex="-1">
         <slot />

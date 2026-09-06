@@ -37,9 +37,13 @@ export function installCinematicCoordinator() {
     });
   }
   function showPlate(fileId: FileId) {
+    const room = stage();
+    if (room) room.dataset.plate = fileId === 'triage' ? 'opening' : 'file';
     const image = plate();
     const src = fileId === 'triage' ? CINEMATIC_ASSETS.opening : CINEMATIC_ASSETS.openFile;
     if (image && image.getAttribute('src') !== src) image.src = src;
+    const source = stage()?.querySelector('source');
+    if (source) source.srcset = fileId === 'triage' ? CINEMATIC_ASSETS.openingMobile : CINEMATIC_ASSETS.openFile;
   }
   function focusHeading() {
     const heading = document.querySelector<HTMLElement>('[data-file-content] h1');
@@ -51,6 +55,7 @@ export function installCinematicCoordinator() {
   function settleOpening() {
     state = reduceCinematic(state, { type: 'SKIP_OPENING' });
     const room = stage();
+    if (document.activeElement?.id === 'cinematic-skip') document.querySelector<HTMLElement>('[data-file-content]')?.focus({ preventScroll: true });
     if (room) room.dataset.opening = 'settled';
     remember();
   }
@@ -92,11 +97,10 @@ export function installCinematicCoordinator() {
     currentLink(fileId);
     if (!reduced.matches) {
       room.dataset.motion = 'walk';
-      // A short scene-plate move suggests attention; it does not simulate a rigged walk.
-      const offset = compact.matches ? '12px' : `${4 + NAV_ITEMS.findIndex(item => item.id === fileId) / 7 * 2}vw`;
+      // Keep the baked stack fixed. Only the selected physical spine is pulled.
       await Promise.all([
         effect(link, [{ transform: 'translateX(0)' }, { transform: compact.matches ? 'translateX(-12px)' : 'translateX(-2rem) rotateY(-7deg)' }], 260),
-        effect(plate(), [{ transform: 'scale(1.06) translateX(0)', opacity: 1 }, { transform: `scale(1.06) translateX(${offset})`, opacity: 0.78 }], 260),
+        effect(plate(), [{ filter: 'brightness(1)' }, { filter: 'brightness(.88)' }], 260),
       ]);
     }
     if (state.epoch !== epoch || active?.epoch !== epoch) return;
@@ -114,7 +118,7 @@ export function installCinematicCoordinator() {
     if (target?.closest('#cinematic-skip')) {
       cancelAnimations();
       settleOpening();
-      document.querySelector<HTMLElement>('[data-file-content]')?.focus();
+      document.querySelector<HTMLElement>('[data-file-content]')?.focus({ preventScroll: true });
       return;
     }
     const link = target?.closest<HTMLAnchorElement>('a[data-file-link]');
@@ -169,7 +173,7 @@ export function installCinematicCoordinator() {
     if (seen || reduced.matches || firstFile !== 'triage') settleOpening();
     else {
       room.dataset.opening = 'playing';
-      void effect(plate(), [{ filter: 'brightness(.65)', transform: 'scale(1.025)' }, { filter: 'brightness(1)', transform: 'none' }], 2400).then(completed => { if (completed) settleOpening(); });
+      void effect(plate(), [{ filter: 'brightness(.65)' }, { filter: 'brightness(1)' }], 2400).then(completed => { if (completed) settleOpening(); });
     }
   }
   // Warm the approved blank plate without delaying the first useful HTML frame.

@@ -1,94 +1,94 @@
-.file-stack {
-  position: absolute;
-  z-index: 2;
-  right: clamp(1rem, 4vw, 4rem);
-  bottom: clamp(1rem, 4vh, 3rem);
-  width: min(26rem, 42vw);
-  perspective: 1000px;
-}
-
-.file-stack ol {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.file-stack li {
-  transform: rotateX(9deg);
-}
-
-.file-stack li:nth-child(3n) a { border-left-color: var(--coral); }
-
+.file-stack { position: absolute; z-index: 2; right: 2cqw; bottom: 1.5rem; width: 29cqw; }
+.file-stack ol { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+.file-stack li { height: 44px; flex: 0 0 44px; }
 .file-stack a {
+  position: relative;
+  isolation: isolate;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  min-height: 3.25rem;
-  padding: 0.8rem 1rem;
-  border: 1px solid color-mix(in srgb, var(--ink) 70%, var(--paper));
-  border-left: 0.5rem solid var(--teal);
-  border-radius: 0.15rem 0.45rem 0.45rem 0.15rem;
-  background-color: var(--paper-raised);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
-  box-shadow: 0 0.45rem 0.8rem rgb(6 25 24 / 28%);
-  color: var(--ink);
+  min-height: 44px;
+  height: 44px;
+  padding: 0 0.8rem;
+  border: 0;
+  border-bottom: 1px solid rgb(244 240 230 / 20%);
+  background: transparent;
+  color: var(--paper-raised);
   text-decoration: none;
-  transform-origin: bottom center;
-  transition: transform 180ms ease, box-shadow 180ms ease;
+  transform-origin: right center;
+  transition: transform 180ms ease;
 }
-
-.file-stack a:hover,
-.file-stack a:focus-visible,
-.file-stack a[aria-current='page'] {
-  position: relative;
-  z-index: 1;
-  transform: translateX(-1.25rem);
-  box-shadow: -0.35rem 0.55rem 0.9rem rgb(6 25 24 / 36%);
-}
-
-.file-stack a:focus-visible { outline: 3px solid var(--paper-raised); outline-offset: 4px; }
-.file-stack a[aria-current='page'] { background-color: var(--paper); }
+.file-stack a:hover { transform: translateX(-0.35rem); }
+.file-stack a:focus-visible { outline: 3px solid var(--coral); outline-offset: -3px; }
+.file-stack a[aria-current='page'] { color: var(--coral); }
 .file-stack a[aria-current='page'] .file-label { text-decoration: underline; text-underline-offset: 0.22em; }
-.file-number { font-family: var(--font-meta); font-size: 0.7rem; }
-.file-label { font-family: var(--font-display); font-size: clamp(0.9rem, 1.7vw, 1.1rem); font-weight: 800; letter-spacing: 0.025em; line-height: 1; }
+.file-print { display: inline-flex; align-items: center; gap: 0.65rem; transform-origin: center center; }
+.file-accent { display: none; }
+.file-number { font-family: var(--font-meta); font-size: 0.65rem; }
+.file-label { font-family: var(--font-display); font-size: clamp(0.85rem, 1.3cqw, 1.15rem); font-weight: 850; letter-spacing: 0.03em; line-height: 1.1; }
+
+/* Each link carries its own slice of the ONE approved stack. Moving it pulls
+   the paper spine itself; the label and physical surface cannot drift apart. */
+.cinematic-stage[data-plate='opening'] .file-stack {
+  left: 25.72cqw;
+  top: 35cqw;
+  right: auto;
+  bottom: auto;
+  width: 42cqw;
+}
+.cinematic-stage[data-plate='opening'] .file-stack a {
+  padding-left: 15%;
+  color: #102522;
+  border: 0;
+  text-shadow: 0 1px rgb(244 240 230 / 15%);
+}
+.cinematic-stage[data-plate='opening'] .file-stack a::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: '';
+  background-image: url('/brand/cinematic/oncall-opening-desktop-text-free-approved-v1.png');
+  background-size: 238.18% 2138.64%;
+  background-position: 44.33% calc(65.217% + var(--spine-index) * 4.9052%);
+}
+/* Source-gap rises measured across x=550..1100 desktop and x=70..770
+   mobile. atan2 compensates for responsive width while preserving 44px hit boxes. */
+.file-stack li:nth-child(1) { --desktop-rise: -19px; --mobile-rise: -2px; }
+.file-stack li:nth-child(2) { --desktop-rise: -23px; --mobile-rise: -2.4px; }
+.file-stack li:nth-child(3) { --desktop-rise: -27.5px; --mobile-rise: -3.4px; }
+.file-stack li:nth-child(4) { --desktop-rise: -31px; --mobile-rise: -4.4px; }
+.file-stack li:nth-child(5) { --desktop-rise: -35.5px; --mobile-rise: -5.4px; }
+.file-stack li:nth-child(6) { --desktop-rise: -41.5px; --mobile-rise: -6.1px; }
+.file-stack li:nth-child(7) { --desktop-rise: -47.5px; --mobile-rise: -6.5px; }
+.file-stack li:nth-child(8) { --desktop-rise: -52px; --mobile-rise: -6.8px; }
+.cinematic-stage[data-plate='opening'] .file-print {
+  transform: skewY(atan2(var(--desktop-rise), 32.906cqw));
+}
+.cinematic-stage[data-plate='opening'] .file-accent {
+  display: block;
+  flex: 0 0 0.28rem;
+  width: 0.28rem;
+  height: 18px;
+  background: var(--teal);
+  opacity: 0.65;
+}
+.cinematic-stage[data-plate='opening'] .file-stack a[aria-current='page'] .file-accent { background: var(--coral); opacity: 1; }
+.cinematic-stage[data-target-file] .file-stack a[aria-current='page'] { z-index: 3; }
 
 @media (max-width: 47.999rem) {
-  .file-stack { position: static; width: auto; padding: 1rem; perspective: none; }
-  .file-stack ol { gap: 0.45rem; }
-  .file-stack li { transform: none; }
-  .file-stack a { min-height: 2.75rem; border-left-width: 0.4rem; box-shadow: 0 0.2rem 0.4rem rgb(6 25 24 / 24%); }
-  .file-stack a:hover,
-  .file-stack a:focus-visible,
-  .file-stack a[aria-current='page'] { transform: translateX(-0.35rem); }
-}
-
-.cinematic-stage[data-target-file] .file-stack a[aria-current='page'] {
-  border-left-color: var(--coral);
-  box-shadow: -0.35rem 0.7rem 1.3rem rgb(6 25 24 / 48%);
-}
-
-.cinematic-stage:not([data-surface='opening']) .file-stack ol {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.cinematic-stage:not([data-surface='opening']) .file-stack li { transform: none; }
-.cinematic-stage:not([data-surface='opening']) .file-stack a {
-  min-height: 3.25rem;
-  height: 100%;
-  gap: 0.4rem;
-  padding: 0.55rem;
-}
-.cinematic-stage:not([data-surface='opening']) .file-label {
-  font-size: 0.85rem;
-  line-height: 1.2;
-}
-@media (min-width: 48rem) {
-  .cinematic-stage:not([data-surface='opening']) .file-stack {
-    right: 2vw;
-    bottom: 1.5rem;
-    width: 29vw;
+  .file-stack { position: static; width: auto; margin: 0 1rem; }
+  .file-label { font-size: 1rem; }
+  .cinematic-stage[data-plate='opening'] .file-stack {
+    position: absolute;
+    top: 99.89cqw;
+    left: 4.68cqw;
+    width: 81.3cqw;
+    margin: 0;
   }
+  .cinematic-stage[data-plate='opening'] .file-stack a { padding-left: 6%; }
+  .cinematic-stage[data-plate='opening'] .file-stack a::before {
+    background-image: url('/brand/cinematic/oncall-opening-mobile-text-free-approved-v1.png');
+    background-size: 123.0065% 2572.3077%;
+    background-position: 25% calc(58.494% + var(--spine-index) * 4.0448%);
+  }
+  .cinematic-stage[data-plate='opening'] .file-print { transform: skewY(atan2(var(--mobile-rise), 74.389cqw)); }
 }

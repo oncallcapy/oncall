@@ -47,26 +47,22 @@ test('all five selected pairs show observed quote facts without unpublished laun
   await expect(page.locator('.notice')).toContainText('An active API entry does not establish priceability, route depth, liquidity, suitability, or investment merit');
 });
 
-test('Science Notes contains an honest empty reviewed collection', async ({ page }) => {
+test('Science Notes exposes its research scope without inventing reviewed articles', async ({ page }) => {
   await page.goto('/science/');
-  await expect(page.getByText('No reviewed Science Note has been published yet.', { exact: true })).toBeVisible();
+  await expect(page.locator('.empty-state')).toHaveCount(0);
   await expect(page.getByRole('main').getByRole('article')).toHaveCount(0);
   await expect(page.locator('main a[href^="/science/"]')).toHaveCount(0);
-  await expect(page.locator('.empty-state')).toContainText('No sample articles are presented as reviewed work.');
   await expect(page.getByRole('main')).toContainText('five selected-pair research domains');
   await expect(page.getByRole('link', { name: 'exact market-to-domain map' })).toHaveAttribute('href', '/pairs/');
-  await expect(page.locator('.empty-state')).not.toContainText(/LLY|JNJ|HIMS|MRNA|UNH|Moderna|Lilly/);
-  // The explicit no-sample disclaimer is allowed; published articles and claims are not.
+  // Publication modules stay absent until actual reviewed entries exist.
   await expect(page.getByRole('main')).not.toContainText(/sample (scientific claim|study)|\bp\s*[<=]\s*0\.|relative risk|odds ratio|\d+% (reduction|improvement)/i);
 });
 
-for (const [route, emptyText] of [
-  ['/market-rounds/', 'No market analysis has been published here.'],
-  ['/night-shift/', 'No Night Shift post has been published in this archive.'],
-]) {
-  test(`${route} remains an honest empty archive`, async ({ page }) => {
+for (const route of ['/market-rounds/', '/night-shift/']) {
+  test(`${route} shows its editorial scope without fabricated archive entries`, async ({ page }) => {
     await page.goto(route!);
-    await expect(page.locator('.empty-state')).toContainText(emptyText!);
+    await expect(page.locator('.empty-state')).toHaveCount(0);
+    await expect(page.getByRole('main')).not.toContainText(/publication status|review queue|empty archive/i);
     await expect(page.getByRole('main').getByRole('article')).toHaveCount(0);
     await expect(page.locator(`main a[href^="${route}"]`)).toHaveCount(0);
   });

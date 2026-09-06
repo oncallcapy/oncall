@@ -9,7 +9,7 @@ export default defineConfig({
   webServer: {
     // The dev API stays in the foreground; Astro's CLI auto-daemonizes in agent environments.
     command:
-      "node --input-type=module -e \"import { dev } from 'astro'; await dev({ server: { host: '127.0.0.1', port: 4321 } });\"",
+      "node --input-type=module -e \"import { dev } from 'astro'; await dev({ devToolbar: { enabled: false }, server: { host: '127.0.0.1', port: 4321 } });\"",
     env: {
       ASTRO_TELEMETRY_DISABLED: "1"
     },

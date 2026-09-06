@@ -1,20 +1,16 @@
 ---
 import ChartLayout from '../layouts/ChartLayout.astro';
-import OncallMascot from '../components/OncallMascot.astro';
 ---
-<ChartLayout title="Market Rounds | ONCALL" description="The ONCALL market commentary file is awaiting its first sourced and reviewed entry.">
+<ChartLayout title="Market Rounds | ONCALL" description="ONCALL health-company and market context, with dated sources and explicit limits.">
   <p class="meta">Case file 06 / Market desk</p>
   <h1>Market Rounds</h1>
   <p class="intro">Company context, with the evidence attached.</p>
   <p>This file is reserved for health-company and market commentary. Company-specific reporting belongs here, with dated sources and explicit limits. It is separate from medicine education and does not provide investment recommendations.</p>
-  <section class="empty-state" aria-labelledby="empty-heading"><div><p class="meta">Publication status / Review queue</p><h2 id="empty-heading">No rounds filed yet.</h2><p>No market analysis has been published here. The first entry is waiting for sourcing and human review.</p></div><OncallMascot context="note" /></section>
+
   <p class="closing">For the current selected pair identities and observed contract metadata, open <a href="/pairs/">FIVE PAIRS</a>. For educational medicine, visit <a href="/science/">SCIENCE NOTES</a>.</p>
 </ChartLayout>
 <style>
   h1 { font-size: clamp(2.6rem, 6vw, 5rem); margin-block: 0.75rem 1.5rem; }
   .intro { font-size: 1.45rem; margin-bottom: 1rem; }
-  h2 { font-size: 2rem; margin-block: 0.75rem 1rem; }
-  .empty-state { display: flex; align-items: center; gap: 1.5rem; border-block: 1px solid var(--rule); padding-block: 2rem; margin-top: 2.5rem; }
   .closing { margin-top: 2rem; }
-  @media (max-width: 35rem) { .empty-state { flex-direction: column; align-items: start; } }
 </style>

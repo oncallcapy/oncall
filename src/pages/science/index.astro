@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import ChartLayout from '../../layouts/ChartLayout.astro';
 import ScienceNoteCard from '../../components/ScienceNoteCard.astro';
-import OncallMascot from '../../components/OncallMascot.astro';
 import { SCIENCE_THEMES } from '../../config/scienceThemes';
 const notes = (await getCollection('science')).sort((a, b) => b.data.publishedAt.localeCompare(a.data.publishedAt));
 ---
@@ -17,19 +16,10 @@ const notes = (await getCollection('science')).sort((a, b) => b.data.publishedAt
     <h2 id="themes-heading">Clinical themes</h2>
     <ul class="themes">{Object.values(SCIENCE_THEMES).map((label) => <li>{label}</li>)}</ul>
   </section>
-  <section aria-labelledby="notes-heading">
+  {notes.length > 0 && <section aria-labelledby="notes-heading">
     <h2 id="notes-heading">Reviewed notes</h2>
-    {notes.length > 0 ? notes.map((note) => <ScienceNoteCard note={note} />) : (
-      <div class="empty-state">
-        <div>
-          <p class="meta">Publication status / Review queue</p>
-          <p class="empty-title">No reviewed Science Note has been published yet.</p>
-          <p>The evidence desk is waiting for a sourced, reviewed note. No sample articles are presented as reviewed work.</p>
-        </div>
-        <OncallMascot context="note" />
-      </div>
-    )}
-  </section>
+    {notes.map((note) => <ScienceNoteCard note={note} />)}
+  </section>}
   <p class="routing">Looking for company identities or company-specific reporting? Open <a href="/pairs/">FIVE PAIRS</a> or <a href="/market-rounds/">MARKET ROUNDS</a>.</p>
 </ChartLayout>
 
@@ -41,8 +31,5 @@ const notes = (await getCollection('science')).sort((a, b) => b.data.publishedAt
   h2 { font-size: 1.6rem; margin-bottom: 1rem; }
   .themes { padding-left: 1.3rem; }
   .themes li + li { margin-top: 0.4rem; }
-  .empty-state { display: flex; align-items: center; gap: 1.5rem; border-block: 1px solid var(--rule); padding-block: 1.5rem; }
-  .empty-title { margin-block: 0.75rem; font-weight: 700; }
   .routing { margin-top: 2rem; }
-  @media (max-width: 35rem) { .empty-state { flex-direction: column; align-items: start; } }
 </style>

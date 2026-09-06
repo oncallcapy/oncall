@@ -15,10 +15,12 @@ const fileId = resolveFileId(currentPath);
   transition:persist="cinematic-room"
   transition:animate="none"
   data-surface={surface}
+  data-plate={surface === 'opening' ? 'opening' : 'file'}
   data-file-id={fileId}
   aria-label="ONCALL night-shift records room"
 >
   <picture class="scene-plate" aria-hidden="true" data-scene-plate>
+    <source media="(max-width: 47.999rem)" srcset={surface === 'opening' ? CINEMATIC_ASSETS.openingMobile : CINEMATIC_ASSETS.openFile} />
     <img
       src={surface === 'opening' ? CINEMATIC_ASSETS.opening : CINEMATIC_ASSETS.openFile}
       alt=""
