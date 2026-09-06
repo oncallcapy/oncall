@@ -1,19 +1,50 @@
 ---
 import ChartLayout from '../layouts/ChartLayout.astro';
+import { PUBLIC_PROJECT_RECORD } from '../data/projectFacts';
+import { PUBLIC_REPOSITORY } from '../config/site';
 ---
-<ChartLayout title="The Chart | ONCALL" description="ONCALL project record, evidence boundaries and explicit limits.">
-  <p class="meta">Case file 02 / Admission record</p>
+<ChartLayout title="The Chart | ONCALL" description="ONCALL project purpose, evidence boundaries and verified public record.">
+  <p class="meta eyebrow">Case file 02 / Admission record / Patient: the internet</p>
   <h1>The Chart</h1>
-  <div><p class="meta">Project identity / review required</p><p class="intro">ONCALL. Night shift. Clear head. Question everything.</p><p>An original mascot-led project about medicine, science and market culture, with a proposed meme token. Name and handle availability have not been established.</p></div>
-  <section aria-labelledby="facts-heading"><h2 id="facts-heading">Launch record boundary</h2><p>Project identity is not an immutable token record. No ONCALL launch has been executed, and this public file does not publish token, pool, route, fee, or transaction values.</p></section>
-  <aside class="notice"><h2>Review before the irreversible step</h2><p>Final name, symbol, image, description, and social links must all be reviewed before launch. PAR states that it writes these at launch and they cannot be changed afterward. <a href="https://par.family/docs">PAR launch documentation</a>.</p></aside>
-  <section aria-labelledby="limits-heading"><h2 id="limits-heading">What this file does not establish</h2><p>ONCALL is not a medical product, investment product, index fund, or collateralized asset. The selected quote markets do not guarantee tracking, returns, or safety. Educational content is not diagnosis or treatment advice; market content is not financial advice.</p><p>Read the <a href="/pairs/">selected pair quote files</a> and the <a href="/sources-and-risks/">source and risk ledger</a> before drawing conclusions.</p></section>
+  <p class="lead">A meme with a medical records department.</p>
+  <p class="intro">ONCALL puts a dry night-shift capybara between medicine, science and market culture. The joke can move quickly. The claims have to bring identification.</p>
+
+  <section data-public-section aria-labelledby="purpose-heading">
+    <p class="meta">Reason for admission</p>
+    <h2 id="purpose-heading">Why this exists</h2>
+    <div class="prose-grid">
+      <p>Health markets are full of compressed stories: one molecule becomes a miracle, one chart becomes destiny, one ticker becomes a personality. ONCALL slows the handoff down. It keeps the meme energy, then opens a separate file for what the evidence actually says.</p>
+      <p>The project is built around three editorial lanes. <a href="/science/">Science Notes</a> reads clinical and scientific studies. <a href="/market-rounds/">Market Rounds</a> examines company and market narratives. <a href="/night-shift/">Night Shift</a> lets the capybara make one dry observation and return to the desk.</p>
+    </div>
+  </section>
+
+  <section class="record" data-public-section aria-labelledby="record-heading">
+    <div class="section-heading"><div><p class="meta">Verified fields only / Public record</p><h2 id="record-heading">Launch record boundary</h2></div><span class="stamp" aria-hidden="true">READ<br />THE<br />CHART</span></div>
+    <dl>{PUBLIC_PROJECT_RECORD.map((fact) => <div><dt>{fact.label}</dt><dd><strong>{fact.displayValue}</strong><p>{fact.note}</p><a href={fact.evidenceUrl}>Open record ↗</a></dd></div>)}</dl>
+  </section>
+
+  <aside class="notice" data-public-section aria-labelledby="boundary-heading">
+    <p class="meta">Differential diagnosis / certainty</p>
+    <h2 id="boundary-heading">What this file does not establish</h2>
+    <p>ONCALL is neither a medical product nor an investment product. It is not an index fund, collateralized asset or guaranteed tracker. Pair labels do not turn market structure into clinical evidence; a paper does not turn a meme into a treatment; a mascot in scrubs does not get prescribing privileges.</p>
+    <p><strong>Launch record boundary:</strong> No ONCALL launch has been executed, and this public file does not publish token, pool, route, fee, or transaction values. Unverified liquidity details also stay out of the chart. Read the <a href="/pairs/">five quote files</a>, inspect the <a href="/sources-and-risks/">source and risk ledger</a>, or audit the work in the <a href={PUBLIC_REPOSITORY.href}>public repository ↗</a>.</p>
+  </aside>
 </ChartLayout>
 <style>
-  h1 { font-size: clamp(2.6rem, 6vw, 5rem); margin-block: 0.75rem 1.5rem; }
-  h2 { font-size: 1.7rem; margin-bottom: 1rem; }
-  p + p { margin-top: 1rem; }
-  .intro { font-size: 1.45rem; margin-block: 0.5rem 1rem; }
-  section, .notice { margin-top: 2.5rem; }
-  .notice { border-left: 4px solid var(--coral); padding: 1.5rem; background: var(--paper-raised); }
+  .eyebrow { color: var(--teal); font-weight: 800; }
+  h1 { max-width: 9ch; margin-block: 0.65rem 0.8rem; font-size: clamp(4rem, 10vw, 8rem); letter-spacing: -0.045em; text-transform: uppercase; }
+  .lead { max-width: 25ch; color: var(--coral); font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.2rem); font-weight: 850; line-height: 0.98; text-transform: uppercase; }
+  .intro { max-width: 55ch; margin-top: 1.25rem; font-size: 1.25rem; }
+  section, .notice { margin-top: clamp(3rem, 7vw, 6rem); }
+  h2 { margin-block: 0.45rem 1.2rem; font-size: clamp(2rem, 4vw, 3.2rem); text-transform: uppercase; }
+  .prose-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+  .record { padding-block: 1.5rem; border-block: 3px double var(--ink); }
+  .section-heading { display: flex; justify-content: space-between; gap: 2rem; align-items: center; }
+  .stamp { border: 3px double var(--coral); padding: 0.5rem 0.8rem; color: var(--coral); font-family: var(--font-display); font-weight: 900; line-height: 0.8; text-align: center; transform: rotate(3deg); }
+  dl > div { display: grid; grid-template-columns: minmax(9rem, .8fr) minmax(0, 2fr); gap: 1rem; padding-block: 1.2rem; border-top: 1px solid var(--rule); }
+  dt { font-family: var(--font-meta); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; }
+  dd { margin: 0; } dd p { margin-block: .35rem; }
+  .notice { padding: clamp(1.25rem, 3vw, 2rem); border-left: .45rem solid var(--coral); background: var(--paper-raised); }
+  .notice p + p { margin-top: 1rem; }
+  @media (max-width: 42rem) { .prose-grid { grid-template-columns: 1fr; gap: 1rem; } dl > div { grid-template-columns: 1fr; } .stamp { font-size: .8rem; } }
 </style>

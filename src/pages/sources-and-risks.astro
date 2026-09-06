@@ -26,27 +26,33 @@ const risks = [
 <ChartLayout title="Sources & Risks | ONCALL" description="Official sources, dated verification boundaries and the material risks of the proposed ONCALL project.">
   <p class="meta">Case file 08 / Evidence ledger</p>
   <h1>Sources & Risks</h1>
-  <p class="intro">A source is a starting point. Its limits belong in the same file.</p>
-  <section aria-labelledby="project-record-heading"><h2 id="project-record-heading">Project record</h2><p class="meta"><a href={PUBLIC_REPOSITORY.href}>{PUBLIC_REPOSITORY.label}</a></p></section>
-  <section aria-labelledby="sources-heading"><h2 id="sources-heading">Official source register</h2><p>Access date: <time datetime="2026-09-06">6 September 2026</time>. Platform statements are attributed to their documentation. A dated API observation is not ongoing monitoring or an ONCALL launch verification.</p><ol class="sources">{sources.map((source) => <li><h3><a href={source.url}>{source.title}</a></h3><p>{source.note}</p><a class="source-url" href={source.url} aria-label={`${source.title}: ${source.url}`}>{source.url}</a><p class="meta">Accessed <time datetime="2026-09-06">2026-09-06</time></p></li>)}</ol></section>
-  <aside class="observation"><h2>Asset observation receipt</h2><p>Read-only official API response observed at <time datetime={ASSET_OBSERVATION.observedAt}>{ASSET_OBSERVATION.observedAt}</time>: {ASSET_OBSERVATION.responseBytes.toLocaleString('en-US')} bytes. All five selected pair entries reported ASSET_STATUS_ACTIVE on chain {ASSET_OBSERVATION.chainId}. This establishes the API deployment/status observation only.</p><p class="meta">Response SHA-256</p><code>{ASSET_OBSERVATION.responseSha256}</code><p>It does not establish PAR priceability, current route depth, liquidity, suitability, issuer endorsement, or investment merit. See the <a href="/pairs/">individual selected pair files</a>.</p></aside>
-  <section aria-labelledby="risks-heading"><h2 id="risks-heading">Risk register</h2><div class="risks">{risks.map((risk, index) => <article aria-labelledby={`risk-${risk.id}`}><p class="meta">Risk {String(index + 1).padStart(2, '0')}</p><h3 id={`risk-${risk.id}`}>{risk.title}</h3><p>{risk.text}</p></article>)}</div></section>
+  <p class="lead">Evidence gets a label. Risk gets the same font size.</p>
+  <p class="intro">A source is a starting point, not a permission slip. Every record below states what it can support and where the inference has to stop.</p>
+  <section class="project-record" data-public-section aria-labelledby="project-record-heading"><p class="meta">Repository / Inspectable history</p><h2 id="project-record-heading">Project record</h2><p>Code, content structure, pair records and correction paths live in the <a href={PUBLIC_REPOSITORY.href} aria-label={PUBLIC_REPOSITORY.label}>{PUBLIC_REPOSITORY.label}<span aria-hidden="true"> ↗</span></a>. A commit proves what the repository contained at that revision; it does not prove a clinical conclusion, contract safety or live chain state.</p></section>
+  <section data-public-section aria-labelledby="sources-heading"><p class="meta">Sources 01–09 / Infrastructure</p><h2 id="sources-heading">Official source register</h2><p>Access date: <time datetime="2026-09-06">6 September 2026</time>. Platform statements are attributed to their documentation. A dated API observation is not ongoing monitoring or an ONCALL launch verification.</p><ol class="sources">{sources.map((source) => <li><h3><a href={source.url}>{source.title}</a></h3><p>{source.note}</p><a class="source-url" href={source.url} aria-label={`${source.title}: ${source.url}`}>{source.url}</a><p class="meta">Accessed <time datetime="2026-09-06">2026-09-06</time></p></li>)}</ol></section>
+  <aside class="observation" data-public-section><p class="meta">Receipt / Dated specimen</p><h2>Asset observation receipt</h2><p>Read-only official API response observed at <time datetime={ASSET_OBSERVATION.observedAt}>{ASSET_OBSERVATION.observedAt}</time>: {ASSET_OBSERVATION.responseBytes.toLocaleString('en-US')} bytes. All five selected pair entries reported ASSET_STATUS_ACTIVE on chain {ASSET_OBSERVATION.chainId}. This establishes the API deployment/status observation only.</p><p class="meta">Response SHA-256</p><code>{ASSET_OBSERVATION.responseSha256}</code><p>It does not establish PAR priceability, current route depth, liquidity, suitability, issuer endorsement, or investment merit. See the <a href="/pairs/">individual selected pair files</a> and the <a href="/robinhood-chain/">platform mechanics file</a>.</p></aside>
+  <section data-public-section aria-labelledby="risks-heading"><p class="meta">Risks 01–07 / Keep attached</p><h2 id="risks-heading">Risk register</h2><div class="risks">{risks.map((risk, index) => <article aria-labelledby={`risk-${risk.id}`}><p class="meta">Risk {String(index + 1).padStart(2, '0')}</p><h3 id={`risk-${risk.id}`}>{risk.title}</h3><p>{risk.text}</p></article>)}</div></section>
+  <p class="closing">For medicine, move to <a href="/science/">Science Notes</a>. For market narrative, move to <a href="/market-rounds/">Market Rounds</a>. Different questions, different files.</p>
 </ChartLayout>
 <style>
   h1 { font-size: clamp(2.6rem, 6vw, 5rem); margin-block: 0.75rem 1.5rem; }
   h2 { font-size: 1.8rem; margin-bottom: 1rem; }
   h3 { font-size: 1.35rem; line-height: 1.15; margin-bottom: 0.65rem; }
-  .intro { font-size: 1.45rem; }
-  section, .observation { margin-top: 2.5rem; }
+  .lead { max-width: 25ch; color: var(--coral); font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.1rem); font-weight: 850; line-height: 1; text-transform: uppercase; }
+  .intro { max-width: 55ch; margin-top: 1.2rem; font-size: 1.25rem; }
+  section, .observation { margin-top: clamp(3rem, 7vw, 6rem); }
+  .project-record { max-width: 50rem; padding-block: 1.2rem; border-block: 3px double var(--ink); }
   .sources { padding-left: 1.5rem; }
   .sources li { padding-block: 1.1rem; border-bottom: 1px solid var(--rule); }
   .source-url, code { font-family: var(--font-meta); font-size: 0.75rem; overflow-wrap: anywhere; word-break: break-word; }
   .source-url { display: inline-block; margin-block: 0.5rem; }
-  .observation { padding: 1.5rem; background: var(--paper-raised); border: 1px solid var(--ink); }
+  .observation { padding: 1.5rem; background: var(--paper-raised); border: 1px solid var(--ink); border-left: .5rem solid var(--coral); box-shadow: .4rem .4rem 0 var(--fur); }
   .observation p + p, .observation code + p { margin-top: 1rem; }
   code { display: block; margin-top: 0.3rem; }
   .risks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
   .risks article { border-top: 3px solid var(--coral); padding-top: 1rem; }
+  .risks article:nth-child(even) { border-top-color: var(--teal); }
   .risks h3 { margin-top: 0.5rem; }
+  .closing { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--ink); }
   @media (max-width: 42rem) { .risks { grid-template-columns: minmax(0, 1fr); } }
 </style>

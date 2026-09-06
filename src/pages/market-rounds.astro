@@ -1,16 +1,58 @@
 ---
 import ChartLayout from '../layouts/ChartLayout.astro';
+import { PUBLIC_REPOSITORY } from '../config/site';
 ---
-<ChartLayout title="Market Rounds | ONCALL" description="ONCALL health-company and market context, with dated sources and explicit limits.">
-  <p class="meta">Case file 06 / Market desk</p>
+<ChartLayout title="Market Rounds | ONCALL" description="Health-market narratives examined separately from clinical evidence and investment advice.">
+  <p class="meta eyebrow">Case file 06 / Market desk / Narrative vital signs</p>
   <h1>Market Rounds</h1>
-  <p class="intro">Company context, with the evidence attached.</p>
-  <p>This file is reserved for health-company and market commentary. Company-specific reporting belongs here, with dated sources and explicit limits. It is separate from medicine education and does not provide investment recommendations.</p>
+  <p class="lead">The story is moving fast. The evidence is still tying its shoes.</p>
+  <p class="intro">Company context lives here because a price chart and a clinical endpoint answer different questions. The capybara has checked twice.</p>
 
-  <p class="closing">For the current selected pair identities and observed contract metadata, open <a href="/pairs/">FIVE PAIRS</a>. For educational medicine, visit <a href="/science/">SCIENCE NOTES</a>.</p>
+  <section class="desk-rule" data-public-section aria-labelledby="desk-rule-heading">
+    <div class="stamp" aria-hidden="true">SEPARATE<br />THE<br />FILES</div>
+    <div><p class="meta">Editorial role / Market context</p><h2 id="desk-rule-heading">What belongs on this desk</h2><p>Market Rounds examines how health companies, technologies and public narratives meet capital markets. It can discuss a ticker, business model, product category or investor story when sources and dates are attached. It does not issue an investment recommendation, and it cannot substitute company attention for clinical evidence.</p></div>
+  </section>
+
+  <article class="rounds-essay" data-public-section data-market-essay aria-labelledby="essay-heading">
+    <header><p class="meta">Rounds 001 / Opening note</p><h2 id="essay-heading">Five tickers walk into a night shift</h2><p class="dek">The market wants one clean story. Medicine arrives with eligibility criteria, competing outcomes and a folder marked “limitations.”</p></header>
+    <div class="essay-body">
+      <h3>Narratives are useful. They are not neutral.</h3>
+      <p>Health-market narratives compress uncertainty into a sentence that can travel: metabolic care is changing; digital access removes friction; molecular platforms can move quickly; larger systems can coordinate care. Each sentence may point toward a real question. None is a clinical conclusion by itself. It does not identify the population studied, the comparator, the endpoint, the follow-up or the harms. It also says nothing on its own about valuation, execution or market liquidity.</p>
+      <p>That compression is why the five selected quote identities are treated as an editorial map. LLY directs the reading list toward metabolic medicine. JNJ opens broad clinical evidence and medical technology. HIMS points to digital care and patient communication. MRNA maps to immunology, vaccines and molecular medicine. UNH points to outcomes, access and health systems. The company names explain why the folders were chosen; they do not decide what the studies conclude.</p>
+
+      <h3>A medical result is not a ticker instruction.</h3>
+      <p>A randomized trial can estimate an intervention’s effects for a defined population under specified conditions. An observational study can reveal patterns while retaining confounding and selection concerns. A mechanistic study can clarify biology without establishing patient benefit. Even a strong result does not automatically answer whether a company can manufacture, distribute, price or sustain a product—or whether a security already reflects the expectation.</p>
+      <p>The reverse error matters too. A rising or falling market price does not validate or refute a treatment effect. Prices absorb many forces, including expectations, financing conditions, regulation, competition and positioning. Clinical evidence and market behavior can refer to the same world while measuring different things. ONCALL keeps their records adjacent so readers can compare them, and separate so nobody mistakes proximity for proof.</p>
+
+      <h3>Five quote markets remain five markets.</h3>
+      <p>Pairing one meme token with five Stock Token quote assets creates a market structure described in the <a href="/robinhood-chain/">Robinhood Chain file</a>. It does not create share ownership, pooled collateral, issuer sponsorship, index-fund status or guaranteed tracking. A dated active API record for a quote contract also does not demonstrate current PAR priceability, route depth or executable liquidity.</p>
+      <p>The practical reading rule is plain: use <a href="/science/">Science Notes</a> for the medical question, <a href="/pairs/">Five Pairs</a> for the selected quote identities and exact observed contracts, and this desk for company or market context. None of those files is an investment recommendation. If a claim needs a rocket emoji to survive, the capybara files it under “needs another source.”</p>
+    </div>
+  </article>
+
+  <section class="handoff" data-public-section aria-labelledby="handoff-heading">
+    <p class="meta">End-of-rounds handoff</p><h2 id="handoff-heading">Before the next chart</h2>
+    <ul><li>Ask which claim is clinical, commercial, technical or purely narrative.</li><li>Check the date, source, denominator and time horizon.</li><li>Read the limitation before carrying the headline into another file.</li></ul>
+    <p><a href="/sources-and-risks/">Open Sources &amp; Risks</a> · <a href={PUBLIC_REPOSITORY.href}>Inspect the public repository ↗</a></p>
+  </section>
 </ChartLayout>
 <style>
-  h1 { font-size: clamp(2.6rem, 6vw, 5rem); margin-block: 0.75rem 1.5rem; }
-  .intro { font-size: 1.45rem; margin-bottom: 1rem; }
-  .closing { margin-top: 2rem; }
+  .eyebrow { color: var(--teal); font-weight: 800; }
+  h1 { max-width: 10ch; margin-block: .65rem .8rem; font-size: clamp(4rem, 10vw, 8rem); letter-spacing: -.045em; text-transform: uppercase; }
+  .lead { max-width: 28ch; color: var(--coral); font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.2rem); font-weight: 850; line-height: .98; text-transform: uppercase; }
+  .intro { max-width: 52ch; margin-top: 1.2rem; font-size: 1.25rem; }
+  section, article { margin-top: clamp(3rem, 7vw, 6rem); }
+  h2 { margin-block: .45rem 1rem; font-size: clamp(2rem, 4.2vw, 3.5rem); text-transform: uppercase; }
+  .desk-rule { display: grid; grid-template-columns: 7rem 1fr; gap: 1.5rem; align-items: center; padding: 1.4rem; border: 1px dashed var(--ink); }
+  .stamp { display: grid; place-items: center; min-height: 6rem; border: 3px double var(--coral); color: var(--coral); font-family: var(--font-display); font-weight: 900; line-height: .85; text-align: center; transform: rotate(-3deg); }
+  .rounds-essay { border-top: .7rem solid var(--teal); background: var(--paper-raised); box-shadow: .5rem .55rem 0 var(--fur); }
+  .rounds-essay header { padding: clamp(1.25rem, 4vw, 3rem); border-bottom: 3px double var(--ink); }
+  .rounds-essay .dek { max-width: 35ch; color: var(--teal); font-size: 1.3rem; font-style: italic; }
+  .essay-body { max-width: 48rem; margin-inline: auto; padding: clamp(1.25rem, 4vw, 3.5rem); }
+  .essay-body h3 { margin-block: 2.6rem .8rem; color: var(--coral); font-size: clamp(1.7rem, 3vw, 2.4rem); text-transform: uppercase; }
+  .essay-body h3:first-child { margin-top: 0; }
+  .essay-body p + p { margin-top: 1rem; }
+  .handoff { padding-top: 1.5rem; border-top: 3px double var(--ink); }
+  .handoff ul { padding-left: 1.4rem; } .handoff li + li { margin-top: .5rem; } .handoff p:last-child { margin-top: 1.2rem; }
+  @media (max-width: 40rem) { h1 { max-width: 100%; scroll-margin-block: 2rem; font-size: 3.5rem; } .desk-rule { grid-template-columns: 4.5rem 1fr; gap: .8rem; padding: .85rem; } .stamp { font-size: .8rem; } }
 </style>

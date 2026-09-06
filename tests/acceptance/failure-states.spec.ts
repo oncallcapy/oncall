@@ -47,26 +47,28 @@ test('all five selected pairs show observed quote facts without unpublished laun
   await expect(page.locator('.notice')).toContainText('An active API entry does not establish priceability, route depth, liquidity, suitability, or investment merit');
 });
 
-test('Science Notes exposes its research scope without inventing reviewed articles', async ({ page }) => {
+test('Science Notes exposes five source-led dossiers without claiming clinical review', async ({ page }) => {
   await page.goto('/science/');
   await expect(page.locator('.empty-state')).toHaveCount(0);
-  await expect(page.getByRole('main').getByRole('article')).toHaveCount(0);
-  await expect(page.locator('main a[href^="/science/"]')).toHaveCount(0);
-  await expect(page.getByRole('main')).toContainText('five selected-pair research domains');
-  await expect(page.getByRole('link', { name: 'exact market-to-domain map' })).toHaveAttribute('href', '/pairs/');
-  // Publication modules stay absent until actual reviewed entries exist.
-  await expect(page.getByRole('main')).not.toContainText(/sample (scientific claim|study)|\bp\s*[<=]\s*0\.|relative risk|odds ratio|\d+% (reduction|improvement)/i);
+  await expect(page.locator('[data-science-dossier-link]')).toHaveCount(5);
+  await expect(page.getByRole('main')).toContainText('Five files. Fifteen studies. Zero borrowed certainty.');
+  await expect(page.getByRole('main')).toContainText('educational evidence readings');
+  await expect(page.getByRole('main')).not.toContainText(/clinically reviewed|clinical approval|approved by/i);
 });
 
-for (const route of ['/market-rounds/', '/night-shift/']) {
-  test(`${route} shows its editorial scope without fabricated archive entries`, async ({ page }) => {
-    await page.goto(route!);
-    await expect(page.locator('.empty-state')).toHaveCount(0);
-    await expect(page.getByRole('main')).not.toContainText(/publication status|review queue|empty archive/i);
-    await expect(page.getByRole('main').getByRole('article')).toHaveCount(0);
-    await expect(page.locator(`main a[href^="${route}"]`)).toHaveCount(0);
-  });
-}
+test('Market Rounds publishes one bounded launch essay', async ({ page }) => {
+  await page.goto('/market-rounds/');
+  await expect(page.locator('[data-market-essay]')).toHaveCount(1);
+  await expect(page.getByRole('main')).toContainText(/market context[\s\S]*clinical evidence/i);
+  await expect(page.getByRole('main')).not.toContainText(/publication status|review queue|empty archive/i);
+});
+
+test('Night Shift publishes three original bounded mascot notes', async ({ page }) => {
+  await page.goto('/night-shift/');
+  await expect(page.locator('[data-night-shift-entry]')).toHaveCount(3);
+  await expect(page.getByRole('main')).toContainText(/fictional mascot humour/i);
+  await expect(page.getByRole('main')).not.toContainText(/publication status|review queue|empty archive/i);
+});
 
 for (const [index, route] of routes.entries()) {
   test(`${route} is readable and navigable without JavaScript`, async ({ browser }) => {

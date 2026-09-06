@@ -2,32 +2,43 @@
 import ChartLayout from '../layouts/ChartLayout.astro';
 import PairCaseCard from '../components/PairCaseCard.astro';
 import { PAIR_SELECTIONS, ASSET_OBSERVATION } from '../data/pairSelections';
+import { PUBLIC_REPOSITORY } from '../config/site';
 ---
 <ChartLayout title="Five Pairs | ONCALL" description="Five selected Stock Token pair identities, research domains, and dated official observations.">
   <p class="meta">Case file 03 / Selected pair register</p>
   <h1>Five Pairs</h1>
-  <p class="intro">Five selected pairs, with evidence boundaries kept explicit.</p>
-  <section class="selection-register" aria-labelledby="selected-register-heading">
+  <p class="lead">Five doors into health. None of them is a shortcut.</p>
+  <p class="intro">The quote set is fixed: LLY, JNJ, HIMS, MRNA and UNH. Each ticker indexes a different medical research lane while its contract record stays firmly in the market file.</p>
+  <section class="selection-register" data-public-section aria-labelledby="selected-register-heading">
     <h2 id="selected-register-heading">Selected pair register</h2>
-    <p class="meta">SELECTED / EDITORIAL MAP</p>
+    <p class="meta">Selected set / Editorial map</p>
     <ul>{PAIR_SELECTIONS.map((pair) => <li><a href={`#pair-${pair.symbol}`}><strong>{pair.symbol}</strong> {pair.displayName}</a></li>)}</ul>
   </section>
-  <p>LLY, JNJ, HIMS, MRNA and UNH are the project’s selected and intended five pair identities. The official Robinhood asset API listed their deployments as active on chain 4663 at <time datetime={ASSET_OBSERVATION.observedAt}>{ASSET_OBSERVATION.observedAt}</time>. This is a dated API observation, not a live status feed or proof of an ONCALL market.</p>
-  <aside class="notice"><p><strong>Five quote markets do not create direct share ownership, collateral backing of ONCALL, an index fund, guaranteed tracking, issuer endorsement, or a recommendation.</strong></p><p>An active API entry does not establish priceability, route depth, liquidity, suitability, or investment merit. Launch settings are not published in this file.</p><p><strong>A failed technical check blocks launch</strong> and requires a documented public decision before the selected set can change. No silent substitution.</p></aside>
-  <p class="scope">Stock Tokens are tokenized debt securities issued by Robinhood Assets (Jersey) Limited. They provide economic exposure and do not grant legal or beneficial rights in the issuer of the underlying security. Availability and jurisdiction restrictions apply. <a href="https://robinhood.com/rhj/stocktokens/">Official Stock Token explanation</a>.</p>
-  {PAIR_SELECTIONS.map((pair, index) => <PairCaseCard pair={pair} index={index} />)}
-  <p class="closing">The research program follows the domains represented by these five selected pairs. Pair associations are metadata for editorial organization, never sponsorship, endorsement, clinical validation, or investment analysis. Scientific article titles, claims and conclusions remain brand-neutral and source-led. Company-specific coverage belongs in <a href="/market-rounds/">Market Rounds</a>; <a href="/science/">Science Notes</a> cover medicine directly. Review the <a href="/sources-and-risks/">full source and risk ledger</a>.</p>
+  <section class="observation" data-public-section aria-labelledby="observation-heading">
+    <p class="meta">Specimen label / Timestamped, not live</p>
+    <h2 id="observation-heading">What was actually observed</h2>
+    <p>The official Robinhood asset API listed these five quote-asset deployments as <strong>ASSET_STATUS_ACTIVE</strong> on chain 4663 at <time datetime={ASSET_OBSERVATION.observedAt}>{ASSET_OBSERVATION.observedAt}</time>. That timestamp is the finding. It is not a pulse oximeter attached to the market and it is not proof of an ONCALL pool.</p>
+    <p>Active metadata does not establish PAR priceability, route depth, executable liquidity, suitability or investment merit. Any failed technical check blocks a launch decision and requires an explicit new record; no quote identity is silently swapped.</p>
+  </section>
+  <aside class="notice"><p><strong>Five quote markets do not create direct share ownership, collateral backing of ONCALL, an index fund, guaranteed tracking, issuer endorsement or a recommendation.</strong></p><p>An active API entry does not establish priceability, route depth, liquidity, suitability, or investment merit. <strong>A failed technical check blocks launch.</strong> No silent substitution.</p><p>Stock Tokens are tokenized debt securities issued by Robinhood Assets (Jersey) Limited. They provide economic exposure and do not grant legal or beneficial rights in the issuer of the underlying security. Availability and jurisdiction restrictions apply. <a href="https://robinhood.com/rhj/stocktokens/">Read the official explanation ↗</a>.</p></aside>
+  <section class="pair-files" data-public-section aria-labelledby="pair-files-heading"><div class="pair-files-heading"><p class="meta">Five physical files / Exact contracts</p><h2 id="pair-files-heading">Quote register</h2></div>{PAIR_SELECTIONS.map((pair, index) => <PairCaseCard pair={pair} index={index} />)}</section>
+  <section class="routing" data-public-section aria-labelledby="routing-heading"><h2 id="routing-heading">Read the right file</h2><p>The research tracks are editorial metadata, never sponsorship, endorsement or clinical validation. Scientific titles and conclusions stay brand-neutral in <a href="/science/">Science Notes</a>. Company and market interpretation belongs in <a href="/market-rounds/">Market Rounds</a>. Platform mechanics and limitations live in <a href="/robinhood-chain/">Robinhood Chain</a> and <a href="/sources-and-risks/">Sources &amp; Risks</a>.</p><p class="meta"><a href={PUBLIC_REPOSITORY.href}>Audit the pair records in the public repository ↗</a></p></section>
 </ChartLayout>
 <style>
   h1 { font-size: clamp(2.6rem, 6vw, 5rem); margin-block: 0.75rem 1.5rem; }
-  .intro { font-size: 1.45rem; margin-bottom: 1rem; }
+  .lead { max-width: 26ch; color: var(--coral); font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.1rem); font-weight: 850; line-height: 1; text-transform: uppercase; }
+  .intro { max-width: 55ch; margin-top: 1.2rem; font-size: 1.25rem; }
   .notice { margin-block: 1.75rem; border-left: 4px solid var(--coral); padding: 1.25rem; background: var(--paper-raised); }
   .notice p + p { margin-top: 0.8rem; }
-  .selection-register { margin-block: 1.5rem; padding: 1.25rem; border: 1px solid var(--ink); background: var(--paper-raised); }
+  section, .notice { margin-top: clamp(2.5rem, 6vw, 5rem); }
+  .selection-register { padding: 1.25rem; border: 1px solid var(--ink); background: var(--paper-raised); box-shadow: .4rem .4rem 0 var(--fur); }
   .selection-register h2 { font-size: 1.35rem; margin-bottom: 0.6rem; }
   .selection-register ul { padding-left: 1.3rem; margin-top: 0.8rem; }
   .selection-register li + li { margin-top: 0.4rem; }
-  .scope { font-size: 1rem; }
-  .closing { margin-top: 2rem; }
+  .observation { max-width: 52rem; }
+  .observation h2, .pair-files h2, .routing h2 { margin-block: .4rem 1rem; font-size: clamp(2rem, 4vw, 3rem); text-transform: uppercase; }
+  .observation p + p { margin-top: 1rem; }
+  .routing { padding-top: 1.5rem; border-top: 3px double var(--ink); }
+  .routing .meta { margin-top: 1rem; }
   time { overflow-wrap: anywhere; }
 </style>

@@ -1,16 +1,54 @@
 ---
 import ChartLayout from '../layouts/ChartLayout.astro';
+import { PUBLIC_REPOSITORY } from '../config/site';
+const entries = [
+  { number: '001', time: '02:13', text: 'ONCALL checked the chart, checked the source, then checked whether the chart had read the source. The chart declined to comment. Night shift continues.' },
+  { number: '002', time: '03:41', text: 'A headline arrived with no denominator. ONCALL gave it a blanket, a glass of water and directions back to the methods section.' },
+  { number: '003', time: '05:58', text: 'ONCALL has reviewed the five folders. Diagnosis: strong narrative reflexes. Plan: observe the evidence and avoid operating heavy opinions before coffee.' },
+] as const;
 ---
-<ChartLayout title="Night Shift | ONCALL" description="Original ONCALL mascot humour about night shifts, internet life and market culture.">
-  <p class="meta">Case file 07 / After rounds</p>
+<ChartLayout title="Night Shift | ONCALL" description="Original ONCALL capybara notes from medicine, internet life and market culture.">
+  <p class="meta eyebrow">Case file 07 / After rounds / Lights still on</p>
   <h1>Night Shift</h1>
-  <p class="intro">The chart is open. The coffee is under review.</p>
-  <p>Original mascot humour about work, night shifts, internet life and market culture. Jokes are not medical evidence or financial advice.</p>
+  <p class="lead">The chart is open. The coffee is under peer review.</p>
+  <p class="intro">Short dispatches from the records room: dry enough for the night shift, careful enough to stay out of the evidence column.</p>
 
-  <p class="closing">The mascot is an original fictional character. For sourced medicine, open <a href="/science/">SCIENCE NOTES</a>; for the project’s current status, open <a href="/chart/">THE CHART</a>.</p>
+  <section class="shift-rule" data-public-section aria-labelledby="shift-rule-heading">
+    <div class="moon" aria-hidden="true">☾</div>
+    <div><p class="meta">Editorial role / Fictional mascot humour</p><h2 id="shift-rule-heading">After-hours protocol</h2><p>Night Shift is the capybara’s voice for work, medicine, internet life and market culture. These entries are original social posts, not medical evidence, diagnosis, treatment advice or financial advice. When a joke touches a factual claim, the factual claim still needs its own file.</p></div>
+  </section>
+
+  <section class="dispatches" data-public-section aria-labelledby="dispatches-heading">
+    <div class="dispatch-heading"><div><p class="meta">Outgoing tray / X-ready</p><h2 id="dispatches-heading">Three notes before sunrise</h2></div><span class="stamp" aria-hidden="true">ON<br />SHIFT</span></div>
+    <ol>{entries.map((entry) => <li><article data-night-shift-entry><header><span class="meta">ONCALL / Night note {entry.number}</span><time class="meta">{entry.time}</time></header><p>“{entry.text}”</p><footer class="meta">Evidence first. Memes after rounds.</footer></article></li>)}</ol>
+  </section>
+
+  <section class="handoff" data-public-section aria-labelledby="handoff-heading">
+    <p class="meta">Morning handoff</p><h2 id="handoff-heading">Follow the folder tabs</h2>
+    <p>The joke ends here. For study questions and traced references, open <a href="/science/">Science Notes</a>. For health-market narratives, open <a href="/market-rounds/">Market Rounds</a>. For the project’s verified fields and limits, read <a href="/chart/">The Chart</a> and <a href="/sources-and-risks/">Sources &amp; Risks</a>.</p>
+    <p class="meta"><a href={PUBLIC_REPOSITORY.href}>Read the public project record ↗</a></p>
+  </section>
 </ChartLayout>
 <style>
-  h1 { font-size: clamp(2.6rem, 6vw, 5rem); margin-block: 0.75rem 1.5rem; }
-  .intro { font-size: 1.45rem; margin-bottom: 1rem; }
-  .closing { margin-top: 2rem; }
+  .eyebrow { color: var(--teal); font-weight: 800; }
+  h1 { max-width: 9ch; margin-block: .65rem .8rem; font-size: clamp(4rem, 11vw, 8.5rem); letter-spacing: -.05em; text-transform: uppercase; }
+  .lead { max-width: 27ch; color: var(--coral); font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.2rem); font-weight: 850; line-height: .98; text-transform: uppercase; }
+  .intro { max-width: 53ch; margin-top: 1.2rem; font-size: 1.25rem; }
+  section { margin-top: clamp(3rem, 7vw, 6rem); }
+  h2 { margin-block: .4rem 1rem; font-size: clamp(2rem, 4vw, 3.2rem); text-transform: uppercase; }
+  .shift-rule { display: grid; grid-template-columns: 6rem 1fr; gap: 1.5rem; align-items: center; padding: 1.4rem; border: 1px dashed var(--ink); }
+  .moon { display: grid; place-items: center; aspect-ratio: 1; border: 2px solid var(--teal); border-radius: 50%; color: var(--teal); font-size: 3.5rem; line-height: 1; }
+  .dispatch-heading { display: flex; justify-content: space-between; gap: 1.5rem; align-items: center; }
+  .stamp { display: grid; place-items: center; width: 5.5rem; aspect-ratio: 1; border: 3px double var(--coral); border-radius: 50%; color: var(--coral); font-family: var(--font-display); font-weight: 900; line-height: .8; text-align: center; transform: rotate(5deg); }
+  ol { margin: 1.2rem 0 0; padding: 0; list-style: none; }
+  li + li { margin-top: 1.2rem; }
+  article { position: relative; padding: clamp(1.25rem, 4vw, 2.5rem); border: 1px solid var(--ink); background: var(--paper-raised); box-shadow: .35rem .4rem 0 var(--fur); }
+  article::before { content: ''; position: absolute; inset-block: 0; left: 0; width: .4rem; background: var(--teal); }
+  li:nth-child(2) article::before { background: var(--coral); }
+  article header { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: .75rem; border-bottom: 1px solid var(--rule); }
+  article > p { margin-block: 1.4rem; font-size: clamp(1.35rem, 3vw, 2rem); font-style: italic; line-height: 1.35; }
+  article footer { color: var(--teal); font-weight: 800; }
+  .handoff { padding-top: 1.5rem; border-top: 3px double var(--ink); }
+  .handoff .meta:last-child { margin-top: 1rem; }
+  @media (max-width: 40rem) { .shift-rule { grid-template-columns: 4rem 1fr; gap: .8rem; padding: .85rem; } .moon { font-size: 2.2rem; } }
 </style>

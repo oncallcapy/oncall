@@ -1,23 +1,57 @@
 ---
 import ChartLayout from '../layouts/ChartLayout.astro';
+import ChainDiagram from '../components/ChainDiagram.astro';
+import { ASSET_OBSERVATION } from '../data/pairSelections';
+import { PUBLIC_REPOSITORY } from '../config/site';
 ---
-<ChartLayout title="Robinhood Chain | ONCALL" description="The proposed ONCALL market structure, platform statements and the boundary of verified launch evidence.">
-  <p class="meta">Case file 04 / Infrastructure record</p>
+<ChartLayout title="Robinhood Chain | ONCALL" description="Robinhood Chain, PAR multi-market mechanics and ONCALL evidence boundaries.">
+  <p class="meta eyebrow">Case file 04 / Infrastructure record / Handle with gloves</p>
   <h1>Robinhood Chain</h1>
-  <p class="intro">Read the structure. Check the evidence.</p>
-  <section aria-labelledby="platform-heading"><p class="meta">Documentation / Accessed 06 Sep 2026</p><h2 id="platform-heading">Platform statement</h2><p>Robinhood describes Robinhood Chain as a permissionless, Ethereum-compatible Layer 2. Its mainnet uses chain ID 4663 and ETH for gas. <a href="https://docs.robinhood.com/chain/">Chain documentation</a> · <a href="https://docs.robinhood.com/chain/connecting/">Network settings</a>.</p><p>PAR says one multi-market launch opens 1–5 ordinary Uniswap v4 pools in one transaction, splits supply equally, and uses one opening market capitalization across the books. Non-ETH quote routes must pass its pricer and in-range depth rule. These mechanics describe the platform; ONCALL eligibility requires final verification. PAR states its contracts are unaudited. <a href="https://par.family/docs">PAR documentation</a>.</p></section>
-  <section class="evidence" aria-labelledby="verified-heading"><p class="meta">Project record / Pre-launch</p><h2 id="verified-heading">Public launch record</h2><p><strong>No ONCALL launch record is published for this project.</strong> The <a href="/pairs/">selected pair register</a> links official quote-asset contracts; that dated API observation is separate from any ONCALL launch information.</p></section>
-  <section aria-labelledby="stock-heading"><h2 id="stock-heading">What the quote assets represent</h2><p>Stock Tokens are tokenized debt securities issued by Robinhood Assets (Jersey) Limited. They provide economic exposure, not legal or beneficial rights in the issuer of the underlying security. Availability and jurisdiction restrictions apply. <a href="https://robinhood.com/rhj/stocktokens/">Official Stock Token explanation</a>.</p><p>A quote pool does not make ONCALL collateralized by the underlying security, an index fund, or a guaranteed tracker. No affiliation or issuer endorsement is claimed.</p></section>
-  <p class="closing"><a href="https://docs.robinhood.com/chain/contracts/">Official contract directory</a> · <a href="https://robinhoodchain.blockscout.com/">Chain explorer</a> · <a href="/sources-and-risks/">Sources & Risks</a></p>
+  <p class="lead">One token. Up to five market doors. Still five separate rooms.</p>
+  <p class="intro">This file follows the plumbing: network, launcher, quote assets, pools. It does not turn architecture into assurance.</p>
+
+  <section data-public-section aria-labelledby="chain-heading">
+    <p class="meta">Official documentation / Accessed 6 September 2026</p>
+    <h2 id="chain-heading">The network under the desk</h2>
+    <div class="columns"><p>Robinhood describes Robinhood Chain as a permissionless, Ethereum-compatible Layer 2. Its published mainnet settings use chain ID <strong>4663</strong> and ETH for gas. <a href="https://docs.robinhood.com/chain/">Read the chain overview ↗</a></p><p>That description establishes network documentation. It does not establish an ONCALL deployment, a safe contract, a liquid market or permission for a user in any jurisdiction. <a href="https://docs.robinhood.com/chain/connecting/">Inspect network settings ↗</a></p></div>
+  </section>
+
+  <section class="mechanics" data-public-section aria-labelledby="mechanics-heading">
+    <p class="meta">PAR mechanics / Documentation statement</p>
+    <h2 id="mechanics-heading">How a multi-market launch is described</h2>
+    <ChainDiagram />
+    <div class="columns"><p>PAR says a multi-market launch can open one to five ordinary Uniswap v4 pools for one token in one transaction. Supply is divided equally among the chosen pools while the launch keeps one opening market-capitalization setting across them.</p><p>Each pool is still its own market. A second, third or fifth quote does not create a basket, pooled equity collateral or automatic tracking. Non-ETH quotes must be priceable by PAR’s pricer and meet its in-range depth requirement. <a href="https://par.family/docs">Read PAR documentation ↗</a></p></div>
+  </section>
+
+  <aside class="observation" data-public-section aria-labelledby="observation-heading">
+    <p class="meta">Dated specimen / Do not read as telemetry</p>
+    <h2 id="observation-heading">The observation we can show</h2>
+    <p>The official assets API reported the selected LLY, JNJ, HIMS, MRNA and UNH quote deployments as active on chain 4663 at <time datetime={ASSET_OBSERVATION.observedAt}>{ASSET_OBSERVATION.observedAt}</time>. The <a href="/pairs/">Five Pairs file</a> records their exact contracts.</p>
+    <p>This dated response does not establish present PAR priceability, route depth, executable liquidity or an ONCALL pool. Those are separate measurements. PAR also states that its contracts are <strong>unaudited</strong>; neither documentation nor a successful transaction proves the absence of contract defects or loss risk.</p>
+  </aside>
+
+  <section class="nonclaims" data-public-section aria-labelledby="nonclaims-heading">
+    <p class="meta">Before interpreting the structure</p>
+    <h2 id="nonclaims-heading">Five things five pairs do not prove</h2>
+    <ol><li>ownership of shares in the referenced companies;</li><li>collateral backing for ONCALL;</li><li>index-fund status or issuer endorsement;</li><li>guaranteed price tracking, returns or diversification;</li><li>route quality, liquidity or suitability for any user.</li></ol>
+    <p>Stock Tokens are described as tokenized debt securities issued by Robinhood Assets (Jersey) Limited that provide economic exposure without legal or beneficial rights in the underlying issuer. Availability and jurisdiction limits apply. <a href="https://robinhood.com/rhj/stocktokens/">Official Stock Token explanation ↗</a></p>
+    <p class="links"><a href="/sources-and-risks/">Open the source and risk ledger</a><a href={PUBLIC_REPOSITORY.href}>Audit the repository ↗</a></p>
+  </section>
 </ChartLayout>
 <style>
-  h1 { font-size: clamp(2.6rem, 6vw, 5rem); margin-block: 0.75rem 1.5rem; overflow-wrap: anywhere; }
-  h2 { font-size: 1.8rem; margin-block: 0.6rem 1rem; }
-  .intro { font-size: 1.45rem; }
-  section, .closing { margin-top: 2.5rem; }
-  p + p { margin-top: 1rem; }
-  .evidence { padding: 1.5rem; border-left: 4px solid var(--coral); background: var(--paper-raised); }
-  dl { font-family: var(--font-meta); font-size: 0.8rem; }
-  dl > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1rem; padding-block: 0.7rem; border-top: 1px solid var(--rule); }
-  dd { margin: 0; font-weight: 700; }
+  .eyebrow { color: var(--teal); font-weight: 800; }
+  h1 { max-width: 12ch; margin-block: .65rem .9rem; font-size: clamp(3.5rem, 8vw, 7rem); letter-spacing: -.045em; overflow-wrap: anywhere; text-transform: uppercase; }
+  .lead { max-width: 25ch; color: var(--coral); font-family: var(--font-display); font-size: clamp(1.7rem, 4vw, 3rem); font-weight: 850; line-height: 1; text-transform: uppercase; }
+  .intro { max-width: 52ch; margin-top: 1.2rem; font-size: 1.25rem; }
+  section, .observation { margin-top: clamp(3rem, 7vw, 6rem); }
+  h2 { margin-block: .45rem 1.2rem; font-size: clamp(2rem, 4vw, 3.2rem); text-transform: uppercase; }
+  .columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+  .mechanics { padding-block: 1.8rem; border-block: 3px double var(--ink); }
+  .mechanics :global(.chain-diagram) { margin-block: 1.5rem 2rem; }
+  .observation { padding: clamp(1.25rem, 3vw, 2rem); border: 1px solid var(--ink); border-left: .5rem solid var(--coral); background: var(--paper-raised); box-shadow: .4rem .4rem 0 var(--fur); }
+  .observation p + p, .nonclaims p { margin-top: 1rem; }
+  .nonclaims ol { margin-block: 1rem 1.5rem; padding-left: 1.5rem; font-family: var(--font-display); font-size: 1.3rem; font-weight: 750; }
+  .nonclaims li + li { margin-top: .55rem; }
+  .links { display: flex; flex-wrap: wrap; gap: .6rem 1.5rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+  @media (max-width: 42rem) { .columns { grid-template-columns: 1fr; gap: 1rem; } }
 </style>

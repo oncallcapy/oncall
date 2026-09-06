@@ -20,9 +20,9 @@ test('opening hides the skip control for reduced motion', async ({ page }) => {
 test('public pages omit temporary copy from body and document metadata', async ({ page }) => {
   for (const route of routes) {
     await page.goto(route);
-    await expect(page.locator('body')).not.toContainText(/PENDING|EMPTY FILE|WORKING IDENTITY|PROVISIONAL|NOT YET VERIFIED/i);
-    await expect(page.locator('head')).not.toContainText(/PENDING|WORKING IDENTITY|PROVISIONAL/i);
-    await expect(page.locator('meta[name="description"]')).not.toHaveAttribute('content', /PENDING|WORKING IDENTITY|PROVISIONAL/i);
+    await expect(page.locator('body')).not.toContainText(/\bPENDING\b|EMPTY FILE|WORKING IDENTITY|PROVISIONAL|NOT YET VERIFIED/i);
+    await expect(page.locator('head')).not.toContainText(/\bPENDING\b|WORKING IDENTITY|PROVISIONAL/i);
+    await expect(page.locator('meta[name="description"]')).not.toHaveAttribute('content', /\bPENDING\b|WORKING IDENTITY|PROVISIONAL/i);
   }
 });
 

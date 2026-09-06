@@ -15,6 +15,6 @@ test('opening exposes the physical eight-file navigation without JavaScript', as
 test('public shell contains no temporary-state language', async ({ page }) => {
   for (const route of ['/', '/chart/', '/pairs/', '/robinhood-chain/', '/science/', '/market-rounds/', '/night-shift/', '/sources-and-risks/']) {
     await page.goto(route);
-    await expect(page.locator('body')).not.toContainText(/PENDING|EMPTY FILE|WORKING IDENTITY|PROVISIONAL/i);
+    await expect(page.locator('body')).not.toContainText(/\bPENDING\b|EMPTY FILE|WORKING IDENTITY|PROVISIONAL/i);
   }
 });
