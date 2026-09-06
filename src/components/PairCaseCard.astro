@@ -1,16 +1,19 @@
 ---
-import type { PairCandidate } from '../data/pairCandidates';
+import type { SelectedPair } from '../data/pairSelections';
 import { SCIENCE_THEMES } from '../config/scienceThemes';
-interface Props { pair: PairCandidate; index: number; }
+interface Props { pair: SelectedPair; index: number; }
 const { pair, index } = Astro.props;
 ---
 <article class="pair-case" aria-labelledby={`pair-${pair.symbol}`}>
   <header>
-    <p class="meta">Candidate {String(index + 1).padStart(2, '0')} / Quote asset</p>
+    <p class="meta">Selected pair {String(index + 1).padStart(2, '0')} / Quote asset</p>
     <h2 id={`pair-${pair.symbol}`}>{pair.symbol} <span>{pair.displayName}</span></h2>
     <p class="theme">Theme / {SCIENCE_THEMES[pair.scienceTheme]}</p>
+    <p class="research-track"><strong>Science research track</strong><br />{pair.researchTrack}</p>
   </header>
   <dl>
+    <div><dt>Project selection</dt><dd><strong>{pair.selectionStatus.toUpperCase()}</strong></dd></div>
+    <div><dt>Technical launch check</dt><dd class="pending">{pair.technicalStatus.toUpperCase()}</dd></div>
     <div><dt>Official API observation</dt><dd><strong>ACTIVE</strong> / ASSET_STATUS_ACTIVE · Chain 4663</dd></div>
     <div><dt>Observed at (UTC)</dt><dd><time datetime={pair.observedAt}>{pair.observedAt}</time></dd></div>
     <div><dt>Robinhood Chain contract</dt><dd class="address">{pair.robinhoodContract}</dd></div>
@@ -25,7 +28,7 @@ const { pair, index } = Astro.props;
   .pair-case { margin-top: 2rem; border: 1px solid var(--ink); border-left: 0.4rem solid var(--teal); padding: clamp(1rem, 3vw, 2rem); background: var(--paper-raised); }
   h2 { font-size: 2.7rem; margin-block: 0.6rem 0.75rem; }
   h2 span { display: block; font-size: 1.35rem; line-height: 1.15; margin-top: 0.3rem; }
-  .theme, .risk { font-size: 1rem; }
+  .theme, .risk, .research-track { font-size: 1rem; }
   dl { font-family: var(--font-meta); font-size: 0.72rem; line-height: 1.6; margin-block: 1.25rem; }
   dl > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr); gap: 0.4rem 1rem; padding-block: 0.6rem; border-top: 1px solid var(--rule); }
   dt { color: var(--muted-ink); }

@@ -1,5 +1,8 @@
 # ONCALL Website Design Specification
 
+> Historical implementation record. Task-era terminology below is retained for context. Current selected-pair policy is authoritative in [PROJECT_BRIEF.md](../../../PROJECT_BRIEF.md) and [the pair register](../../../pair-files/README.md).
+
+
 _Date: 2026-09-06_  
 _Status: approved by Erdem on 2026-09-06_  
 _Working name: ONCALL; final name and ticker are not approved_

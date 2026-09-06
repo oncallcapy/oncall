@@ -4,7 +4,7 @@
 
 **PRE-LAUNCH / UNDER OBSERVATION**
 
-![ONCALL night-shift banner: a capybara in teal scrubs holding coffee at a desk, beside Night shift. Clear head. Question everything. and Status: Under observation.](assets/social/oncall-x-banner-1500x500.png)
+![ONCALL public case file: the capybara mascot reviews a notebook in teal scrubs. Evidence first. Memes after rounds. Status: Under observation.](assets/github/oncall-repository-preview-1280x640.png)
 
 ONCALL is an independent medicine, science, and market-culture meme project being prepared for a possible PAR multi-market launch on Robinhood Chain. The website and this research layer are local work for review. No token contract, pools, launch transaction, final ticker, fee settings, or live PAR eligibility has been published or verified yet.
 
@@ -37,6 +37,12 @@ No reviewed Science Note is published yet. The empty science collection is inten
 Contracts and the observation receipt are in the [pair register](pair-files/README.md). The [five research-track mappings](pair-files/README.md#research-track-mapping) are explicit project metadata: LLY covers metabolic medicine, obesity, diabetes and cardiometabolic outcomes; JNJ covers broad clinical medicine, medical technology and evidence appraisal; HIMS covers digital health, telemedicine and patient communication; MRNA covers molecular medicine, immunology and vaccine science; UNH covers health systems, outcomes and population health. These associations do not validate treatments, companies or trading decisions. Science articles remain evidence-based and brand-neutral in their titles and conclusions.
 
 Stock Tokens provide economic exposure and do **not** grant legal or beneficial rights in the issuer of the underlying security. Robinhood describes them as debt securities issued by Robinhood Assets (Jersey) Limited. Availability restrictions and terms apply. [Official Stock Token explanation](https://robinhood.com/rhj/stocktokens/) (accessed 2026-09-06).
+
+## Evidence architecture
+
+The five selected pair identities organize research domains. Sources, claims and limits then pass through human review before a Science Note can be published. The separate PAR check concerns technical market readiness and provides no scientific validation. See the [methodology](methodology/README.md) and [visual asset notes](assets/github/README.md).
+
+![Five selected pairs map to research domains: LLY to metabolic medicine; JNJ to clinical medicine and technology; HIMS to digital health; MRNA to molecular medicine; UNH to health systems. The lanes converge into source ledger, claim and limits, human review, and Science Note. A separate technical branch keeps PAR checks pending and blocks launch until validated.](assets/github/oncall-evidence-architecture.svg)
 
 ## AI assistance and accountability
 

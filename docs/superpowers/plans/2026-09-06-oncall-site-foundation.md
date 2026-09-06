@@ -1,5 +1,8 @@
 # ONCALL Site Foundation Implementation Plan
 
+> Historical implementation record. Task-era terminology below is retained for context. Current selected-pair policy is authoritative in [PROJECT_BRIEF.md](../../../PROJECT_BRIEF.md) and [the pair register](../../../pair-files/README.md).
+
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Deliver a fast, accessible first website version with the approved clinical case-file interface, static mascot fallback, and a source-enforced evidence-based Science Notes system.

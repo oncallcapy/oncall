@@ -2,7 +2,7 @@
 
 **SELECTED / TECHNICAL CHECK PENDING.** LLY, JNJ, HIMS, MRNA and UNH are the selected and intended five pair identities. Their selection is fixed as the project direction. A failed PAR priceability or route/depth check blocks launch and requires an explicit new decision; assets must never be silently substituted.
 
-The five Stock Token identities are drawn from the website's [selected pair data](../src/data/pairCandidates.ts) and [shared theme and identity configuration](../src/config/scienceThemes.ts). None is a verified ONCALL pool. The contracts below identify quote assets, not an ONCALL token, pool or launch receipt.
+The five Stock Token identities are drawn from the website's [selected pair data](../src/data/pairSelections.ts) and [shared theme and identity configuration](../src/config/scienceThemes.ts). None is a verified ONCALL pool. The contracts below identify quote assets, not an ONCALL token, pool or launch receipt.
 
 | Symbol | Underlying company | Robinhood Chain quote contract | Editorial theme | API observation | PAR status | Route status |
 | --- | --- | --- | --- | --- | --- | --- |

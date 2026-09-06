@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1220" viewBox="0 0 1200 1220" role="img" aria-labelledby="architecture-title architecture-desc">
+  <title id="architecture-title">ONCALL: five selected pairs, source-led science, separate technical checks</title>
+  <desc id="architecture-desc">LLY, Eli Lilly and Company, maps to obesity, diabetes, metabolic medicine and cardiometabolic outcomes. JNJ, Johnson and Johnson, maps to broad clinical medicine, medical technology and evidence appraisal. HIMS, Hims and Hers Health, maps to digital health, telemedicine and patient communication. MRNA, Moderna, maps to molecular medicine, immunology and vaccine science. UNH, UnitedHealth Group, maps to health systems, outcomes research and population health. These five editorial lanes converge into Source Ledger, Claim and Limits, Human Review, then Science Note. Titles, claims and conclusions remain brand-neutral. A separate technical branch runs from the selected pair set to PAR check pending; failed technical checks block launch and require a documented public decision, with no silent substitution. Technical checks are not scientific validation or company endorsement.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#287C78"/></marker>
+    <marker id="ink-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#183C3C"/></marker>
+  </defs>
+  <rect width="1200" height="1220" fill="#F4F0E6"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#183C3C">
+    <rect x="0" y="0" width="1200" height="128" fill="#183C3C"/>
+    <text x="40" y="43" font-size="18" letter-spacing="3" fill="#C69C72">ONCALL / PUBLIC CASE FILE</text>
+    <text x="40" y="83" font-size="34" font-weight="700" fill="#F4F0E6">Five identities. One evidence discipline.</text>
+    <text x="40" y="112" font-size="18" fill="#F4F0E6">SELECTED / TECHNICAL CHECK PENDING</text>
+    <text x="56" y="161" font-size="18" font-weight="700" letter-spacing="1">SELECTED PAIR / COMPANY</text>
+    <text x="486" y="161" font-size="18" font-weight="700" letter-spacing="1">RESEARCH TRACK / EDITORIAL METADATA</text>
+
+    <g stroke="#287C78" stroke-width="2" fill="none">
+      <rect x="40" y="184" width="1080" height="98"/>
+      <rect x="40" y="299" width="1080" height="98"/>
+      <rect x="40" y="414" width="1080" height="98"/>
+      <rect x="40" y="529" width="1080" height="98"/>
+      <rect x="40" y="644" width="1080" height="98"/>
+      <path d="M1120 233H1160 M1120 348H1160 M1120 463H1160 M1120 578H1160 M1120 693H1160 M1160 233V777H175V811" marker-end="url(#arrow)"/>
+      <path d="M432 233H466" marker-end="url(#arrow)"/>
+      <path d="M432 348H466" marker-end="url(#arrow)"/>
+      <path d="M432 463H466" marker-end="url(#arrow)"/>
+      <path d="M432 578H466" marker-end="url(#arrow)"/>
+      <path d="M432 693H466" marker-end="url(#arrow)"/>
+    </g>
+    <g fill="#C69C72">
+      <rect x="41" y="185" width="8" height="96"/><rect x="41" y="300" width="8" height="96"/>
+      <rect x="41" y="415" width="8" height="96"/><rect x="41" y="530" width="8" height="96"/><rect x="41" y="645" width="8" height="96"/>
+    </g>
+    <g font-size="27" font-weight="700">
+      <text x="64" y="223">LLY</text><text x="64" y="338">JNJ</text><text x="64" y="453">HIMS</text><text x="64" y="568">MRNA</text><text x="64" y="683">UNH</text>
+    </g>
+    <g font-size="22">
+      <text x="64" y="258">Eli Lilly and Company</text><text x="64" y="373">Johnson &amp; Johnson</text>
+      <text x="64" y="488">Hims &amp; Hers Health</text><text x="64" y="603">Moderna</text><text x="64" y="718">UnitedHealth Group</text>
+      <text x="486" y="223">obesity, diabetes, metabolic medicine,</text><text x="486" y="258">cardiometabolic outcomes</text>
+      <text x="486" y="338">broad clinical medicine, medical technology,</text><text x="486" y="373">evidence appraisal</text>
+      <text x="486" y="453">digital health, telemedicine,</text><text x="486" y="488">patient communication</text>
+      <text x="486" y="568">molecular medicine, immunology,</text><text x="486" y="603">vaccine science</text>
+      <text x="486" y="683">health systems, outcomes research,</text><text x="486" y="718">population health</text>
+    </g>
+
+    <g fill="#183C3C">
+      <rect x="40" y="815" width="265" height="95"/><rect x="325" y="815" width="265" height="95"/>
+      <rect x="610" y="815" width="265" height="95"/><rect x="895" y="815" width="265" height="95"/>
+    </g>
+    <g font-size="23" font-weight="700" fill="#F4F0E6" text-anchor="middle">
+      <text x="172" y="853">SOURCE LEDGER</text><text x="457" y="853">CLAIM / LIMITS</text>
+      <text x="742" y="853">HUMAN REVIEW</text><text x="1027" y="853">SCIENCE NOTE</text>
+    </g>
+    <g font-size="18" fill="#F4F0E6" text-anchor="middle">
+      <text x="172" y="885">Traceable references</text><text x="457" y="885">Evidence + uncertainty</text>
+      <text x="742" y="885">Named accountability</text><text x="1027" y="885">Brand-neutral conclusions</text>
+    </g>
+    <path d="M305 863H323" fill="none" stroke="#287C78" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M590 863H608" fill="none" stroke="#287C78" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M875 863H893" fill="none" stroke="#287C78" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="40" y="946" font-size="20">Editorial associations confer no sponsorship, endorsement, clinical validation or investment analysis.</text>
+
+    <path d="M40 978H1160" stroke="#183C3C" stroke-width="2" stroke-dasharray="7 7"/>
+    <text x="40" y="1015" font-size="18" font-weight="700" letter-spacing="1">SEPARATE TECHNICAL BRANCH / NO SCIENTIFIC VALIDATION</text>
+    <rect x="40" y="1037" width="340" height="66" fill="#C69C72"/>
+    <text x="210" y="1078" text-anchor="middle" font-size="23" font-weight="700">SELECTED PAIR SET</text>
+    <path d="M380 1070H430" stroke="#183C3C" stroke-width="3" marker-end="url(#ink-arrow)"/>
+    <rect x="440" y="1037" width="375" height="66" fill="#ED806B"/>
+    <text x="627" y="1078" text-anchor="middle" font-size="23" font-weight="700">PAR CHECK: PENDING</text>
+    <text x="843" y="1062" font-size="20">Priceability + routes</text><text x="843" y="1090" font-size="20">+ in-range depth</text>
+    <text x="40" y="1145" font-size="21" font-weight="700">Failed technical check → launch blocked. No silent substitution.</text>
+    <text x="40" y="1180" font-size="20">Changing the selected set requires a documented public decision.</text>
+  </g>
+</svg>

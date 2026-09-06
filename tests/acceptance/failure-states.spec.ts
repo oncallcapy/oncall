@@ -16,13 +16,30 @@ test('every unresolved launch fact and its evidence stay pending', async ({ page
   await expect(page.locator('main a[href*="explorer"], main a[href*="blockscout"], main a[href*="/tx/"], main a[href*="/address/"]')).toHaveCount(0);
 });
 
-test('all five real candidates separate ACTIVE API observations from pending PAR and routes', async ({ page }) => {
+test('all five selected pairs separate ACTIVE API observations from pending PAR and routes', async ({ page }) => {
   await page.goto('/pairs/');
   const identities = [['LLY', 'Eli Lilly and Company'], ['JNJ', 'Johnson & Johnson'], ['HIMS', 'Hims & Hers Health'], ['MRNA', 'Moderna'], ['UNH', 'UnitedHealth Group']];
   await expect(page.locator('.pair-case')).toHaveCount(5);
+  const register = page.getByRole('region', { name: 'Selected pair register' });
+  await expect(register).toBeVisible();
+  await expect(page.getByRole('main')).not.toContainText(/candidate|proposed quote set|final selection/i);
+  await expect(page.locator('.notice')).toContainText('A failed technical check blocks launch');
+  await expect(page.locator('.notice')).toContainText('No silent substitution');
   for (const [symbol, company] of identities) {
     const card = page.getByRole('article', { name: `${symbol} ${company}`, exact: true });
     await expect(card).toBeVisible();
+    await expect(register).toContainText(`${symbol} ${company}`);
+    await expect(card.locator('.meta').first()).toContainText('Selected pair');
+    await expect(card.locator('dl > div').filter({ has: page.locator('dt', { hasText: 'Project selection' }) }).locator('dd')).toHaveText('SELECTED');
+    await expect(card.locator('dl > div').filter({ has: page.locator('dt', { hasText: 'Technical launch check' }) }).locator('dd')).toHaveText('PENDING');
+    const tracks: Record<string, string> = {
+      LLY: 'obesity, diabetes, metabolic medicine, cardiometabolic outcomes',
+      JNJ: 'broad clinical medicine, medical technology, evidence appraisal',
+      HIMS: 'digital health, telemedicine, patient communication',
+      MRNA: 'molecular medicine, immunology, vaccine science',
+      UNH: 'health systems, outcomes research, population health',
+    };
+    await expect(card.locator('.research-track')).toContainText(tracks[symbol!]!);
     const observation = card.locator('dl > div').filter({ has: page.locator('dt', { hasText: 'Official API observation' }) });
     await expect(observation.locator('dd')).toHaveText('ACTIVE / ASSET_STATUS_ACTIVE · Chain 4663');
     for (const label of ['PAR priceability', 'Route / in-range depth', 'ONCALL pool / launch receipt']) {
@@ -39,6 +56,9 @@ test('Science Notes contains an honest empty reviewed collection', async ({ page
   await expect(page.getByRole('main').getByRole('article')).toHaveCount(0);
   await expect(page.locator('main a[href^="/science/"]')).toHaveCount(0);
   await expect(page.locator('.empty-state')).toContainText('No sample articles are presented as reviewed work.');
+  await expect(page.getByRole('main')).toContainText('five selected-pair research domains');
+  await expect(page.getByRole('link', { name: 'exact market-to-domain map' })).toHaveAttribute('href', '/pairs/');
+  await expect(page.locator('.empty-state')).not.toContainText(/LLY|JNJ|HIMS|MRNA|UNH|Moderna|Lilly/);
   // The explicit no-sample disclaimer is allowed; published articles and claims are not.
   await expect(page.getByRole('main')).not.toContainText(/sample (scientific claim|study)|\bp\s*[<=]\s*0\.|relative risk|odds ratio|\d+% (reduction|improvement)/i);
 });
