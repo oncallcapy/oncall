@@ -1,15 +1,37 @@
-# GitHub visual assets
+# ONCALL visual asset manifest
 
-The repository preview is an illustration of the ONCALL public case file. It is not a clinical workflow, a medical credential, scientific evidence, or an investment claim.
+This manifest records the repository and cinematic assets used to present the ONCALL public case file. The images establish a visual direction and interface state. They are not clinical workflows, medical credentials, scientific evidence, on-chain receipts or investment claims.
 
-| File | Dimensions | Intended use |
+## Cinematic records-room assets
+
+| File | Dimensions | Intended role |
 | --- | --- | --- |
-| [Original preview](oncall-repository-preview-source.png) | 1774 × 887 px, PNG | Preserve as the supplied source |
-| [GitHub preview](oncall-repository-preview-1280x640.png) | 1280 × 640 px, PNG | README hero and prepared repository social preview |
-| [Evidence architecture](oncall-evidence-architecture.svg) | 1200 × 1220 viewBox, SVG | Accessible GitHub-rendered research and technical-boundary diagram |
+| [Desktop opening plate](../concepts/oncall-opening-desktop-text-free-approved-v1.png) | 1672 × 941 px, PNG | Current wide-screen opening room. The blank wall and folder spines receive accessible HTML text and links. |
+| [Mobile opening plate](../concepts/oncall-opening-mobile-text-free-approved-v1.png) | 941 × 1672 px, PNG | Current portrait opening room, composed separately for the vertical folder navigation. |
+| [Opened Science file](../concepts/oncall-science-open-approved-v1.png) | 1672 × 941 px, PNG | Approved visual target for the evidence-file state and the mascot inspecting a study. |
+| [Mascot turntable](../concepts/oncall-3d-turntable-approved-v1.png) | 1672 × 941 px, PNG | Approved front, three-quarter, side and back character reference for a later production 3D rig. It is a model reference, not a rigged asset. |
+| [Idle mascot cutout](../concepts/oncall-idle-pose-approved-v1.png) | 1086 × 1448 px, PNG | Approved transparent idle pose for compositing and static fallback use. |
+| [Open-file scene plate](../concepts/oncall-open-file-scene-plate-v1.png) | 1672 × 941 px, PNG | Current opened-folder background. Real headings, prose and controls remain HTML above the plate. |
+| [Opening direction concept](../concepts/oncall-opening-approved-v1.png) | 1672 × 941 px, PNG | Earlier approved composition reference retained for visual history; current pages use the text-free desktop and mobile plates. |
 
-The two prepared PNG files are preserved without regeneration. The canonical mascot reference is [ONCALL visual direction 01](../brand/oncall-visual-direction-01.png): warm brown fur, calm half-lidded face, teal scrubs, stethoscope and restrained coral detail. There are no platform or company logos in these visuals.
+The canonical character is a calm, half-lidded capybara clinician with natural warm-brown fur, petrol-teal V-neck scrubs, a dark stethoscope and restrained coral identification detail. The room combines deep clinical green, near-black night tones, ivory paper, natural fur brown and coral light. Platform and company logos are absent from the artwork.
 
-The original SVG uses flat colors: deep ink green `#183C3C`, petrol teal `#287C78`, warm fur `#C69C72`, ivory `#F4F0E6`, and coral `#ED806B`. It uses system fonts, a descriptive title and description, no gradients, no external resources, and no scripts. Its five research associations are editorial metadata. They do not imply company sponsorship, endorsement, clinical validation, or investment analysis; the separate PAR branch represents pending technical checks only.
+The website uses rendered plates to validate the folder-selection experience. Accessible HTML supplies every heading, paragraph and navigation target, and reduced-motion users receive a settled static state. The turntable documents the future character model; this repository does not claim that a production 3D mesh, skeleton or animation rig exists.
 
-The README uses relative image links. The GitHub social preview must be uploaded in repository settings only after remote creation and Erdem’s approval of the final concrete result. These files do not create a remote, upload a preview, or publish a website.
+## GitHub presentation assets
+
+| File | Dimensions | Intended role |
+| --- | --- | --- |
+| [Original repository preview](oncall-repository-preview-source.png) | 1774 × 887 px, PNG | Source-size version of the first repository case-file preview. |
+| [GitHub repository preview](oncall-repository-preview-1280x640.png) | 1280 × 640 px, PNG | Prepared social-preview crop retained for repository settings and historical README use. |
+| [Evidence architecture](oncall-evidence-architecture.svg) | 1200 × 1220 viewBox, SVG | Accessible research-to-review diagram with the separate technical verification branch. |
+
+The evidence diagram uses deep ink green `#183C3C`, petrol teal `#287C78`, warm fur `#C69C72`, ivory `#F4F0E6` and coral `#ED806B`. It contains no scripts or external resources. Its five research associations are editorial metadata and do not imply company sponsorship, endorsement, clinical validation or investment analysis.
+
+## Provenance and reuse
+
+The cinematic concept images and mascot studies were generated specifically for ONCALL through OpenAI image-generation sessions, selected and approved by Erdem on 6 September 2026, then committed as fixed project assets. The website compositions, labels and interactions are original project work. Mosby's Files informed the broad idea of a tactile file-based experience; no Mosby's Files image, code, copy or animation asset is included here.
+
+Approval records a project design decision. It does not establish exclusive rights, trademark clearance or freedom from coincidental similarity. The repository currently contains no standalone license granting third parties permission to reuse these images. The repository owner should complete the intended license and name/trademark review before offering the assets for reuse.
+
+Relative links let GitHub render these files directly. Uploading a social preview in repository settings is a separate external action; this manifest does not perform that upload or publish the website.
