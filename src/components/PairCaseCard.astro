@@ -3,6 +3,7 @@ import type { SelectedPair } from '../data/pairSelections';
 import { SCIENCE_THEMES } from '../config/scienceThemes';
 interface Props { pair: SelectedPair; index: number; }
 const { pair, index } = Astro.props;
+const verificationLabel = (status: string) => status === 'pending' ? 'NOT YET VERIFIED' : status.toUpperCase();
 ---
 <article class="pair-case" aria-labelledby={`pair-${pair.symbol}`}>
   <header>
@@ -13,13 +14,13 @@ const { pair, index } = Astro.props;
   </header>
   <dl>
     <div><dt>Project selection</dt><dd><strong>{pair.selectionStatus.toUpperCase()}</strong></dd></div>
-    <div><dt>Technical launch check</dt><dd class="pending">{pair.technicalStatus.toUpperCase()}</dd></div>
+    <div><dt>Technical launch check</dt><dd class="pending">{verificationLabel(pair.technicalStatus)}</dd></div>
     <div><dt>Official API observation</dt><dd><strong>ACTIVE</strong> / ASSET_STATUS_ACTIVE · Chain 4663</dd></div>
     <div><dt>Observed at (UTC)</dt><dd><time datetime={pair.observedAt}>{pair.observedAt}</time></dd></div>
     <div><dt>Robinhood Chain contract</dt><dd class="address">{pair.robinhoodContract}</dd></div>
-    <div><dt>PAR priceability</dt><dd class="pending">{pair.parStatus.toUpperCase()}</dd></div>
-    <div><dt>Route / in-range depth</dt><dd class="pending">{pair.routeStatus.toUpperCase()}</dd></div>
-    <div><dt>ONCALL pool / launch receipt</dt><dd class="pending">PENDING</dd></div>
+    <div><dt>PAR priceability</dt><dd class="pending">{verificationLabel(pair.parStatus)}</dd></div>
+    <div><dt>Route / in-range depth</dt><dd class="pending">{verificationLabel(pair.routeStatus)}</dd></div>
+    <div><dt>ONCALL pool / launch receipt</dt><dd class="pending">NOT YET VERIFIED</dd></div>
   </dl>
   <p class="risk">{pair.riskNote}</p>
   <p class="links"><a href={pair.sourceUrl}>Official asset API</a><a href={`https://robinhoodchain.blockscout.com/address/${pair.robinhoodContract}`}>Quote contract explorer</a></p>

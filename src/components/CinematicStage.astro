@@ -1,0 +1,28 @@
+---
+import '../styles/cinematic-stage.css';
+import { CINEMATIC_ASSETS, getSurfaceForPath } from '../config/cinematic';
+import { resolveFileId } from '../config/navigation';
+import FolderStack from './FolderStack.astro';
+
+const currentPath = Astro.url.pathname;
+const surface = getSurfaceForPath(currentPath);
+const fileId = resolveFileId(currentPath);
+---
+
+<section
+  class="cinematic-stage"
+  data-cinematic-stage
+  data-surface={surface}
+  data-file-id={fileId}
+  aria-label="ONCALL night-shift records room"
+>
+  <picture class="scene-plate" aria-hidden="true" data-scene-plate>
+    <img
+      src={surface === 'opening' ? CINEMATIC_ASSETS.opening : CINEMATIC_ASSETS.openFile}
+      alt=""
+      fetchpriority={surface === 'opening' ? 'high' : 'auto'}
+    />
+  </picture>
+  <button id="cinematic-skip" type="button">Skip opening</button>
+  <FolderStack currentPath={currentPath} />
+</section>

@@ -6,9 +6,9 @@ const { fact } = Astro.props;
 <div class="fact-row">
   <dt>{fact.label}</dt>
   <dd>
-    <span class="status meta">{fact.displayValue}</span>
+    <span class="status meta">{fact.status === 'pending' ? 'NOT YET VERIFIED' : fact.displayValue}</span>
     <p>{fact.note}</p>
-    {fact.status === 'verified' && fact.evidenceUrl ? <a href={fact.evidenceUrl}>View evidence</a> : <span class="meta evidence">Launch evidence / PENDING</span>}
+    {fact.status === 'verified' && fact.evidenceUrl ? <a href={fact.evidenceUrl}>View evidence</a> : <span class="meta evidence">Launch evidence / NOT YET VERIFIED</span>}
   </dd>
 </div>
 <style>

@@ -12,16 +12,18 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
       await page.goto(route);
       await page.evaluate(() => document.fonts.ready);
       const heading = page.getByRole('heading', { level: 1 });
-      await expect(heading).toBeInViewport({ ratio: 1 });
       const rail = page.getByRole('navigation');
       if (viewport.width === 1440) {
         await expect(rail.locator('[aria-current="page"]')).toBeInViewport({ ratio: 1 });
       } else {
-        expect(await rail.evaluate(element => ({ scrollable: element.scrollWidth > element.clientWidth, overflow: getComputedStyle(element).overflowX }))).toEqual({ scrollable: true, overflow: 'auto' });
-        await rail.evaluate(element => { element.scrollLeft = element.scrollWidth; });
-        expect(await rail.evaluate(element => element.scrollLeft)).toBeGreaterThan(0);
-        await expect(rail.getByRole('link').last()).toBeInViewport({ ratio: 1 });
-        await rail.evaluate(element => { element.scrollLeft = 0; });
+        expect(await rail.locator('ol').evaluate(element => getComputedStyle(element).flexDirection)).toBe('column');
+        for (const link of await rail.getByRole('link').all()) {
+          expect(await link.evaluate(element => element.getBoundingClientRect().height)).toBeGreaterThanOrEqual(44);
+        }
+      }
+      await heading.scrollIntoViewIfNeeded();
+      await expect(heading).toBeInViewport({ ratio: 1 });
+      if (viewport.width !== 1440) {
         const overflow = await page.evaluate(() => {
           const width = document.documentElement.clientWidth;
           const outside: string[] = [];
@@ -39,7 +41,7 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
           return { documentOverflow: document.documentElement.scrollWidth - width, outside };
         });
         expect(overflow).toEqual({ documentOverflow: 0, outside: [] });
-        const image = page.getByTestId('oncall-mascot').locator('img');
+        const image = page.locator('[data-scene-plate] img');
         if (await image.count()) {
           const art = (await image.boundingBox())!;
           for (const target of await page.locator('main h1, main button, .intake-note').all()) {

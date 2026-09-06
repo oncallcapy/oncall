@@ -1,71 +1,33 @@
 ---
 import ChartLayout from '../layouts/ChartLayout.astro';
-import OncallMascot from '../components/OncallMascot.astro';
 ---
 
 <ChartLayout>
-  <div class="file-heading meta">
-    <span>Case file 01 / Triage</span>
-    <span class="observation">STATUS: UNDER OBSERVATION</span>
-  </div>
   <section class="triage-hero" aria-labelledby="oncall-title">
-    <div class="hero-copy">
-      <p class="eyebrow meta">The night shift has a mascot.</p>
-      <h1 id="oncall-title">ONCALL</h1>
-      <p class="punchline">Clear head.<br />Question everything.</p>
-      <p class="hero-intro">Medicine, science &amp; market culture.<br />A curious mind on the night shift.</p>
-      <div class="launch-note">
-        <button type="button" disabled>LAUNCH PENDING</button>
-        <span class="meta">Still on the clipboard.</span>
-      </div>
-    </div>
-    <div class="mascot-stage" aria-label="Night-shift illustration area">
-      <span class="clip" aria-hidden="true"></span>
-      <div class="stage-card">
-        <p class="meta">Personnel file / 001</p>
-        <OncallMascot context="hero" />
-        <p class="stage-caption">Calm disposition.<br />Persistent curiosity.</p>
-        <span class="meta stage-footnote">Assigned to the night shift</span>
-      </div>
-      <p class="margin-note">Check the sources.<br />Then check again.</p>
-    </div>
+    <p class="eyebrow">MEDICINE / SCIENCE / MARKET CULTURE</p>
+    <h1 id="oncall-title">ONCALL</h1>
+    <p class="hero-line">NIGHT SHIFT FOR THE TERMINALLY ONLINE.</p>
+    <p class="status-line">STATUS / ON SHIFT</p>
+    <p class="hero-intro">Science gets its sources. Markets get their context. The mascot gets the late shift.</p>
   </section>
   <section class="intake-note" aria-labelledby="intake-heading">
     <h2 id="intake-heading" class="meta">Intake note</h2>
-    <p>Science gets its sources. Markets get their context. The mascot gets the late shift.</p>
+    <p>Open a file for sourced science, market context, original night-shift humour, and the project record.</p>
   </section>
 </ChartLayout>
 
 <style>
-  .file-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem; padding-bottom: 1rem; border-bottom: 1px solid var(--ink); }
-  .observation { font-weight: 700; }
-  .observation::before { content: ''; display: inline-block; width: 0.5rem; height: 0.5rem; margin-right: 0.5rem; border: 1px solid var(--ink); background: var(--coral); }
-  .triage-hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 2rem; align-items: center; padding-block: 3rem 2.5rem; }
-  .hero-copy { min-width: 0; }
-  .eyebrow { margin-bottom: 0.65rem; }
+  .triage-hero { padding-block: clamp(1rem, 4vw, 3rem) 2.5rem; }
+  .eyebrow { margin-bottom: 0.8rem; color: var(--ink); font-family: var(--font-meta); font-size: 0.6875rem; letter-spacing: 0.075em; line-height: 1.6; }
   h1 { font-size: clamp(4.5rem, 8.8vw, 8.75rem); font-weight: 900; letter-spacing: -0.055em; line-height: 0.95; }
-  .punchline { margin-top: 1.5rem; font-family: var(--font-display); font-size: clamp(2rem, 3.2vw, 3rem); font-weight: 750; line-height: 1.06; letter-spacing: -0.025em; }
-  .hero-intro { margin-top: 1.5rem; font-size: 1.125rem; }
-  .launch-note { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; margin-top: 2rem; }
-  button { padding: 0.75rem 1rem; border: 2px solid var(--ink); background: transparent; color: var(--ink); font-family: var(--font-meta); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; opacity: 1; cursor: not-allowed; }
-  .launch-note > span { max-width: 9rem; color: var(--muted-ink); }
-  .mascot-stage { position: relative; min-width: 0; padding-top: 1.5rem; transform: rotate(2deg); }
-  .stage-card { display: flex; flex-direction: column; align-items: center; min-height: 23rem; padding: 1.75rem 1rem 1rem; border: 1px solid var(--rule); background: var(--paper-raised); box-shadow: 0.35rem 0.4rem 0 var(--paper-edge); text-align: center; }
-  .clip { position: absolute; z-index: 1; top: 0.85rem; left: calc(50% - 2rem); width: 4rem; height: 1.4rem; border: 2px solid var(--ink); border-radius: 0.35rem; background: var(--paper-edge); transform: rotate(-5deg); }
-  .stage-caption { font-style: italic; line-height: 1.3; }
-  .stage-footnote { width: 100%; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.55rem; }
-  .margin-note { margin-top: 1.25rem; padding-left: 1.5rem; border-left: 3px solid var(--coral); font-style: italic; font-size: 1rem; line-height: 1.25; }
+  .hero-line { max-width: 32rem; margin-top: 1.5rem; font-family: var(--font-display); font-size: clamp(2rem, 3.2vw, 3rem); font-weight: 750; line-height: 1.06; letter-spacing: -0.025em; }
+  .status-line { display: inline-block; margin-top: 1.5rem; padding: 0.45rem 0.65rem; background: var(--coral); font-family: var(--font-meta); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; }
+  .hero-intro { max-width: 38rem; margin-top: 1.5rem; font-size: 1.125rem; }
   .intake-note { display: grid; grid-template-columns: 7rem 1fr; gap: 1.5rem; padding-block: 1rem; border-block: 1px solid var(--rule); }
   .intake-note h2 { padding-top: 0.3rem; font-weight: 400; }
   .intake-note p { max-width: 35rem; font-size: 1.1rem; }
-  @media (min-width: 48rem) and (max-width: 65rem) {
-    .triage-hero { grid-template-columns: minmax(0, 1fr); }
-    .mascot-stage { max-width: 22rem; justify-self: end; width: 80%; }
-  }
   @media (max-width: 47.999rem) {
-    .triage-hero { grid-template-columns: minmax(0, 1fr); padding-top: 2rem; gap: 2.5rem; }
     h1 { font-size: clamp(4.5rem, 18vw, 7rem); }
-    .mascot-stage { width: min(100%, 24rem); justify-self: center; }
     .intake-note { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; }
   }
 </style>

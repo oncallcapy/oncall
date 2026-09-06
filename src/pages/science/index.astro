@@ -22,7 +22,7 @@ const notes = (await getCollection('science')).sort((a, b) => b.data.publishedAt
     {notes.length > 0 ? notes.map((note) => <ScienceNoteCard note={note} />) : (
       <div class="empty-state">
         <div>
-          <p class="meta">Publication status / Empty file</p>
+          <p class="meta">Publication status / Review queue</p>
           <p class="empty-title">No reviewed Science Note has been published yet.</p>
           <p>The evidence desk is waiting for a sourced, reviewed note. No sample articles are presented as reviewed work.</p>
         </div>

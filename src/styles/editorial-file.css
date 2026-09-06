@@ -1,0 +1,24 @@
+.editorial-file {
+  width: min(100% - 2rem, 74rem);
+  margin: clamp(-2rem, -4vw, -4rem) auto 4rem;
+  padding: clamp(1.5rem, 4vw, 4rem);
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  box-shadow: 0.45rem 0.55rem 0 var(--paper-edge), 0.55rem 0.7rem 0 var(--ink);
+}
+
+.editorial-file:focus { outline-offset: -7px; }
+.editorial-file-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted-ink);
+}
+
+@media (max-width: 47.999rem) {
+  .editorial-file { width: min(100% - 1.25rem, 74rem); margin-top: -0.5rem; padding: 1.25rem; }
+}

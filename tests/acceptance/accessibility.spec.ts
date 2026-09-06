@@ -27,7 +27,7 @@ for (const route of routes) {
     await expect(current).toHaveAttribute('href', route);
     expect(await current.locator('.file-label').evaluate(element => getComputedStyle(element).textDecorationLine)).toContain('underline');
     // The release UI excludes Astro's hidden development-toolbar shadow DOM.
-    const externalLinks = page.locator('.chart a[href^="https://"]');
+    const externalLinks = page.locator('.site-shell a[href^="https://"]');
     for (const link of await externalLinks.all()) {
       await expect(link).toHaveAccessibleName(/\S.{7,}/);
       await expect(link).not.toHaveAccessibleName(/^(click here|here|link|read more|https?:\/\/[^/]+\/?)$/i);
@@ -35,10 +35,8 @@ for (const route of routes) {
   });
 }
 
-test('launch pending is a genuinely disabled button', async ({ page }) => {
+test('opening exposes an on-shift status without a disabled launch action', async ({ page }) => {
   await page.goto('/');
-  const action = page.getByRole('button', { name: 'LAUNCH PENDING', exact: true });
-  await expect(action).toBeDisabled();
-  expect(await action.evaluate(element => element.tagName)).toBe('BUTTON');
-  await expect(page.getByRole('link', { name: 'LAUNCH PENDING' })).toHaveCount(0);
+  await expect(page.getByText('STATUS / ON SHIFT', { exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: /launch/i })).toHaveCount(0);
 });

@@ -1,7 +1,9 @@
 ---
 import '../styles/global.css';
+import '../styles/editorial-file.css';
+import { ClientRouter } from 'astro:transitions';
 import ChartHeader from '../components/ChartHeader.astro';
-import FileTabs from '../components/FileTabs.astro';
+import CinematicStage from '../components/CinematicStage.astro';
 import { PUBLIC_REPOSITORY } from '../config/site';
 
 interface Props {
@@ -10,7 +12,7 @@ interface Props {
 }
 const {
   title = 'ONCALL',
-  description = 'ONCALL night-shift case files: medicine, science and market culture. Launch pending.',
+  description = 'ONCALL night-shift case files: medicine, science and market culture.',
 } = Astro.props;
 ---
 
@@ -21,17 +23,18 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <ClientRouter fallback="swap" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <div class="chart">
+    <div class="site-shell">
       <ChartHeader />
-      <FileTabs />
-      <main id="main-content" class="chart-content" tabindex="-1">
+      <CinematicStage />
+      <main id="main-content" class="editorial-file" data-file-content tabindex="-1">
         <slot />
-        <footer class="chart-footer meta">
+        <footer class="editorial-file-footer meta">
           <span>ONCALL / Evidence first. Memes after rounds.</span>
-          <span>Pre-launch file · Working identity</span>
+          <span>Night-shift records room</span>
           <a href={PUBLIC_REPOSITORY.href}>{PUBLIC_REPOSITORY.label}</a>
         </footer>
       </main>

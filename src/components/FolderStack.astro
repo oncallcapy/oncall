@@ -1,0 +1,29 @@
+---
+import '../styles/folder-stack.css';
+import { NAV_ITEMS, resolveFileId } from '../config/navigation';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url.pathname } = Astro.props;
+const currentFileId = resolveFileId(currentPath);
+---
+
+<nav class="file-stack" data-file-stack aria-label="ONCALL case files">
+  <ol>
+    {NAV_ITEMS.map((item) => (
+      <li data-file-id={item.id}>
+        <a
+          href={item.href}
+          data-file-link
+          data-file-id={item.id}
+          aria-current={item.id === currentFileId ? 'page' : undefined}
+        >
+          <span class="file-number" aria-hidden="true">{item.shortLabel}</span>
+          <span class="file-label">{item.label}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</nav>
