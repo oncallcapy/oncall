@@ -12,6 +12,8 @@ Science Notes explain evidence and its limits. Market Rounds discuss company and
 
 ## Read the record
 
+Public repository: [github.com/oncallcapy/oncall](https://github.com/oncallcapy/oncall).
+
 - [Website source](src/pages/index.astro) and [shared project brief](PROJECT_BRIEF.md)
 - [Science Notes: editorial contract](science-notes/README.md)
 - [Methodology: evidence workflow](methodology/README.md)

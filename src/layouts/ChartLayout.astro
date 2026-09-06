@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import ChartHeader from '../components/ChartHeader.astro';
 import FileTabs from '../components/FileTabs.astro';
+import { PUBLIC_REPOSITORY } from '../config/site';
 
 interface Props {
   title?: string;
@@ -31,6 +32,7 @@ const {
         <footer class="chart-footer meta">
           <span>ONCALL / Evidence first. Memes after rounds.</span>
           <span>Pre-launch file · Working identity</span>
+          <a href={PUBLIC_REPOSITORY.href}>{PUBLIC_REPOSITORY.label}</a>
         </footer>
       </main>
     </div>

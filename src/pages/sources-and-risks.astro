@@ -1,6 +1,7 @@
 ---
 import ChartLayout from '../layouts/ChartLayout.astro';
 import { ASSET_OBSERVATION } from '../data/pairSelections';
+import { PUBLIC_REPOSITORY } from '../config/site';
 const sources = [
   { title: 'PAR launch mechanics and contract risk', url: 'https://par.family/docs', note: 'Pool structure, quote eligibility, immutable launch metadata and unaudited-contract statement.' },
   { title: 'Robinhood Chain overview', url: 'https://docs.robinhood.com/chain/', note: 'Platform description: permissionless, Ethereum-compatible Layer 2.' },
@@ -26,6 +27,7 @@ const risks = [
   <p class="meta">Case file 08 / Evidence ledger</p>
   <h1>Sources & Risks</h1>
   <p class="intro">A source is a starting point. Its limits belong in the same file.</p>
+  <section aria-labelledby="project-record-heading"><h2 id="project-record-heading">Project record</h2><p class="meta"><a href={PUBLIC_REPOSITORY.href}>{PUBLIC_REPOSITORY.label}</a></p></section>
   <section aria-labelledby="sources-heading"><h2 id="sources-heading">Official source register</h2><p>Access date: <time datetime="2026-09-06">6 September 2026</time>. Platform statements are attributed to their documentation. A dated API observation is not ongoing monitoring or an ONCALL launch verification.</p><ol class="sources">{sources.map((source) => <li><h3><a href={source.url}>{source.title}</a></h3><p>{source.note}</p><a class="source-url" href={source.url} aria-label={`${source.title}: ${source.url}`}>{source.url}</a><p class="meta">Accessed <time datetime="2026-09-06">2026-09-06</time></p></li>)}</ol></section>
   <aside class="observation"><h2>Asset observation receipt</h2><p>Read-only official API response observed at <time datetime={ASSET_OBSERVATION.observedAt}>{ASSET_OBSERVATION.observedAt}</time>: {ASSET_OBSERVATION.responseBytes.toLocaleString('en-US')} bytes. All five selected pair entries reported ASSET_STATUS_ACTIVE on chain {ASSET_OBSERVATION.chainId}. This establishes the API deployment/status observation only.</p><p class="meta">Response SHA-256</p><code>{ASSET_OBSERVATION.responseSha256}</code><p>It does not establish PAR priceability, current route depth, liquidity, suitability, issuer endorsement, or investment merit. See the <a href="/pairs/">individual selected pair files</a>.</p></aside>
   <section aria-labelledby="risks-heading"><h2 id="risks-heading">Risk register</h2><div class="risks">{risks.map((risk, index) => <article aria-labelledby={`risk-${risk.id}`}><p class="meta">Risk {String(index + 1).padStart(2, '0')}</p><h3 id={`risk-${risk.id}`}>{risk.title}</h3><p>{risk.text}</p></article>)}</div></section>
