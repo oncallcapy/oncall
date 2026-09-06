@@ -1,0 +1,97 @@
+{
+  "slug": "digital-care-and-patient-communication",
+  "theme": "digital-health",
+  "pair": {
+    "ticker": "HIMS",
+    "company": "Hims & Hers Health"
+  },
+  "title": "The Screen Is Not the Intervention",
+  "dek": "Digital care can mean a managed pathway, a telephone service, or a communication technique. The chart gets clearer when those parts stop borrowing one another's results.",
+  "clinicalQuestion": "What changes when care is supported online, delivered by telephone, or structured around checking patient understanding?",
+  "whyItMatters": "“Digital health” can conceal several interventions at once: measurement, feedback, staffing, escalation, access, and communication. Outcomes belong to the tested package, not automatically to the device or channel.",
+  "methods": "This dossier compares a randomized digital hypertension pathway, a systematic review of randomized telephone-consultation trials, and a systematic review of teach-back implementation across varied study designs.",
+  "synthesis": "The hypertension trial evaluated self-monitoring, digital feedback, and guided clinical management as one pathway. The telephone review examined how a service channel changed resolution, face-to-face use, satisfaction, safety reporting, and workload. The teach-back review studied a communication technique that can be used with or without a screen. The evidence therefore supports three narrower readings: a care pathway may improve a measured risk factor in eligible users; telephone delivery may change service use; and teach-back may improve understanding-related outcomes, although implementation and study quality vary.",
+  "limits": "Internet access was required in the pathway trial, telephone comparisons and service settings were heterogeneous, and teach-back studies varied in quality, population, and outcome. Digital exclusion, workflow capacity, language, health literacy, and local care systems limit generalization. Absence of a reported safety increase is not proof of equivalent safety, and none of these records establishes fewer cardiovascular events.",
+  "studies": [
+    {
+      "id": "home-bp-digital-pathway",
+      "originalTitle": "Home and Online Management and Evaluation of Blood Pressure (HOME BP) using a digital intervention in poorly controlled hypertension: randomised controlled trial",
+      "citation": "McManus RJ, Little P, Stuart B, et al.; HOME BP investigators. BMJ. 2021;372:m4858.",
+      "year": 2021,
+      "design": "Unblinded randomized controlled trial in 622 adults across 76 United Kingdom primary-care practices; the primary outcome used automated measurement.",
+      "question": "For adults with internet access and blood pressure uncontrolled despite treatment, did a pathway combining self-monitoring and guided management improve control compared with usual care?",
+      "finding": "At one year, systolic blood pressure control was better in the intervention group, while reported adverse effects were similar between groups.",
+      "limits": "Internet access was an eligibility requirement, limiting transfer to digitally excluded patients. The intervention combined measurement, feedback, and clinical management; its result cannot be assigned to an app alone or translated into fewer heart attacks or strokes.",
+      "identifiers": {
+        "doi": "10.1136/bmj.m4858",
+        "pmid": "33468518"
+      },
+      "sources": [
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/33468518/",
+          "title": "Home and Online Management and Evaluation of Blood Pressure using a digital intervention in poorly controlled hypertension",
+          "authorOrGroup": "HOME BP investigators",
+          "year": 2021,
+          "accessedAt": "2026-09-07",
+          "doi": "10.1136/bmj.m4858",
+          "pmid": "33468518",
+          "authoritativeSource": "PubMed bibliographic record; the standard page returned without readable body text during the latest access check"
+        }
+      ]
+    },
+    {
+      "id": "telephone-consultation-review",
+      "originalTitle": "Effects of Telephone Consultation on Safety, Service Use, Patient Satisfaction, and Workload: Systematic Review and Meta-Analysis of Randomized Trials",
+      "citation": "Chair SY, Chien WT, Kendall S, Zang Y, Liu T, Choi KC. Telemed J E Health. 2024;30(2):364–380.",
+      "year": 2024,
+      "design": "Systematic review and meta-analysis of eight randomized trials with 40,002 participants; the literature search ended on April 7, 2022.",
+      "question": "Compared with standard face-to-face care or different call advisers, how did telephone consultation or triage affect safety, service use, satisfaction, and workload?",
+      "finding": "In some comparisons, more problems were resolved by telephone and fewer people saw a physician face to face at first contact. Evidence for satisfaction and consultation duration was insufficient.",
+      "limits": "Comparators and service settings differed, and telephone, video, and broader telemedicine models are not equivalent. Failure to report more adverse events does not establish equivalent safety; outcome-specific risk-of-bias and certainty assessments require the full text.",
+      "identifiers": {
+        "doi": "10.1089/tmj.2023.0002",
+        "pmid": "37624630"
+      },
+      "sources": [
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37624630/",
+          "title": "Effects of Telephone Consultation on Safety, Service Use, Patient Satisfaction, and Workload: Systematic Review and Meta-Analysis of Randomized Trials",
+          "authorOrGroup": "Chair SY and colleagues",
+          "year": 2024,
+          "accessedAt": "2026-09-07",
+          "doi": "10.1089/tmj.2023.0002",
+          "pmid": "37624630",
+          "authoritativeSource": "PubMed abstract and bibliographic record"
+        }
+      ]
+    },
+    {
+      "id": "teach-back-review",
+      "originalTitle": "Teach-back: A systematic review of implementation and impacts",
+      "citation": "Talevski J, Wong Shee A, Rasmussen B, Kemp G, Beauchamp A. PLoS One. 2020;15(4):e0231350.",
+      "year": 2020,
+      "design": "Systematic review of 20 studies with varied designs and settings, searched through July 2019; heterogeneity prevented meta-analysis.",
+      "question": "How was teach-back implemented across care settings, and what was reported for knowledge, self-management, and health outcomes?",
+      "finding": "Most included studies reported favorable outcomes, but implementation strategies were often incompletely described and no single pooled effect estimate was calculated.",
+      "limits": "Study quality, populations, and outcomes varied, with possible publication bias. Counting favorable reports is neither an effect size nor proof of definitive efficacy, and the technique does not validate any particular platform.",
+      "identifiers": {
+        "doi": "10.1371/journal.pone.0231350",
+        "pmid": "32287296"
+      },
+      "sources": [
+        {
+          "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0231350",
+          "title": "Teach-back: A systematic review of implementation and impacts",
+          "authorOrGroup": "Talevski J and colleagues",
+          "year": 2020,
+          "accessedAt": "2026-09-07",
+          "doi": "10.1371/journal.pone.0231350",
+          "pmid": "32287296",
+          "authoritativeSource": "Publisher full text"
+        }
+      ]
+    }
+  ],
+  "searchedAt": "2026-09-07",
+  "correctionHistory": []
+}

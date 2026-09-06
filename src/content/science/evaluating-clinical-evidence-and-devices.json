@@ -1,0 +1,108 @@
+{
+  "slug": "evaluating-clinical-evidence-and-devices",
+  "theme": "clinical-evidence",
+  "pair": {
+    "ticker": "JNJ",
+    "company": "Johnson & Johnson"
+  },
+  "title": "Three Questions, Three Kinds of Evidence",
+  "dek": "A sham-controlled procedure trial, a patient-level treatment synthesis, and a study of trial methods belong in the same chart—but never in the same evidence box.",
+  "clinicalQuestion": "How do we read evidence when one study tests a procedure, another combines treatment trials, and a third examines how trials themselves are conducted?",
+  "whyItMatters": "An impressive method cannot answer a question it was not designed to ask. Procedure effects, average treatment effects, subgroup signals, and risks of bias need separate labels.",
+  "methods": "The dossier compares one double-blind sham-controlled randomized trial, one systematic review with individual participant data, and one meta-epidemiological analysis. Each finding is tied to its own unit of inference.",
+  "synthesis": "The sham-controlled trial asked whether a procedure improved exercise time beyond placebo effects in a narrow, optimized-care setting. The patient-level synthesis estimated mortality patterns across fluid trials and highlighted a clinically important subgroup concern. The meta-epidemiological study compared effect estimates across trials with different reported blinding status. Together they show why evidence appraisal starts with the question and design: a procedure result cannot settle every indication, an overall treatment estimate can hide subgroup differences, and a study of trial methods is not a treatment-effect trial.",
+  "limits": "All three records have different populations and inferential targets. Short follow-up, risk of bias within included trials, residual confounding between studies, and incomplete access to correction pages constrain interpretation. None of these summaries replaces a current guideline, a complete device assessment, or patient-level clinical judgment.",
+  "studies": [
+    {
+      "id": "orbita-sham-controlled-pci",
+      "originalTitle": "Percutaneous coronary intervention in stable angina (ORBITA): a double-blind, randomised controlled trial",
+      "citation": "Al-Lamee R, Thompson D, Dehbi HM, et al.; ORBITA investigators. Lancet. 2018;391(10115):31–40.",
+      "year": 2018,
+      "design": "Five-center, double-blind randomized trial comparing percutaneous coronary intervention with a placebo procedure in 200 patients after medical therapy optimization.",
+      "question": "For medically treated stable angina with severe single-vessel stenosis, did the procedure improve exercise-time change more than a sham procedure?",
+      "finding": "At six weeks, the trial did not demonstrate a statistically significant between-group difference in its primary exercise-time change outcome.",
+      "limits": "The sample was small, follow-up was short, and medical therapy was optimized. The result does not address mortality, every indication for the procedure, or the entire later evidence base; failure to show a difference is not proof of equivalence.",
+      "identifiers": {
+        "doi": "10.1016/S0140-6736(17)32714-9",
+        "pmid": "29103656"
+      },
+      "sources": [
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29103656/",
+          "title": "Percutaneous coronary intervention in stable angina (ORBITA): a double-blind, randomised controlled trial",
+          "authorOrGroup": "ORBITA investigators",
+          "year": 2018,
+          "accessedAt": "2026-09-07",
+          "doi": "10.1016/S0140-6736(17)32714-9",
+          "pmid": "29103656",
+          "authoritativeSource": "PubMed abstract and bibliographic record"
+        }
+      ]
+    },
+    {
+      "id": "best-living-fluid-meta-analysis",
+      "originalTitle": "Balanced crystalloids versus saline for critically ill patients (BEST-Living): a systematic review and individual patient data meta-analysis",
+      "citation": "Zampieri FG, Cavalcanti AB, Di Tanna GL, et al. Lancet Respir Med. 2024;12(3):237–246.",
+      "year": 2024,
+      "design": "Systematic review and Bayesian individual participant data meta-analysis combining 34,685 adults from six randomized trials in critical care; the search was updated on September 1, 2023.",
+      "question": "Did balanced crystalloids reduce in-hospital mortality compared with saline, and did the pattern differ for traumatic brain injury?",
+      "finding": "The overall estimate leaned toward a small mortality benefit, but its uncertainty interval included no effect. In the traumatic brain injury subgroup, balanced fluids were associated with higher mortality.",
+      "limits": "Some included trials had high risk of bias, and an overall average should not be transferred to every subgroup. The title's word “Living” does not mean this 2024 report remained updated through 2026.",
+      "identifiers": {
+        "doi": "10.1016/S2213-2600(23)00417-4",
+        "pmid": "38043564"
+      },
+      "sources": [
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/38043564/",
+          "title": "Balanced crystalloids versus saline for critically ill patients (BEST-Living): a systematic review and individual patient data meta-analysis",
+          "authorOrGroup": "Zampieri FG and colleagues",
+          "year": 2024,
+          "accessedAt": "2026-09-07",
+          "doi": "10.1016/S2213-2600(23)00417-4",
+          "pmid": "38043564",
+          "authoritativeSource": "PubMed abstract and bibliographic record"
+        }
+      ]
+    },
+    {
+      "id": "blinding-meta-epidemiology",
+      "originalTitle": "Impact of blinding on estimated treatment effects in randomised clinical trials: meta-epidemiological study",
+      "citation": "Moustgaard H, Clayton GL, Jones HE, et al. BMJ. 2020;368:l6802.",
+      "year": 2020,
+      "design": "Meta-epidemiological analysis of 1,153 trials within 142 meta-analyses from Cochrane reviews, examining participant, personnel, and outcome-assessor blinding separately.",
+      "question": "Across randomized trials, did average treatment-effect estimates differ according to reported blinding status?",
+      "finding": "The analysis did not find evidence of an average difference in effect estimates by blinding status; the authors still supported blinding as a methodological safeguard.",
+      "limits": "This is an observational comparison between studies, with residual confounding, uncertainty, and heterogeneity. It does not show that blinding is unnecessary and does not estimate the effect of a clinical treatment.",
+      "identifiers": {
+        "doi": "10.1136/bmj.l6802",
+        "pmid": "31964641"
+      },
+      "sources": [
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/31964641/",
+          "title": "Impact of blinding on estimated treatment effects in randomised clinical trials: meta-epidemiological study",
+          "authorOrGroup": "Moustgaard H and colleagues",
+          "year": 2020,
+          "accessedAt": "2026-09-07",
+          "doi": "10.1136/bmj.l6802",
+          "pmid": "31964641",
+          "authoritativeSource": "PubMed abstract and bibliographic record"
+        },
+        {
+          "url": "https://www.bmj.com/content/368/bmj.m358",
+          "title": "Correction: Impact of blinding on estimated treatment effects in randomised clinical trials",
+          "authorOrGroup": "BMJ",
+          "year": 2020,
+          "accessedAt": "2026-09-07",
+          "doi": "10.1136/bmj.m358",
+          "pmid": "32024659",
+          "authoritativeSource": "Publisher correction page; direct access returned HTTP 403 and the PubMed correction record triggered an access challenge during the latest check"
+        }
+      ],
+      "correction": "BMJ 2020;368:m358, DOI 10.1136/bmj.m358, corrects information for two authors. The publisher page could not be reopened during the latest access check, so the correction remains explicitly flagged."
+    }
+  ],
+  "searchedAt": "2026-09-07",
+  "correctionHistory": []
+}

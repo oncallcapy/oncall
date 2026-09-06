@@ -1,0 +1,107 @@
+{
+  "slug": "beyond-weight-and-cardiometabolic-outcomes",
+  "theme": "metabolic-medicine",
+  "pair": {
+    "ticker": "LLY",
+    "company": "Eli Lilly and Company"
+  },
+  "title": "Weight Is Not the Whole Outcome",
+  "dek": "Three trials, three different endpoints: preventing diabetes, changing risk factors, and testing cardiovascular events directly.",
+  "clinicalQuestion": "When weight or metabolic markers improve, which patient outcomes have actually been measured—and which conclusions remain out of reach?",
+  "whyItMatters": "A smaller number on a scale, a lower laboratory value, and fewer cardiovascular events are related observations, but they are not interchangeable evidence.",
+  "methods": "This dossier reads three randomized trials side by side, keeping each population, comparator, follow-up period, endpoint, and discontinuation signal attached to its own result.",
+  "synthesis": "Intensive lifestyle support and metformin reduced progression to diabetes in a high-risk population. A later intensive lifestyle trial improved weight and several risk factors without demonstrating a reduction in its primary cardiovascular event outcome. A separate placebo-controlled trial in people with established cardiovascular disease and overweight or obesity, but without diabetes, found fewer primary cardiovascular events with semaglutide and more permanent discontinuations for adverse events. The useful lesson is endpoint discipline: prevention of a diagnosis, improvement in a surrogate, and reduction in clinical events answer different questions.",
+  "limits": "These studies differ in era, population, intervention, intensity, and outcome. Their findings cannot be combined into a treatment recommendation, extended to people outside the enrolled populations, or used to claim that weight change alone caused any cardiovascular result. One source carries a correction notice, and the industry-funded trial requires sponsor-role review before publication-level interpretation.",
+  "studies": [
+    {
+      "id": "dpp-diabetes-prevention",
+      "originalTitle": "Reduction in the incidence of type 2 diabetes with lifestyle intervention or metformin",
+      "citation": "Knowler WC, Barrett-Connor E, Fowler SE, et al.; Diabetes Prevention Program Research Group. N Engl J Med. 2002;346(6):393–403.",
+      "year": 2002,
+      "design": "Multicenter, three-group randomized controlled trial in 3,234 adults with elevated fasting and post-load glucose but without diabetes; the medication comparison was double-blind, while the lifestyle program could not be blinded.",
+      "question": "In adults at high risk of diabetes, did an intensive lifestyle program or metformin reduce progression to diabetes compared with placebo?",
+      "finding": "During an average 2.8 years of follow-up, diabetes incidence was lower in both intervention groups than with placebo, with the larger reduction in the intensive lifestyle group.",
+      "limits": "The resource-intensive program may not transfer unchanged to routine care. This report does not establish lifelong prevention or cardiovascular mortality benefit, and it does not isolate the separate contributions of diet, activity, and weight change.",
+      "identifiers": {
+        "doi": "10.1056/NEJMoa012512",
+        "pmid": "11832527"
+      },
+      "sources": [
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/11832527/",
+          "title": "Reduction in the incidence of type 2 diabetes with lifestyle intervention or metformin",
+          "authorOrGroup": "Diabetes Prevention Program Research Group",
+          "year": 2002,
+          "accessedAt": "2026-09-07",
+          "doi": "10.1056/NEJMoa012512",
+          "pmid": "11832527",
+          "authoritativeSource": "PubMed bibliographic record; the standard page returned without readable body text during the latest access check"
+        }
+      ]
+    },
+    {
+      "id": "look-ahead-cardiovascular-events",
+      "originalTitle": "Cardiovascular effects of intensive lifestyle intervention in type 2 diabetes",
+      "citation": "Look AHEAD Research Group; Wing RR, Bolin P, Brancati FL, et al. N Engl J Med. 2013;369(2):145–154.",
+      "year": 2013,
+      "design": "Randomized controlled trial in 5,145 adults with type 2 diabetes and overweight or obesity, comparing an intensive lifestyle program with diabetes support and education.",
+      "question": "Did an intensive weight-loss intervention reduce the composite of cardiovascular death, nonfatal myocardial infarction, nonfatal stroke, or hospitalization for angina?",
+      "finding": "Weight and several risk factors improved more with the intensive program, but the trial did not demonstrate a statistically significant reduction in its primary cardiovascular outcome.",
+      "limits": "The trial stopped for futility after a median 9.6 years. The result does not establish equivalence and does not mean lifestyle care is without benefit; it applies to this population, intervention, comparator, and endpoint.",
+      "identifiers": {
+        "doi": "10.1056/NEJMoa1212914",
+        "pmid": "23796131"
+      },
+      "sources": [
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/23796131/",
+          "title": "Cardiovascular effects of intensive lifestyle intervention in type 2 diabetes",
+          "authorOrGroup": "Look AHEAD Research Group",
+          "year": 2013,
+          "accessedAt": "2026-09-07",
+          "doi": "10.1056/NEJMoa1212914",
+          "pmid": "23796131",
+          "authoritativeSource": "PubMed bibliographic record; the standard page returned without readable body text during the latest access check"
+        },
+        {
+          "url": "https://www.nejm.org/doi/full/10.1056/NEJMx140022",
+          "title": "Correction: Cardiovascular Effects of Intensive Lifestyle Intervention in Type 2 Diabetes",
+          "authorOrGroup": "New England Journal of Medicine",
+          "year": 2014,
+          "accessedAt": "2026-09-07",
+          "doi": "10.1056/NEJMx140022",
+          "authoritativeSource": "Publisher correction page; direct access returned HTTP 403 during the latest check"
+        }
+      ],
+      "correction": "NEJM 2014;370:1866, DOI 10.1056/NEJMx140022, adds hospitalization for angina to a secondary composite label in Table 2; the primary outcome summarized here is not that corrected label. The full correction page must be reopened before any numerical transfer."
+    },
+    {
+      "id": "select-cardiovascular-outcomes",
+      "originalTitle": "Semaglutide and Cardiovascular Outcomes in Obesity without Diabetes",
+      "citation": "Lincoff AM, Brown-Frandsen K, Colhoun HM, et al.; SELECT Trial Investigators. N Engl J Med. 2023;389(24):2221–2232.",
+      "year": 2023,
+      "design": "Multicenter, double-blind, placebo-controlled, event-driven superiority trial in adults with established cardiovascular disease, body-mass index of at least 27, and no history of diabetes.",
+      "question": "In this secondary-prevention population, did semaglutide reduce cardiovascular death, nonfatal myocardial infarction, or nonfatal stroke compared with placebo?",
+      "finding": "The composite primary cardiovascular outcome occurred less often with semaglutide, while permanent treatment discontinuation because of adverse events occurred more often.",
+      "limits": "The result cannot be generalized to people without established cardiovascular disease, to other molecules, or to every approach to obesity treatment. It does not show that weight loss alone explains the cardiovascular result. The study was industry funded, so the sponsor's role and disclosures require review alongside the full paper.",
+      "identifiers": {
+        "doi": "10.1056/NEJMoa2307563",
+        "pmid": "37952131"
+      },
+      "sources": [
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/37952131/",
+          "title": "Semaglutide and Cardiovascular Outcomes in Obesity without Diabetes",
+          "authorOrGroup": "SELECT Trial Investigators",
+          "year": 2023,
+          "accessedAt": "2026-09-07",
+          "doi": "10.1056/NEJMoa2307563",
+          "pmid": "37952131",
+          "authoritativeSource": "PubMed abstract and bibliographic record"
+        }
+      ]
+    }
+  ],
+  "searchedAt": "2026-09-07",
+  "correctionHistory": []
+}

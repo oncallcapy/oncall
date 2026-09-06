@@ -1,0 +1,95 @@
+{
+  "slug": "inside-mrna-evidence",
+  "theme": "molecular-medicine",
+  "pair": {
+    "ticker": "MRNA",
+    "company": "Moderna"
+  },
+  "title": "Inside mRNA Evidence",
+  "dek": "One file for trial synthesis, one for lymph-node biology, one for observed safety. Different lenses; no single one gets the whole microscope.",
+  "clinicalQuestion": "What can clinical trials, a small mechanistic study, and a nationwide observational analysis each tell us about mRNA vaccination?",
+  "whyItMatters": "Clinical efficacy, cellular mechanism, and safety surveillance are connected, but each uses a different denominator, time window, and standard of inference.",
+  "methods": "This dossier reads a systematic review of randomized trials, a longitudinal human immunology study, and a matched observational analysis as three separate evidence layers. It records the evidence cutoff and the main limits on transfer to current conditions.",
+  "synthesis": "The systematic review found randomized evidence that the examined mRNA vaccines reduced symptomatic disease under early-pandemic trial conditions, while certainty varied across outcomes. The mechanistic study observed persistent germinal-center responses in sampled draining lymph nodes, supporting a biological process of antibody maturation without proving lifelong protection. The nationwide analysis supplied large denominators for selected adverse events within a 42-day window and identified a myocarditis signal, while a separate infection analysis also found increased risks for myocarditis and other serious events. Benefit, mechanism, and safety require all three files—and careful labels on each.",
+  "limits": "The review searched through November 5, 2021; it does not answer protection against current variants or define a 2026 vaccination schedule. The mechanistic lymph-node sample was small. The safety analysis was observational, time-limited, and based on separate matched comparisons rather than a personalized head-to-head net-benefit calculation. None of these records substitutes for current public-health guidance or individual clinical advice.",
+  "studies": [
+    {
+      "id": "cochrane-covid-vaccine-review",
+      "originalTitle": "Efficacy and safety of COVID-19 vaccines",
+      "citation": "Graña C, Ghosn L, Evrenoglou T, et al. Cochrane Database Syst Rev. 2022;12:CD015477.",
+      "year": 2022,
+      "design": "Systematic review of randomized controlled trials with outcome-specific certainty assessed using GRADE; the evidence search ended on November 5, 2021.",
+      "question": "Compared with placebo, what did randomized trials show for symptomatic or severe COVID-19 and serious adverse events?",
+      "finding": "For the examined mRNA vaccines, randomized evidence showed a marked reduction in symptomatic disease. Certainty differed across outcomes, and sparse events limited inference for death and some safety outcomes.",
+      "limits": "Most trials had short follow-up and occurred under early-pandemic conditions. The review cannot establish current-variant protection or equal certainty for pregnancy, immunocompromised populations, and every safety outcome.",
+      "identifiers": {
+        "doi": "10.1002/14651858.CD015477",
+        "pmid": "36473651"
+      },
+      "sources": [
+        {
+          "url": "https://www.cochrane.org/evidence/CD015477_what-are-benefits-and-risks-vaccines-preventing-covid-19",
+          "title": "What are the benefits and risks of vaccines for preventing COVID-19?",
+          "authorOrGroup": "Cochrane",
+          "year": 2022,
+          "accessedAt": "2026-09-07",
+          "doi": "10.1002/14651858.CD015477",
+          "pmid": "36473651",
+          "authoritativeSource": "Cochrane evidence summary"
+        }
+      ]
+    },
+    {
+      "id": "germinal-centre-response",
+      "originalTitle": "SARS-CoV-2 mRNA vaccines induce persistent human germinal centre responses",
+      "citation": "Turner JS, O’Halloran JA, Kalaidina E, et al. Nature. 2021;596:109–113.",
+      "year": 2021,
+      "design": "Longitudinal human mechanistic study using peripheral blood and fine-needle aspirates from vaccine-draining lymph nodes; lymph-node sampling involved 14 participants.",
+      "question": "Did germinal-center B-cell responses persist in draining lymph nodes after mRNA vaccination?",
+      "finding": "Spike-binding germinal-center B cells and plasmablast responses persisted for weeks after the second dose, supporting a cellular pathway through which antibody responses can mature.",
+      "limits": "The mechanistic sample was small. A cellular response is not proof of lifelong protection or clinical effectiveness against every variant, and one vaccine regimen cannot represent every mRNA application.",
+      "identifiers": {
+        "doi": "10.1038/s41586-021-03738-2"
+      },
+      "sources": [
+        {
+          "url": "https://www.nature.com/articles/s41586-021-03738-2",
+          "title": "SARS-CoV-2 mRNA vaccines induce persistent human germinal centre responses",
+          "authorOrGroup": "Turner JS and colleagues",
+          "year": 2021,
+          "accessedAt": "2026-09-07",
+          "doi": "10.1038/s41586-021-03738-2",
+          "authoritativeSource": "Publisher article page and research summary; no claim of complete subscription-only full-text review"
+        }
+      ]
+    },
+    {
+      "id": "nationwide-vaccine-safety",
+      "originalTitle": "Safety of the BNT162b2 mRNA Covid-19 Vaccine in a Nationwide Setting",
+      "citation": "Barda N, Dagan N, Ben-Shlomo Y, et al. N Engl J Med. 2021;385:1078–1090.",
+      "year": 2021,
+      "design": "Matched observational cohort analysis using nationwide health-system records, with vaccinated versus unvaccinated and separate infected versus uninfected comparisons over a 42-day window.",
+      "question": "Which selected adverse events were observed more often after vaccination within the specified time window?",
+      "finding": "Most examined events showed no detected risk increase after vaccination, while myocarditis showed an increase. In a separate infection comparison, myocarditis and other serious events also increased; absolute differences and denominators are essential to interpretation.",
+      "limits": "The study was not randomized, so unmeasured confounding and recording differences may remain. Separate vaccine and infection cohorts are not a personalized direct net-benefit comparison, and population averages do not resolve every age or sex subgroup, longer follow-up, or current dosing regimens.",
+      "identifiers": {
+        "doi": "10.1056/NEJMoa2110475",
+        "pmid": "34432976"
+      },
+      "sources": [
+        {
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34432976/",
+          "title": "Safety of the BNT162b2 mRNA Covid-19 Vaccine in a Nationwide Setting",
+          "authorOrGroup": "Barda N and colleagues",
+          "year": 2021,
+          "accessedAt": "2026-09-07",
+          "doi": "10.1056/NEJMoa2110475",
+          "pmid": "34432976",
+          "authoritativeSource": "PubMed abstract and bibliographic record"
+        }
+      ]
+    }
+  ],
+  "searchedAt": "2026-09-07",
+  "correctionHistory": []
+}
