@@ -1,59 +1,157 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import ChartLayout from '../../layouts/ChartLayout.astro';
-import CitationList from '../../components/CitationList.astro';
-import OncallMascot from '../../components/OncallMascot.astro';
-import { SCIENCE_THEMES } from '../../config/scienceThemes';
+import EvidenceHeader from '../../components/EvidenceHeader.astro';
+import StudyRecord from '../../components/StudyRecord.astro';
 
 export async function getStaticPaths() {
-  const notes = await getCollection('science');
-  return notes.map((note) => ({ params: { slug: note.id }, props: { note } }));
+  const dossiers = await getCollection('science');
+  return dossiers.map((note) => ({ params: { slug: note.data.slug }, props: { note } }));
 }
+
 interface Props { note: CollectionEntry<'science'>; }
 const { note } = Astro.props;
 const { data } = note;
+
+const sourceAccessNotes = data.studies.flatMap((study) => study.sources.map((source) => ({
+  study: study.originalTitle,
+  source: source.authoritativeSource,
+  url: source.url,
+  accessedAt: source.accessedAt,
+}))).filter((record) => record.source);
+
+const studyCorrections = data.studies
+  .filter((study) => study.correction)
+  .map((study) => ({ title: study.originalTitle, note: study.correction! }));
+
+const mascotCommentary: Record<string, string> = {
+  'beyond-weight-and-cardiometabolic-outcomes': 'Three endpoints walked into a chart. Only one remembered to bring its definition.',
+  'evaluating-clinical-evidence-and-devices': 'The fanciest instrument in the room is still the question.',
+  'digital-care-and-patient-communication': 'A screen is furniture until a care pathway shows up.',
+  'inside-mrna-evidence': 'One microscope, one trial table, one safety ledger. Please stop stapling them together.',
+  'health-systems-and-recorded-outcomes': 'The database knows what was billed. It remains shy about the whole patient.',
+};
 ---
 
-<ChartLayout title={`${data.title} | Science Notes | ONCALL`} description={data.summary}>
-  <article>
-    <a href="/science/" class="meta">Back to Science Notes</a>
-    <h1>{data.title}</h1>
-    <p class="meta">File record <time datetime={data.publishedAt}>{data.publishedAt}</time></p>
-    <ul class="meta" aria-label="Clinical themes">{data.themes.map((theme) => <li>{SCIENCE_THEMES[theme]}</li>)}</ul>
-    <p class="summary">{data.summary}</p>
-    <section aria-labelledby="finding-heading">
-      <h2 id="finding-heading">What the evidence shows</h2>
-      <p>{data.finding}</p>
+<ChartLayout title={`${data.title} | Science Notes | ONCALL`} description={data.dek}>
+  <article class="science-dossier">
+    <EvidenceHeader dossier={data} />
+
+    <section class="dossier-prose" data-dossier-section="why-it-matters" aria-labelledby="why-heading">
+      <p class="section-number meta">01 / Why it matters</p>
+      <h2 id="why-heading" data-scientific-heading>What gets confused when labels get lazy</h2>
+      <p>{data.whyItMatters}</p>
     </section>
-    <section aria-labelledby="limits-heading">
-      <h2 id="limits-heading">What it does not prove</h2>
+
+    <section class="dossier-prose" data-dossier-section="methods" aria-labelledby="methods-heading">
+      <p class="section-number meta">02 / Methods</p>
+      <h2 id="methods-heading" data-scientific-heading>How this file was read</h2>
+      <p>{data.methods}</p>
+      <p class="search-note meta">Literature search recorded <time datetime={data.searchedAt}>{data.searchedAt}</time>. Selection is a focused source reading, not a systematic review or clinical guideline.</p>
+    </section>
+
+    <section class="dossier-prose synthesis" data-dossier-section="synthesis" aria-labelledby="synthesis-heading">
+      <p class="section-number meta">03 / Synthesis</p>
+      <h2 id="synthesis-heading" data-scientific-heading>Read across the three files</h2>
+      <p data-scientific-conclusion>{data.synthesis}</p>
+    </section>
+
+    <section class="study-files" data-dossier-section="study-files" aria-labelledby="studies-heading">
+      <div class="section-heading">
+        <div>
+          <p class="section-number meta">04 / Evidence enclosures</p>
+          <h2 id="studies-heading" data-scientific-heading>Three studies. Labels attached.</h2>
+        </div>
+        <p class="study-count" aria-hidden="true">03</p>
+      </div>
+      {data.studies.map((study, index) => <StudyRecord study={study} index={index} />)}
+    </section>
+
+    <section class="dossier-prose limits" data-dossier-section="cross-study-limits" aria-labelledby="limits-heading">
+      <p class="section-number meta">05 / Cross-study limits</p>
+      <h2 id="limits-heading" data-scientific-heading>Where the evidence stops</h2>
       <p>{data.limits}</p>
     </section>
-    <aside aria-labelledby="mascot-heading" class="mascot-note">
-      <OncallMascot context="note" />
+
+    <section class="records-section" data-dossier-section="reference-access" aria-labelledby="access-heading">
+      <p class="section-number meta">06 / Reference access</p>
+      <h2 id="access-heading" data-scientific-heading>What was available at the desk</h2>
+      <ol>
+        {sourceAccessNotes.map((record) => (
+          <li>
+            <p><strong>{record.study}</strong></p>
+            <p>{record.source}</p>
+            <p class="meta"><a href={record.url} rel="noopener noreferrer">Direct source</a> / accessed <time datetime={record.accessedAt}>{record.accessedAt}</time></p>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="records-section" data-dossier-section="correction-history" aria-labelledby="corrections-heading">
+      <p class="section-number meta">07 / Correction history</p>
+      <h2 id="corrections-heading" data-scientific-heading>Corrections travel with the finding</h2>
+      {studyCorrections.length === 0 && data.correctionHistory.length === 0 ? (
+        <p>No correction notice was identified in the recorded source check. This record can change if a publisher adds or updates a notice.</p>
+      ) : (
+        <ol>
+          {studyCorrections.map((correction) => <li><strong>{correction.title}</strong><p>{correction.note}</p></li>)}
+          {data.correctionHistory.map((correction) => <li><time datetime={correction.date}>{correction.date}</time><p>{correction.note}</p></li>)}
+        </ol>
+      )}
+    </section>
+
+    <aside class="mascot-commentary" data-dossier-section="mascot-commentary" aria-labelledby="commentary-heading">
+      <div class="mascot-stamp" aria-hidden="true">ON<br />CALL</div>
       <div>
-        <h2 id="mascot-heading">ONCALL's note</h2>
-        <p class="meta">Mascot commentary / Not a scientific conclusion</p>
-        <p>{data.mascotNote}</p>
+        <p class="meta" id="commentary-heading">Commentary / not a scientific conclusion</p>
+        <p>“{mascotCommentary[data.slug]}”</p>
       </div>
     </aside>
-    <section aria-labelledby="references-heading">
-      <h2 id="references-heading">Sources</h2>
-      <CitationList references={data.references} />
-    </section>
-    <p class="review-boundary">Educational content, not diagnosis or treatment advice. Source quality and interpretation require human review; schema validation establishes structure, not scientific truth.</p>
+
+    <footer class="dossier-boundary">
+      <p class="meta">End of evidence file / Educational use</p>
+      <p>This dossier does not provide diagnosis or treatment advice and does not imply issuer, journal, author, Robinhood, or PAR endorsement. Follow current clinical guidance for decisions about care.</p>
+      <a href="/science/">Close file / Return to Science Notes</a>
+    </footer>
   </article>
 </ChartLayout>
 
 <style>
-  h1 { margin-block: 1rem; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.05; overflow-wrap: anywhere; }
-  ul { padding-left: 1.2rem; }
-  .summary { font-size: 1.3rem; margin-top: 1.5rem; }
-  section, aside { margin-top: 2rem; }
-  h2 { font-size: 1.7rem; line-height: 1.15; margin-bottom: 0.85rem; }
-  .mascot-note { display: flex; align-items: center; gap: 1.5rem; padding: 1.25rem; border: 1px dashed var(--rule); }
-  .mascot-note h2 { font-family: var(--font-meta); font-size: 1rem; }
-  .mascot-note .meta { margin-bottom: 0.6rem; }
-  .review-boundary { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.95rem; }
-  @media (max-width: 35rem) { .mascot-note { flex-direction: column; align-items: start; } }
+  .dossier-prose, .study-files, .records-section, .mascot-commentary, .dossier-boundary { margin-top: clamp(3.5rem, 7vw, 6.5rem); }
+  .dossier-prose { display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: 0.4rem 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--ink); }
+  .dossier-prose .section-number { grid-row: 1 / span 2; color: var(--coral); font-weight: 800; }
+  .dossier-prose h2, .records-section h2, .section-heading h2 { max-width: 19ch; font-size: clamp(2.4rem, 5vw, 4.8rem); line-height: 0.9; text-transform: uppercase; }
+  .dossier-prose > p:not(.section-number) { grid-column: 2; max-width: 57ch; margin-top: 1.1rem; font-size: 1.24rem; }
+  .dossier-prose .search-note { padding: 0.8rem; border: 1px dashed var(--rule); color: var(--muted-ink); font-size: 0.72rem !important; }
+  .synthesis { padding: clamp(1.25rem, 3vw, 2.5rem); border: 0; background: var(--ink); color: var(--paper-raised); }
+  .synthesis .section-number { color: var(--coral); }
+  .synthesis > p:not(.section-number) { font-size: clamp(1.25rem, 2.3vw, 1.65rem); line-height: 1.45; }
+  .section-heading { display: flex; justify-content: space-between; gap: 1rem; align-items: end; padding-bottom: 1.25rem; border-bottom: 3px double var(--ink); }
+  .section-heading .section-number { margin-bottom: 0.6rem; color: var(--teal); font-weight: 800; }
+  .study-count { color: var(--coral); font-family: var(--font-display); font-size: clamp(5rem, 12vw, 10rem); line-height: 0.65; }
+  .limits { border-top-width: 0.55rem; border-top-color: var(--coral); }
+  .records-section { padding-top: 1.25rem; border-top: 3px double var(--ink); }
+  .records-section .section-number { margin-bottom: 0.6rem; color: var(--teal); font-weight: 800; }
+  .records-section ol { margin: 2rem 0 0; padding-left: 1.7rem; }
+  .records-section li { padding: 1rem 0 1rem 0.6rem; border-top: 1px solid var(--rule); overflow-wrap: anywhere; }
+  .records-section li::marker { color: var(--coral); font-family: var(--font-meta); font-weight: 800; }
+  .records-section li p + p { margin-top: 0.45rem; }
+  .mascot-commentary { display: grid; grid-template-columns: 5.5rem 1fr; gap: 1.5rem; align-items: center; padding: 1.25rem; border: 1px dashed var(--ink); }
+  .mascot-commentary .mascot-stamp { display: grid; place-items: center; aspect-ratio: 1; border: 3px double var(--coral); border-radius: 50%; color: var(--coral); font-family: var(--font-display); font-weight: 900; line-height: 0.8; text-align: center; transform: rotate(-5deg); }
+  .mascot-commentary .meta { margin-bottom: 0.4rem; color: var(--teal); font-weight: 800; }
+  .mascot-commentary div:last-child p:last-child { font-size: 1.35rem; font-style: italic; }
+  .dossier-boundary { padding: 1.25rem; border: 1px solid var(--ink); background: var(--paper-raised); }
+  .dossier-boundary p + p, .dossier-boundary a { margin-top: 0.6rem; }
+  .dossier-boundary a { display: inline-block; font-family: var(--font-meta); font-size: 0.75rem; font-weight: 800; text-transform: uppercase; text-decoration-color: var(--coral); }
+  @media (max-width: 40rem) {
+    .dossier-prose { grid-template-columns: 1fr; }
+    .dossier-prose .section-number { grid-row: auto; }
+    .dossier-prose > p:not(.section-number) { grid-column: 1; font-size: 1.125rem; }
+    .dossier-prose h2, .records-section h2, .section-heading h2 { font-size: 2.5rem; overflow-wrap: anywhere; }
+    .synthesis { padding: 1.15rem; }
+    .section-heading { align-items: start; }
+    .study-count { font-size: 4.5rem; }
+    .mascot-commentary { grid-template-columns: 4rem 1fr; gap: 0.8rem; padding: 0.9rem; }
+    .mascot-commentary div:last-child p:last-child { font-size: 1.1rem; }
+  }
 </style>

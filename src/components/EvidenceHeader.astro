@@ -1,0 +1,56 @@
+---
+import type { ScienceDossier } from '../content/schemas/scienceNote';
+import { SCIENCE_THEMES } from '../config/scienceThemes';
+
+interface Props { dossier: ScienceDossier; }
+const { dossier } = Astro.props;
+---
+
+<header class="evidence-header">
+  <a href="/science/" class="meta return-link">← Return to Science Notes</a>
+  <p class="meta file-code">ONCALL / Evidence file / {SCIENCE_THEMES[dossier.theme]}</p>
+  <h1 data-scientific-heading>{dossier.title}</h1>
+  <p class="dek">{dossier.dek}</p>
+
+  <section class="editorial-mapping" data-dossier-section="editorial-mapping" aria-labelledby="editorial-map-heading">
+    <p class="meta" id="editorial-map-heading">Editorial mapping</p>
+    <p><strong>{dossier.pair.ticker}</strong> / {dossier.pair.company}</p>
+    <p class="mapping-limit">The company association indexes this file within the five-pair editorial system. It does not indicate sponsorship, endorsement, or a scientific conclusion.</p>
+  </section>
+
+  <section class="clinical-question" data-dossier-section="clinical-question" aria-labelledby="clinical-question-heading">
+    <p class="meta question-label" id="clinical-question-heading">Clinical question</p>
+    <p data-scientific-conclusion>{dossier.clinicalQuestion}</p>
+  </section>
+
+  <div class="provenance" aria-label="Evidence provenance">
+    <p><span class="meta">Search recorded</span><time datetime={dossier.searchedAt}>{dossier.searchedAt}</time></p>
+    <p><span class="meta">Evidence status</span>Structured source reading</p>
+    <p><span class="meta">Review statement</span>This page does not claim recorded human clinical review.</p>
+  </div>
+</header>
+
+<style>
+  .evidence-header { position: relative; padding-bottom: 2.5rem; border-bottom: 3px double var(--ink); }
+  .return-link { display: inline-block; margin-bottom: 2.5rem; text-decoration-color: var(--coral); }
+  .file-code { color: var(--teal); font-weight: 800; }
+  h1 { max-width: 16ch; margin-block: 0.8rem 1rem; font-size: clamp(3.2rem, 8vw, 7rem); line-height: 0.82; letter-spacing: -0.035em; text-transform: uppercase; overflow-wrap: anywhere; }
+  .dek { max-width: 46rem; font-size: clamp(1.25rem, 2.2vw, 1.7rem); line-height: 1.32; }
+  .editorial-mapping { margin-top: 2.25rem; padding: 1rem 1.25rem; border-left: 0.5rem solid var(--coral); background: var(--paper-raised); }
+  .editorial-mapping > p + p { margin-top: 0.25rem; }
+  .editorial-mapping strong { font-family: var(--font-display); font-size: 1.4rem; }
+  .mapping-limit { max-width: 65ch; color: var(--muted-ink); font-size: 0.9rem; }
+  .clinical-question { display: grid; grid-template-columns: 8rem 1fr; gap: 1.25rem; margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--ink); }
+  .clinical-question > p:last-child { max-width: 42ch; font-size: clamp(1.65rem, 3vw, 2.45rem); line-height: 1.12; }
+  .question-label { color: var(--coral); font-weight: 800; }
+  .provenance { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 2.5rem; border: 1px solid var(--rule); background: var(--rule); font-family: var(--font-meta); font-size: 0.7rem; line-height: 1.45; }
+  .provenance p { padding: 0.8rem; background: var(--paper); }
+  .provenance span { display: block; margin-bottom: 0.25rem; color: #17635f; font-weight: 800; }
+  @media (max-width: 40rem) {
+    .return-link { margin-bottom: 1.5rem; }
+    h1 { font-size: clamp(2.6rem, 14vw, 4.5rem); }
+    .clinical-question { grid-template-columns: 1fr; gap: 0.55rem; }
+    .clinical-question > p:last-child { font-size: 1.55rem; }
+    .provenance { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,22 +1,88 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { SCIENCE_THEMES } from '../config/scienceThemes';
-interface Props { note: CollectionEntry<'science'>; }
-const { note } = Astro.props;
-const href = `/science/${note.id.split('/').map(encodeURIComponent).join('/')}/`;
+interface Props { note: CollectionEntry<'science'>; index: number; }
+const { note, index } = Astro.props;
+const href = `/science/${encodeURIComponent(note.data.slug)}/`;
 ---
 
-<article class="science-card">
-  <p class="meta"><time datetime={note.data.publishedAt}>{note.data.publishedAt}</time> / Science Note</p>
-  <h3><a href={href}>{note.data.title}</a></h3>
-  <p>{note.data.summary}</p>
-  <ul class="meta" aria-label="Clinical themes">
-    {note.data.themes.map((theme) => <li>{SCIENCE_THEMES[theme]}</li>)}
-  </ul>
-</article>
+<li class="science-card">
+  <a href={href} data-science-dossier-link>
+    <span class="file-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+    <span class="file-copy">
+      <span class="meta file-type">Evidence dossier / {SCIENCE_THEMES[note.data.theme]}</span>
+      <strong>{note.data.title}</strong>
+      <span class="file-dek">{note.data.dek}</span>
+      <span class="meta editorial-map" data-editorial-mapping>
+        Editorial mapping / {note.data.pair.ticker} · {note.data.pair.company}
+      </span>
+    </span>
+    <span class="file-action meta" aria-hidden="true">Open file <span>↗</span></span>
+  </a>
+</li>
 
 <style>
-  .science-card { padding-block: 1.5rem; border-top: 1px solid var(--rule); }
-  h3 { margin-block: 0.65rem; font-size: 1.7rem; line-height: 1.15; }
-  ul { padding-left: 1rem; margin-bottom: 0; }
+  .science-card {
+    position: relative;
+    margin-top: -1px;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    box-shadow: 0.35rem 0.35rem 0 color-mix(in srgb, var(--ink) 16%, transparent);
+  }
+  .science-card:nth-child(even) { transform: translateX(0.75rem); }
+  .science-card a {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr) auto;
+    gap: 1.25rem;
+    align-items: stretch;
+    min-height: 12rem;
+    padding: 0;
+    color: inherit;
+    text-decoration: none;
+  }
+  .science-card a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-left: 0 solid var(--coral);
+    transition: border-width 160ms ease, background 160ms ease;
+    pointer-events: none;
+  }
+  .science-card a:hover::before,
+  .science-card a:focus-visible::before { border-left-width: 0.55rem; background: rgb(237 128 107 / 7%); }
+  .science-card a:focus-visible { outline-color: var(--coral); outline-offset: 0.35rem; }
+  .file-index {
+    display: grid;
+    place-items: center;
+    border-right: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper-raised);
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+  .file-copy { display: flex; flex-direction: column; justify-content: center; gap: 0.7rem; padding-block: 1.4rem; }
+  .file-type { color: #17635f; font-weight: 700; }
+  strong { max-width: 23ch; font-family: var(--font-display); font-size: clamp(1.85rem, 3.5vw, 3rem); line-height: 0.94; text-transform: uppercase; }
+  .file-dek { max-width: 56ch; line-height: 1.4; }
+  .editorial-map { color: var(--muted-ink); }
+  .file-action {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 1rem;
+    border-left: 1px dashed var(--rule);
+    writing-mode: vertical-rl;
+  }
+  .file-action span { color: var(--coral); font-size: 1.1rem; }
+  @media (max-width: 40rem) {
+    .science-card:nth-child(even) { transform: none; }
+    .science-card a { grid-template-columns: 2.75rem minmax(0, 1fr); gap: 0; min-height: 0; }
+    .file-index { font-size: 1.45rem; }
+    .file-copy { padding: 1.2rem 1rem; }
+    strong { font-size: 1.85rem; overflow-wrap: anywhere; }
+    .file-dek { font-size: 1rem; }
+    .file-action { display: none; }
+  }
 </style>

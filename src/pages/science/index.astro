@@ -2,34 +2,64 @@
 import { getCollection } from 'astro:content';
 import ChartLayout from '../../layouts/ChartLayout.astro';
 import ScienceNoteCard from '../../components/ScienceNoteCard.astro';
-import { SCIENCE_THEMES } from '../../config/scienceThemes';
-const notes = (await getCollection('science')).sort((a, b) => b.data.publishedAt.localeCompare(a.data.publishedAt));
+import { SELECTED_PAIR_IDENTITIES } from '../../config/scienceThemes';
+
+const order = new Map(SELECTED_PAIR_IDENTITIES.map((pair, index) => [pair.symbol, index]));
+const dossiers = (await getCollection('science')).sort(
+  (a, b) => (order.get(a.data.pair.ticker) ?? 99) - (order.get(b.data.pair.ticker) ?? 99),
+);
 ---
 
-<ChartLayout title="Science Notes | ONCALL" description="Evidence-based medicine, transparent sources and explicit limits. Science Notes from ONCALL.">
-  <p class="meta">Case file 05 / Evidence desk</p>
-  <h1>Science Notes</h1>
-  <p class="intro">Evidence-based medicine, with the sources open and the limits visible.</p>
-  <p>Educational notes require human review of the evidence before publication. A valid content structure does not establish scientific truth. These notes do not provide diagnosis or treatment advice.</p>
-  <p class="program">The program follows five selected-pair research domains. See the <a href="/pairs/">exact market-to-domain map</a> for the editorial associations. Article titles, claims and conclusions stay brand-neutral and source-led; these associations imply no sponsorship, endorsement, clinical validation, or investment analysis.</p>
-  <section aria-labelledby="themes-heading">
-    <h2 id="themes-heading">Clinical themes</h2>
-    <ul class="themes">{Object.values(SCIENCE_THEMES).map((label) => <li>{label}</li>)}</ul>
-  </section>
-  {notes.length > 0 && <section aria-labelledby="notes-heading">
-    <h2 id="notes-heading">Science dossiers</h2>
-    {notes.map((note) => <ScienceNoteCard note={note} />)}
-  </section>}
-  <p class="routing">Looking for company identities or company-specific reporting? Open <a href="/pairs/">FIVE PAIRS</a> or <a href="/market-rounds/">MARKET ROUNDS</a>.</p>
+<ChartLayout title="Science Notes | ONCALL" description="Five medical evidence dossiers, fifteen traced studies, and the limits that belong beside every finding.">
+  <div class="science-index">
+    <header class="science-index__header">
+      <p class="meta eyebrow">Case file 05 / Evidence desk / On shift</p>
+      <h1>Science Notes</h1>
+      <p class="lead">Five files. Fifteen studies. Zero borrowed certainty.</p>
+      <p class="intro">Open a folder to inspect the question, study design, finding, and limit together. The pair label is an editorial index; the medicine answers to its sources.</p>
+    </header>
+
+    <aside class="reading-rule" aria-label="Science Notes reading rule">
+      <span class="reading-rule__stamp" aria-hidden="true">READ<br />THE<br />LIMITS</span>
+      <div>
+        <p class="meta">Records-room rule 05</p>
+        <p>These are educational evidence readings. They do not provide diagnosis, treatment advice, a clinical guideline, issuer research, or an investment conclusion.</p>
+      </div>
+    </aside>
+
+    <section class="dossier-register" aria-labelledby="dossiers-heading">
+      <div class="register-heading">
+        <h2 id="dossiers-heading">Open evidence files</h2>
+        <p class="meta">05 dossiers / 03 studies each / direct sources inside</p>
+      </div>
+      <ol>
+        {dossiers.map((note, index) => <ScienceNoteCard note={note} index={index} />)}
+      </ol>
+    </section>
+
+    <p class="routing">Company identities and market context live in <a href="/pairs/">FIVE PAIRS</a> and <a href="/market-rounds/">MARKET ROUNDS</a>. Source handling and project boundaries live in <a href="/sources-and-risks/">SOURCES &amp; RISKS</a>.</p>
+  </div>
 </ChartLayout>
 
 <style>
-  h1 { margin-block: 0.75rem 1.25rem; font-size: clamp(2.6rem, 6vw, 5rem); }
-  .program { margin-top: 1rem; }
-  .intro { font-size: 1.4rem; margin-bottom: 1rem; }
-  section { margin-top: 2.5rem; }
-  h2 { font-size: 1.6rem; margin-bottom: 1rem; }
-  .themes { padding-left: 1.3rem; }
-  .themes li + li { margin-top: 0.4rem; }
-  .routing { margin-top: 2rem; }
+  .science-index__header { padding-bottom: 2.5rem; border-bottom: 3px double var(--ink); }
+  .science-index { --science-coral-ink: #a44030; --science-teal-ink: #17635f; }
+  .eyebrow { color: var(--science-teal-ink); font-weight: 800; }
+  h1 { max-width: 9ch; margin-block: 0.75rem 1.1rem; font-size: clamp(4rem, 10vw, 8rem); line-height: 0.78; letter-spacing: -0.045em; text-transform: uppercase; }
+  .lead { max-width: 28ch; color: var(--science-coral-ink); font-family: var(--font-display); font-size: clamp(1.75rem, 3.5vw, 3rem); font-weight: 800; line-height: 1; text-transform: uppercase; }
+  .intro { max-width: 54ch; margin-top: 1.35rem; font-size: 1.22rem; }
+  .reading-rule { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1.4rem; align-items: center; margin-top: 2.5rem; padding: 1.2rem; border: 1px dashed var(--ink); }
+  .reading-rule__stamp { display: grid; place-items: center; min-height: 5rem; border: 3px double var(--science-coral-ink); color: var(--science-coral-ink); font-family: var(--font-display); font-size: 1.2rem; font-weight: 900; line-height: 0.86; text-align: center; transform: rotate(-3deg); }
+  .reading-rule .meta { margin-bottom: 0.35rem; color: var(--science-teal-ink); font-weight: 800; }
+  .dossier-register { margin-top: 3.5rem; }
+  .register-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem 2rem; align-items: end; margin-bottom: 1.25rem; }
+  h2 { font-size: clamp(2.2rem, 4vw, 3.75rem); text-transform: uppercase; }
+  .dossier-register ol { margin: 0; padding: 0 0.75rem 0 0; list-style: none; }
+  .routing { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--ink); }
+  @media (max-width: 40rem) {
+    h1 { font-size: clamp(3.3rem, 18vw, 5.2rem); }
+    .reading-rule { grid-template-columns: 4.5rem 1fr; gap: 0.85rem; padding: 0.85rem; }
+    .reading-rule__stamp { font-size: 0.95rem; }
+    .dossier-register ol { padding-right: 0; }
+  }
 </style>

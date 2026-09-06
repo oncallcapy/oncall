@@ -32,6 +32,19 @@
   color: var(--muted-ink);
 }
 
+/* Science files need more breathing room than the short records. Their paper
+   remains part of the same physical chart while long reading moves into flow. */
+.editorial-file:has(.science-index),
+.editorial-file:has(.science-dossier) {
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(circle at 11% 7%, rgb(24 60 60 / 3%) 0 0.09rem, transparent 0.11rem),
+    linear-gradient(102deg, transparent 0 71%, rgb(24 60 60 / 2%) 71% 72%, transparent 72%);
+  background-size: 1.1rem 1.1rem, 100% 100%;
+}
+
+.editorial-file:has(.science-dossier) { max-width: 68rem; }
+
 @media (min-width: 48rem) and (max-width: 77rem) {
   .editorial-file--opening { width: min(100% - 2rem, 28rem); }
 }

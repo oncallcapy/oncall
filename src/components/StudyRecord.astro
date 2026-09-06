@@ -1,0 +1,90 @@
+---
+import type { StudyRecord as StudyRecordType } from '../content/schemas/scienceNote';
+import CitationList from './CitationList.astro';
+
+interface Props { study: StudyRecordType; index: number; }
+const { study, index } = Astro.props;
+const fileNumber = String(index + 1).padStart(2, '0');
+---
+
+<article class="study-record" data-study-record>
+  <header>
+    <div class="study-tab" aria-hidden="true">STUDY {fileNumber}</div>
+    <p class="meta">Evidence enclosure / {study.year}</p>
+    <h3 data-scientific-heading>{study.originalTitle}</h3>
+    <p class="citation-line">{study.citation}</p>
+  </header>
+
+  <dl class="study-reading">
+    <div><dt>Study design</dt><dd>{study.design}</dd></div>
+    <div><dt>Question</dt><dd>{study.question}</dd></div>
+    <div><dt>Finding</dt><dd data-scientific-conclusion>{study.finding}</dd></div>
+    <div><dt>Limits</dt><dd>{study.limits}</dd></div>
+  </dl>
+
+  <div class="identifiers" aria-label="Study identifiers">
+    <p class="meta">Record identifiers</p>
+    {study.identifiers.doi && <p><strong>DOI</strong> {study.identifiers.doi}</p>}
+    {study.identifiers.pmid && <p><strong>PMID</strong> {study.identifiers.pmid}</p>}
+  </div>
+
+  {study.correction && (
+    <aside class="correction">
+      <p class="meta">Correction record</p>
+      <p>{study.correction}</p>
+    </aside>
+  )}
+
+  <section class="source-pocket" aria-labelledby={`sources-${study.id}`}>
+    <h4 id={`sources-${study.id}`}>Direct source record{study.sources.length === 1 ? '' : 's'}</h4>
+    <CitationList references={study.sources} />
+  </section>
+</article>
+
+<style>
+  .study-record {
+    position: relative;
+    margin-top: 3.5rem;
+    padding: clamp(1.2rem, 3vw, 2.4rem);
+    border: 1px solid var(--ink);
+    background:
+      linear-gradient(90deg, transparent 3.2rem, rgb(237 128 107 / 34%) 3.2rem, rgb(237 128 107 / 34%) calc(3.2rem + 1px), transparent calc(3.2rem + 1px)),
+      repeating-linear-gradient(0deg, transparent 0, transparent 1.7rem, rgb(24 60 60 / 7%) 1.7rem, rgb(24 60 60 / 7%) calc(1.7rem + 1px)),
+      var(--paper-raised);
+    box-shadow: 0.45rem 0.55rem 0 var(--paper-edge), 0.55rem 0.7rem 0 var(--ink);
+  }
+  .study-record::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 2.1rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: var(--paper);
+    box-shadow: 0 7rem 0 var(--paper), 0 7rem 0 1px var(--rule), 0 14rem 0 var(--paper), 0 14rem 0 1px var(--rule);
+  }
+  header, .study-reading, .identifiers, .correction, .source-pocket { margin-left: 2.6rem; }
+  .study-tab { position: absolute; top: -1.85rem; right: 1.25rem; padding: 0.45rem 1rem; border: 1px solid var(--ink); border-bottom: 0; background: var(--teal); color: var(--paper-raised); font-family: var(--font-meta); font-size: 0.7rem; letter-spacing: 0.08em; }
+  h3 { max-width: 24ch; margin-block: 0.55rem 0.75rem; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 0.98; }
+  .citation-line { max-width: 66ch; font-style: italic; }
+  .study-reading { margin-top: 2rem; }
+  .study-reading div { display: grid; grid-template-columns: 8rem 1fr; gap: 1.2rem; padding-block: 1rem; border-top: 1px solid var(--rule); }
+  dt { color: var(--teal); font-family: var(--font-meta); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+  dd { margin: 0; }
+  .identifiers { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-top: 1.5rem; padding: 0.8rem 1rem; border: 1px dashed var(--ink); font-family: var(--font-meta); font-size: 0.72rem; overflow-wrap: anywhere; }
+  .correction { margin-top: 1.5rem; padding: 1rem; border-left: 0.4rem solid var(--coral); background: #fff3dd; }
+  .correction p + p { margin-top: 0.4rem; }
+  .source-pocket { margin-top: 1.75rem; padding-top: 1.25rem; border-top: 3px double var(--ink); }
+  h4 { margin: 0 0 1rem; font-family: var(--font-meta); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  @media (max-width: 40rem) {
+    .study-record { padding: 1.1rem 0.85rem 1.1rem 0.7rem; background: var(--paper-raised); }
+    .study-record::before { display: none; }
+    header, .study-reading, .identifiers, .correction, .source-pocket { margin-left: 0; }
+    h3 { font-size: 1.85rem; overflow-wrap: anywhere; }
+    .study-reading div { grid-template-columns: 1fr; gap: 0.35rem; }
+    .identifiers { display: block; }
+    .identifiers p + p { margin-top: 0.35rem; }
+  }
+</style>

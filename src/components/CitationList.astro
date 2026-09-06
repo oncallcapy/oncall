@@ -7,8 +7,8 @@ const { references } = Astro.props;
 <ol class="citations">
   {references.map((reference) => (
     <li>
-      <p>{reference.authorOrGroup}. {reference.title}. {reference.year}.</p>
-      <p><a href={reference.url} rel="noopener noreferrer">Read source: {reference.title}</a></p>
+      <p class="source-name">{reference.authorOrGroup}. {reference.title}. {reference.year}.</p>
+      <p class="source-link"><a href={reference.url} rel="noopener noreferrer">Open direct source <span aria-hidden="true">↗</span></a></p>
       <dl>
         {reference.doi && <div><dt>DOI</dt><dd>{reference.doi}</dd></div>}
         {reference.pmid && <div><dt>PMID</dt><dd>{reference.pmid}</dd></div>}
@@ -21,9 +21,13 @@ const { references } = Astro.props;
 </ol>
 
 <style>
-  .citations { padding-left: 1.4rem; }
-  li { padding-left: 0.4rem; margin-bottom: 1.5rem; overflow-wrap: anywhere; }
+  .citations { margin: 0; padding-left: 1.4rem; }
+  li { padding-left: 0.4rem; margin-bottom: 1.25rem; overflow-wrap: anywhere; }
+  li::marker { color: var(--coral); font-family: var(--font-meta); }
   p + p { margin-top: 0.35rem; }
+  .source-name { line-height: 1.35; }
+  .source-link { font-family: var(--font-meta); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; }
+  .source-link a { text-decoration-color: var(--coral); text-decoration-thickness: 2px; }
   dl { margin-block: 0.65rem 0; font-family: var(--font-meta); font-size: 0.8rem; }
   dl div { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; }
   dt { font-weight: 700; }
