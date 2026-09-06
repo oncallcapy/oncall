@@ -7,11 +7,15 @@ export default defineConfig({
   },
   webServer: {
     command:
-      "trap 'npm run dev -- stop >/dev/null 2>&1' EXIT INT TERM; npm run dev -- --host 127.0.0.1; while true; do sleep 1; done",
+      "trap 'npm run dev -- stop >/dev/null 2>&1; trap - EXIT; exit 0' EXIT INT TERM; npm run dev -- --host 127.0.0.1; while true; do sleep 1; done",
     env: {
       ASTRO_TELEMETRY_DISABLED: "1"
     },
     port: 4321,
-    reuseExistingServer: true
+    reuseExistingServer: false,
+    gracefulShutdown: {
+      signal: "SIGTERM",
+      timeout: 5_000
+    }
   }
 });
