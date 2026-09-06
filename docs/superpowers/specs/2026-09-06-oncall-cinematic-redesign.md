@@ -9,6 +9,7 @@ The following images are the visual contract for the redesign:
 
 - [`assets/concepts/oncall-opening-approved-v1.png`](../../../assets/concepts/oncall-opening-approved-v1.png) — first-view opening state.
 - [`assets/concepts/oncall-science-open-approved-v1.png`](../../../assets/concepts/oncall-science-open-approved-v1.png) — an opened Science Notes file.
+- [`assets/concepts/oncall-3d-turntable-approved-v1.png`](../../../assets/concepts/oncall-3d-turntable-approved-v1.png) — canonical four-view 3D character reference, approved by Erdem on 2026-09-06.
 
 They establish the character identity, scene, palette, lighting, material quality, scale, and information hierarchy. They are concept targets, not flattened substitutes for the final interface. Text, navigation, citations, and accessibility remain real HTML.
 
@@ -60,7 +61,7 @@ The 3D stage loads after the initial HTML has rendered. It uses a capped pixel r
 Implementation advances only after these review points:
 
 1. **Approved:** opening and opened-Science concept images.
-2. **Next:** canonical 3D turntable showing front, three-quarter, side, materials, and expression.
+2. **Approved:** canonical 3D turntable showing front, three-quarter, side, back, materials, and expression.
 3. Opening motion clip: lamp, look, coffee, folder stack, and final pose.
 4. File-transition prototype: walk, reach, pull, open, cancel, and latest-click behavior.
 5. Desktop and mobile interactive prototype with real typography.
