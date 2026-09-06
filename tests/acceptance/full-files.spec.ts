@@ -60,6 +60,8 @@ test('Night Shift contains three original X-ready mascot entries without perform
   await page.goto('/night-shift/');
   await expect(page.locator('[data-night-shift-entry]')).toHaveCount(3);
   await expect(page.locator('main')).not.toContainText(/guaranteed|100x|moon|profit|returns?\b/i);
+  await expect(page.locator('main')).toContainText('opened the five folders');
+  await expect(page.locator('main')).not.toContainText(/reviewed the five folders/i);
   for (const entry of await page.locator('[data-night-shift-entry]').all()) {
     await expect(entry).toContainText('ONCALL');
     expect((await entry.innerText()).length).toBeGreaterThan(90);

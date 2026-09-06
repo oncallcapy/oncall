@@ -1,6 +1,6 @@
 # MultiPair Project on PAR — Shared Project Brief
 
-_Last updated: 2026-09-06_
+_Last updated: 2026-09-07_
 
 ## Objective
 
@@ -20,15 +20,21 @@ serious in craft and evidence while keeping a dry, mischievous sense of humour.
 - Mascot: an original anthropomorphic capybara night-shift clinician.
 - Personality: calm, clever, scientifically curious, dry humour, mildly
   mischievous; never loud, childish, manic, or salesy.
-- Visual reference: `assets/brand/oncall-visual-direction-01.png`.
-- Current palette: ivory `#F4F0E6`, deep ink `#183C3C`, teal `#287C78`, fur
-  `#C69C72`, coral `#ED806B`.
+- Current visual references: the accepted desktop/mobile records-room plates,
+  opened-file plate and capybara turntable in `assets/concepts/`. The earlier
+  `assets/brand/oncall-visual-direction-01.png` is retained as visual history,
+  not as the active rendering constraint.
+- Current palette: near-black night tones, deep ink green `#183C3C`, petrol
+  teal `#287C78`, ivory paper `#F4F0E6`, natural fur brown `#C69C72`, and
+  restrained coral `#ED806B`.
 - Character invariants: capybara silhouette and muzzle, half-lidded eyes,
-  petrol-teal V-neck scrubs, dark stethoscope, coral badge on left chest,
-  flat 2D editorial illustration, rounded dark outlines, at most one shadow
-  tone, no gradients or glossy crypto imagery.
-- The first image is a direction board, not the final character sheet. Small
-  depictions contain accessory drift and the generated date is incorrect.
+  natural warm-brown fur, petrol-teal V-neck scrubs, dark stethoscope and coral
+  badge on the left chest. The accepted expression is cinematic and tactile;
+  do not regress the website mascot to the old flat 2D direction.
+- The current prototype uses approved rendered desktop, mobile and open-file
+  plates with accessible HTML controls and CSS state transitions. The approved
+  turntable is a production-rig reference; a textured, rigged and articulated
+  3D model does not yet exist.
 
 ## Content system
 
@@ -62,6 +68,9 @@ from the design principles, not its expression or assets:
   metadata, sources, timestamps, addresses, and on-chain facts.
 - Use tactile paper, stamps, annotations, clipped mascot art, and restrained
   motion. Create all assets and layouts originally.
+- Use the approved text-free desktop/mobile opening plates and open-file scene
+  as the current implementation source. Print the live number, accent and label
+  parallel to each physical folder spine; keep the underlying links accessible.
 - Do not copy Mosby's folder stack, page composition, colour mapping, text,
   illustrations, photography, CSS, or animation choreography.
 
