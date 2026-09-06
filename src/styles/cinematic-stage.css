@@ -46,3 +46,37 @@
 @media (prefers-reduced-motion: reduce) {
   #cinematic-skip { display: none; }
 }
+
+/* The stage persists while the ordinary HTML file is swapped by Astro. */
+.cinematic-stage[data-motion='walk'] .scene-plate img { transform-origin: 35% 65%; }
+.cinematic-stage[data-motion='inspect'] .scene-plate img { transform-origin: 50% 55%; }
+#cinematic-skip { z-index: 4; cursor: pointer; }
+#cinematic-skip:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.cinematic-stage:not([data-enhanced]) #cinematic-skip,
+.cinematic-stage[data-opening='settled'] #cinematic-skip { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-stage *, .cinematic-stage *::before, .cinematic-stage *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (min-width: 48rem) {
+  /* Real HTML sits on the opened paper; long files continue down the document. */
+  .cinematic-stage:not([data-surface='opening']) ~ .editorial-file {
+    position: relative;
+    z-index: 3;
+    width: min(61vw, 58rem);
+    margin-top: calc(-1 * min(48rem, 92vh, calc(100svh - 6rem)) + 6rem);
+    margin-left: clamp(1.5rem, 4vw, 4rem);
+    margin-right: auto;
+    padding: clamp(1.5rem, 3vw, 3rem);
+    background: rgb(244 240 230 / 96%);
+  }
+}
+
+@media (max-width: 47.999rem) {
+  .cinematic-stage:not([data-surface='opening']) { padding-top: 48vw; }
+  .cinematic-stage:not([data-surface='opening']) .scene-plate { height: 48vw; }
+}

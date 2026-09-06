@@ -12,6 +12,8 @@ const fileId = resolveFileId(currentPath);
 <section
   class="cinematic-stage"
   data-cinematic-stage
+  transition:persist="cinematic-room"
+  transition:animate="none"
   data-surface={surface}
   data-file-id={fileId}
   aria-label="ONCALL night-shift records room"
@@ -28,8 +30,5 @@ const fileId = resolveFileId(currentPath);
 </section>
 
 <script>
-  document.addEventListener('click', (event) => {
-    const target = event.target instanceof Element ? event.target.closest('#cinematic-skip') : null;
-    if (target instanceof HTMLButtonElement) document.querySelector<HTMLElement>('[data-file-content]')?.focus();
-  });
+  import '../client/cinematic/bootstrap';
 </script>

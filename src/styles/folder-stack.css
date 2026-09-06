@@ -64,3 +64,31 @@
   .file-stack a:focus-visible,
   .file-stack a[aria-current='page'] { transform: translateX(-0.35rem); }
 }
+
+.cinematic-stage[data-target-file] .file-stack a[aria-current='page'] {
+  border-left-color: var(--coral);
+  box-shadow: -0.35rem 0.7rem 1.3rem rgb(6 25 24 / 48%);
+}
+
+.cinematic-stage:not([data-surface='opening']) .file-stack ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.cinematic-stage:not([data-surface='opening']) .file-stack li { transform: none; }
+.cinematic-stage:not([data-surface='opening']) .file-stack a {
+  min-height: 3.25rem;
+  height: 100%;
+  gap: 0.4rem;
+  padding: 0.55rem;
+}
+.cinematic-stage:not([data-surface='opening']) .file-label {
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
+@media (min-width: 48rem) {
+  .cinematic-stage:not([data-surface='opening']) .file-stack {
+    right: 2vw;
+    bottom: 1.5rem;
+    width: 29vw;
+  }
+}
