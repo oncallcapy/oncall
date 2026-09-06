@@ -1,0 +1,59 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import ChartLayout from '../../layouts/ChartLayout.astro';
+import CitationList from '../../components/CitationList.astro';
+import OncallMascot from '../../components/OncallMascot.astro';
+import { SCIENCE_THEMES } from '../../config/scienceThemes';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('science');
+  return notes.map((note) => ({ params: { slug: note.id }, props: { note } }));
+}
+interface Props { note: CollectionEntry<'science'>; }
+const { note } = Astro.props;
+const { data } = note;
+---
+
+<ChartLayout title={`${data.title} | Science Notes | ONCALL`} description={data.summary}>
+  <article>
+    <a href="/science/" class="meta">Back to Science Notes</a>
+    <h1>{data.title}</h1>
+    <p class="meta">Published <time datetime={data.publishedAt}>{data.publishedAt}</time></p>
+    <ul class="meta" aria-label="Clinical themes">{data.themes.map((theme) => <li>{SCIENCE_THEMES[theme]}</li>)}</ul>
+    <p class="summary">{data.summary}</p>
+    <section aria-labelledby="finding-heading">
+      <h2 id="finding-heading">What the evidence shows</h2>
+      <p>{data.finding}</p>
+    </section>
+    <section aria-labelledby="limits-heading">
+      <h2 id="limits-heading">What it does not prove</h2>
+      <p>{data.limits}</p>
+    </section>
+    <aside aria-labelledby="mascot-heading" class="mascot-note">
+      <OncallMascot context="note" />
+      <div>
+        <h2 id="mascot-heading">ONCALL's note</h2>
+        <p class="meta">Mascot commentary / Not a scientific conclusion</p>
+        <p>{data.mascotNote}</p>
+      </div>
+    </aside>
+    <section aria-labelledby="references-heading">
+      <h2 id="references-heading">Sources</h2>
+      <CitationList references={data.references} />
+    </section>
+    <p class="review-boundary">Educational content, not diagnosis or treatment advice. Source quality and interpretation require human review; schema validation establishes structure, not scientific truth.</p>
+  </article>
+</ChartLayout>
+
+<style>
+  h1 { margin-block: 1rem; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1.05; overflow-wrap: anywhere; }
+  ul { padding-left: 1.2rem; }
+  .summary { font-size: 1.3rem; margin-top: 1.5rem; }
+  section, aside { margin-top: 2rem; }
+  h2 { font-size: 1.7rem; line-height: 1.15; margin-bottom: 0.85rem; }
+  .mascot-note { display: flex; align-items: center; gap: 1.5rem; padding: 1.25rem; border: 1px dashed var(--rule); }
+  .mascot-note h2 { font-family: var(--font-meta); font-size: 1rem; }
+  .mascot-note .meta { margin-bottom: 0.6rem; }
+  .review-boundary { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.95rem; }
+  @media (max-width: 35rem) { .mascot-note { flex-direction: column; align-items: start; } }
+</style>

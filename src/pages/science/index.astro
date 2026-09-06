@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content';
+import ChartLayout from '../../layouts/ChartLayout.astro';
+import ScienceNoteCard from '../../components/ScienceNoteCard.astro';
+import OncallMascot from '../../components/OncallMascot.astro';
+import { SCIENCE_THEMES } from '../../config/scienceThemes';
+const notes = (await getCollection('science')).sort((a, b) => b.data.publishedAt.localeCompare(a.data.publishedAt));
+---
+
+<ChartLayout title="Science Notes | ONCALL" description="Evidence-based medicine, transparent sources and explicit limits. Science Notes from ONCALL.">
+  <p class="meta">Case file 05 / Evidence desk</p>
+  <h1>Science Notes</h1>
+  <p class="intro">Evidence-based medicine, with the sources open and the limits visible.</p>
+  <p>Educational notes require human review of the evidence before publication. A valid content structure does not establish scientific truth. These notes do not provide diagnosis or treatment advice.</p>
+  <section aria-labelledby="themes-heading">
+    <h2 id="themes-heading">Clinical themes</h2>
+    <ul class="themes">{Object.values(SCIENCE_THEMES).map((label) => <li>{label}</li>)}</ul>
+  </section>
+  <section aria-labelledby="notes-heading">
+    <h2 id="notes-heading">Reviewed notes</h2>
+    {notes.length > 0 ? notes.map((note) => <ScienceNoteCard note={note} />) : (
+      <div class="empty-state">
+        <div>
+          <p class="meta">Publication status / Empty file</p>
+          <p class="empty-title">No reviewed Science Note has been published yet.</p>
+          <p>The evidence desk is waiting for a sourced, reviewed note. No sample articles are presented as reviewed work.</p>
+        </div>
+        <OncallMascot context="note" />
+      </div>
+    )}
+  </section>
+  <p class="routing">Looking for company identities or company-specific reporting? Open <a href="/pairs/">FIVE PAIRS</a> or <a href="/market-rounds/">MARKET ROUNDS</a>.</p>
+</ChartLayout>
+
+<style>
+  h1 { margin-block: 0.75rem 1.25rem; font-size: clamp(2.6rem, 6vw, 5rem); }
+  .intro { font-size: 1.4rem; margin-bottom: 1rem; }
+  section { margin-top: 2.5rem; }
+  h2 { font-size: 1.6rem; margin-bottom: 1rem; }
+  .themes { padding-left: 1.3rem; }
+  .themes li + li { margin-top: 0.4rem; }
+  .empty-state { display: flex; align-items: center; gap: 1.5rem; border-block: 1px solid var(--rule); padding-block: 1.5rem; }
+  .empty-title { margin-block: 0.75rem; font-weight: 700; }
+  .routing { margin-top: 2rem; }
+  @media (max-width: 35rem) { .empty-state { flex-direction: column; align-items: start; } }
+</style>

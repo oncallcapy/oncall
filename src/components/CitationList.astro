@@ -1,0 +1,31 @@
+---
+import type { ScienceReference } from '../content/schemas/scienceNote';
+interface Props { references: ScienceReference[]; }
+const { references } = Astro.props;
+---
+
+<ol class="citations">
+  {references.map((reference) => (
+    <li>
+      <p>{reference.authorOrGroup}. {reference.title}. {reference.year}.</p>
+      <p><a href={reference.url} rel="noopener noreferrer">Read source: {reference.title}</a></p>
+      <dl>
+        {reference.doi && <div><dt>DOI</dt><dd>{reference.doi}</dd></div>}
+        {reference.pmid && <div><dt>PMID</dt><dd>{reference.pmid}</dd></div>}
+        {reference.registryId && <div><dt>Registry ID</dt><dd>{reference.registryId}</dd></div>}
+        {reference.authoritativeSource && <div><dt>Authoritative source</dt><dd>{reference.authoritativeSource}</dd></div>}
+        <div><dt>Accessed</dt><dd><time datetime={reference.accessedAt}>{reference.accessedAt}</time></dd></div>
+      </dl>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .citations { padding-left: 1.4rem; }
+  li { padding-left: 0.4rem; margin-bottom: 1.5rem; overflow-wrap: anywhere; }
+  p + p { margin-top: 0.35rem; }
+  dl { margin-block: 0.65rem 0; font-family: var(--font-meta); font-size: 0.8rem; }
+  dl div { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; }
+  dt { font-weight: 700; }
+  dd { margin: 0; }
+</style>
