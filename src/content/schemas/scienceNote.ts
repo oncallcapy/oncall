@@ -6,9 +6,12 @@ const escapeRegex = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$
 const excludedNames = SCIENCE_FRAMING_EXCLUSIONS.flatMap(({ symbol, company }) => [symbol, company]);
 const framingPattern = new RegExp(
   `(?<![\\p{L}\\p{N}_])(?:${excludedNames.map((name) => escapeRegex(name).replace(/\s+/g, '\\s+')).join('|')})(?![\\p{L}\\p{N}_])`,
-  'iu',
+  'giu',
 );
-const evidenceFraming = nonBlank.refine((text) => !framingPattern.test(text), {
+// Exact biological spelling is allowed; uppercase MRNA and all other known
+// candidate framing remain excluded, including later matches in the same field.
+const evidenceFraming = nonBlank.refine((text) =>
+  [...text.matchAll(framingPattern)].every(([match]) => match === 'mRNA'), {
   message: 'Science Notes use evidence-based clinical framing. Candidate company and ticker framing belongs in FIVE PAIRS or MARKET ROUNDS.',
 });
 

@@ -32,11 +32,17 @@ describe('Science Note publication structure and editorial guardrails', () => {
   });
 
   for (const field of framingFields) {
-    it.each(['LLY', 'jnj', '$HIMS', '(mRnA)', 'UNH'])
+    it(`accepts biological mRNA in ${field}`, () => {
+      expect(scienceNoteSchema.safeParse({ ...note, [field]: 'Understanding mRNA in molecular medicine.' }).success).toBe(true);
+    });
+    it.each(['MRNA', 'Moderna'])(`still rejects prohibited framing after biological mRNA in ${field}: %s`, (prohibited) => {
+      expect(scienceNoteSchema.safeParse({ ...note, [field]: `Understanding mRNA alongside ${prohibited}.` }).success).toBe(false);
+    });
+    it.each(['LLY', 'jnj', '$HIMS', '(mRnA)', 'MRNA', 'UNH'])
       (`rejects a candidate ticker in ${field}: %s`, (ticker) => {
         expect(scienceNoteSchema.safeParse({ ...note, [field]: `A note on ${ticker}.` }).success).toBe(false);
       });
-    it.each(['Eli Lilly and Company', 'johnson & johnson', 'Hims & Hers Health', 'MODERNA', 'UnitedHealth Group'])
+    it.each(['Eli Lilly and Company', 'johnson & johnson', 'Hims & Hers Health', 'Moderna', 'UnitedHealth Group'])
       (`rejects a candidate company in ${field}: %s`, (company) => {
         expect(scienceNoteSchema.safeParse({ ...note, [field]: `Evidence about ${company}.` }).success).toBe(false);
       });
