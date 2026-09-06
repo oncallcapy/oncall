@@ -1,0 +1,22 @@
+:root {
+  color-scheme: light;
+  --paper: #f4f0e6;
+  --paper-raised: #fffcf3;
+  --paper-edge: #dfdacb;
+  --ink: #183c3c;
+  --teal: #287c78;
+  --coral: #ed806b;
+  --muted-ink: #50625b;
+  --rule: #b1b6a7;
+  --desk: #173a39;
+  --font-display: 'Avenir Next Condensed', 'Arial Narrow', 'Liberation Sans Narrow', Impact, sans-serif;
+  --font-narrative: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+  --font-meta: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --chart-width: 90rem;
+  --tabs-width: 12.75rem;
+}

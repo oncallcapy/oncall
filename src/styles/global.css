@@ -1,0 +1,96 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--desk);
+  color: var(--ink);
+  font-family: var(--font-narrative);
+  font-size: 1.125rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  display: block;
+  height: 0.45rem;
+  background: var(--coral);
+}
+a { color: inherit; text-underline-offset: 0.2em; }
+button, input, textarea, select { font: inherit; }
+img, svg { display: block; max-width: 100%; }
+h1, h2, h3, p { margin-block: 0; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1; }
+::selection { background: var(--coral); color: var(--ink); }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 5px; }
+.skip-link {
+  position: fixed;
+  z-index: 10;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--paper-raised);
+  transform: translateY(-180%);
+  font-family: var(--font-meta);
+}
+.skip-link:focus { transform: translateY(0); }
+.meta {
+  font-family: var(--font-meta);
+  font-size: 0.6875rem;
+  letter-spacing: 0.075em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+.chart {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--tabs-width);
+  align-items: start;
+  max-width: var(--chart-width);
+  margin: 2rem auto 4rem;
+  padding-inline: clamp(1rem, 3vw, 3rem);
+}
+.chart-header { grid-column: 1 / -1; }
+.chart-content {
+  position: relative;
+  grid-column: 1;
+  grid-row: 2;
+  min-width: 0;
+  min-height: 38rem;
+  padding: clamp(1.5rem, 4vw, 4rem);
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  box-shadow: -0.35rem 0.45rem 0 var(--paper-edge), -0.4rem 0.5rem 0 var(--ink);
+}
+.chart-content:focus { outline-offset: -7px; }
+.chart-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted-ink);
+}
+
+@media (max-width: 47.999rem) {
+  .chart {
+    grid-template-columns: minmax(0, 1fr);
+    margin-block: 1rem 2rem;
+    padding-inline: 0.875rem;
+  }
+  .chart-content { grid-column: 1; grid-row: 3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
