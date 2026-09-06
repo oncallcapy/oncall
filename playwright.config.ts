@@ -1,8 +1,8 @@
 import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
-  testDir: "tests/smoke",
-  testMatch: "**/*.spec.ts",
+  testDir: "tests",
+  testMatch: ["smoke/**/*.spec.ts", "acceptance/**/*.spec.ts"],
   use: {
     baseURL: "http://127.0.0.1:4321"
   },
