@@ -1,13 +1,15 @@
 import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
-  testDir: "tests",
+  testDir: "tests/smoke",
+  testMatch: "**/*.spec.ts",
   use: {
     baseURL: "http://127.0.0.1:4321"
   },
   webServer: {
+    // The dev API stays in the foreground; Astro's CLI auto-daemonizes in agent environments.
     command:
-      "trap 'npm run dev -- stop >/dev/null 2>&1; trap - EXIT; exit 0' EXIT INT TERM; npm run dev -- --host 127.0.0.1; while true; do sleep 1; done",
+      "node --input-type=module -e \"import { dev } from 'astro'; await dev({ server: { host: '127.0.0.1', port: 4321 } });\"",
     env: {
       ASTRO_TELEMETRY_DISABLED: "1"
     },
