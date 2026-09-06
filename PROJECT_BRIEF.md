@@ -12,6 +12,11 @@ serious in craft and evidence while keeping a dry, mischievous sense of humour.
 ## Current creative direction
 
 - Working name: `ONCALL` (provisional; availability and conflicts not checked).
+- X identity draft: display name `ONCALL`, preferred handle `@oncallcapy`, and
+  bio: “Night shift. Clear head. Question everything. Medicine, science &
+  market culture on Robinhood Chain. Evidence first. Memes after rounds.”
+- Approved social exports live in `assets/social/`; source-size versions are
+  retained beside the X-ready 800×800 profile and 1500×500 banner files.
 - Mascot: an original anthropomorphic capybara night-shift clinician.
 - Personality: calm, clever, scientifically curious, dry humour, mildly
   mischievous; never loud, childish, manic, or salesy.
