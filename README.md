@@ -3,7 +3,7 @@
 > **NIGHT SHIFT FOR THE TERMINALLY ONLINE.**<br>
 > Medicine gets a source. Markets get context. The capybara gets the late shift.
 
-[![ONCALL records room: a night-shift capybara beside eight clinical file folders](assets/concepts/oncall-opening-desktop-text-free-approved-v1.png)](https://github.com/oncallcapy/oncall)
+[![ONCALL Public Case File — Evidence first. Memes after rounds.](assets/github/oncall-repository-preview-1280x640.png)](https://github.com/oncallcapy/oncall)
 
 ONCALL is an original mascot-led medicine, science and market-culture meme project designed around a possible PAR multi-market structure on Robinhood Chain. Its public interface is a dark clinical records room: selecting a physical folder pulls it from the stack and opens a full editorial file.
 
