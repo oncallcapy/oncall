@@ -1,5 +1,6 @@
 ---
 import ChartLayout from '../layouts/ChartLayout.astro';
+import FolderMascotCallout from '../components/FolderMascotCallout.astro';
 import { PUBLIC_PROJECT_RECORD } from '../data/projectFacts';
 import { PUBLIC_REPOSITORY } from '../config/site';
 ---
@@ -8,6 +9,7 @@ import { PUBLIC_REPOSITORY } from '../config/site';
   <h1>The Chart</h1>
   <p class="lead">A meme with a medical records department.</p>
   <p class="intro">ONCALL puts a dry night-shift capybara between medicine, science and market culture. The joke can move quickly. The claims have to bring identification.</p>
+  <FolderMascotCallout file="chart" />
 
   <section data-public-section aria-labelledby="purpose-heading">
     <p class="meta">Reason for admission</p>

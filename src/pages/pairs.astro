@@ -1,5 +1,6 @@
 ---
 import ChartLayout from '../layouts/ChartLayout.astro';
+import FolderMascotCallout from '../components/FolderMascotCallout.astro';
 import PairCaseCard from '../components/PairCaseCard.astro';
 import { PAIR_SELECTIONS, ASSET_OBSERVATION } from '../data/pairSelections';
 import { PUBLIC_REPOSITORY } from '../config/site';
@@ -20,6 +21,7 @@ import { PUBLIC_REPOSITORY } from '../config/site';
     <p>The official Robinhood asset API listed these five quote-asset deployments as <strong>ASSET_STATUS_ACTIVE</strong> on chain 4663 at <time datetime={ASSET_OBSERVATION.observedAt}>{ASSET_OBSERVATION.observedAt}</time>. That timestamp is the finding. It is not a pulse oximeter attached to the market and it is not proof of an ONCALL pool.</p>
     <p>Active metadata does not establish PAR priceability, route depth, executable liquidity, suitability or investment merit. Any failed technical check blocks a launch decision and requires an explicit new record; no quote identity is silently swapped.</p>
   </section>
+  <FolderMascotCallout file="pairs" />
   <aside class="notice"><p><strong>Five quote markets do not create direct share ownership, collateral backing of ONCALL, an index fund, guaranteed tracking, issuer endorsement or a recommendation.</strong></p><p>An active API entry does not establish priceability, route depth, liquidity, suitability, or investment merit. <strong>A failed technical check blocks launch.</strong> No silent substitution.</p><p>Stock Tokens are tokenized debt securities issued by Robinhood Assets (Jersey) Limited. They provide economic exposure and do not grant legal or beneficial rights in the issuer of the underlying security. Availability and jurisdiction restrictions apply. <a href="https://robinhood.com/rhj/stocktokens/">Read the official explanation ↗</a>.</p></aside>
   <section class="pair-files" data-public-section aria-labelledby="pair-files-heading"><div class="pair-files-heading"><p class="meta">Five physical files / Exact contracts</p><h2 id="pair-files-heading">Quote register</h2></div>{PAIR_SELECTIONS.map((pair, index) => <PairCaseCard pair={pair} index={index} />)}</section>
   <section class="routing" data-public-section aria-labelledby="routing-heading"><h2 id="routing-heading">Read the right file</h2><p>The research tracks are editorial metadata, never sponsorship, endorsement or clinical validation. Scientific titles and conclusions stay brand-neutral in <a href="/science/">Science Notes</a>. Company and market interpretation belongs in <a href="/market-rounds/">Market Rounds</a>. Platform mechanics and limitations live in <a href="/robinhood-chain/">Robinhood Chain</a> and <a href="/sources-and-risks/">Sources &amp; Risks</a>.</p><p class="meta"><a href={PUBLIC_REPOSITORY.href}>Audit the pair records in the public repository ↗</a></p></section>

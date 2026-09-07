@@ -78,13 +78,14 @@ for (const [index, route] of routes.entries()) {
       await page.goto(route);
       await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
       expect((await page.getByRole('main').innerText()).length).toBeGreaterThan(150);
-      const links = page.getByRole('navigation').getByRole('link');
+      const fileNavigation = page.locator('[data-file-stack]');
+      const links = fileNavigation.getByRole('link');
       await expect(links).toHaveCount(8);
       expect(await links.evaluateAll(elements => elements.map(element => element.getAttribute('href')))).toEqual(routes);
       const nextRoute = routes[(index + 1) % routes.length]!;
-      await page.getByRole('navigation').locator(`a[href="${nextRoute}"]`).click();
+      await fileNavigation.locator(`a[href="${nextRoute}"]`).click();
       await expect(page).toHaveURL(new RegExp(`${nextRoute.replaceAll('/', '\\/')}$`));
-      await expect(page.getByRole('navigation').locator('[aria-current="page"]')).toHaveAttribute('href', nextRoute);
+      await expect(page.locator('[data-file-stack] [aria-current="page"]')).toHaveAttribute('href', nextRoute);
       await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
     } finally {
       await context.close();
@@ -97,6 +98,6 @@ test('reduced motion hides the opening skip control and leaves case files access
   for (const route of ['/', '/science/', '/night-shift/']) {
     await page.goto(route);
     await expect(page.locator('#cinematic-skip')).toBeHidden();
-    await expect(page.getByRole('navigation').getByRole('link')).toHaveCount(8);
+    await expect(page.locator('[data-file-stack]').getByRole('link')).toHaveCount(8);
   }
 });

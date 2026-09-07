@@ -1,5 +1,6 @@
 ---
 import ChartLayout from '../layouts/ChartLayout.astro';
+import FolderMascotCallout from '../components/FolderMascotCallout.astro';
 import { PUBLIC_REPOSITORY } from '../config/site';
 ---
 <ChartLayout title="Market Rounds | ONCALL" description="Health-market narratives examined separately from clinical evidence and investment advice.">
@@ -12,6 +13,7 @@ import { PUBLIC_REPOSITORY } from '../config/site';
     <div class="stamp" aria-hidden="true">SEPARATE<br />THE<br />FILES</div>
     <div><p class="meta">Editorial role / Market context</p><h2 id="desk-rule-heading">What belongs on this desk</h2><p>Market Rounds examines how health companies, technologies and public narratives meet capital markets. It can discuss a ticker, business model, product category or investor story when sources and dates are attached. It does not issue an investment recommendation, and it cannot substitute company attention for clinical evidence.</p></div>
   </section>
+  <FolderMascotCallout file="market" />
 
   <article class="rounds-essay" data-public-section data-market-essay aria-labelledby="essay-heading">
     <header><p class="meta">Rounds 001 / Opening note</p><h2 id="essay-heading">Five tickers walk into a night shift</h2><p class="dek">The market wants one clean story. Medicine arrives with eligibility criteria, competing outcomes and a folder marked “limitations.”</p></header>

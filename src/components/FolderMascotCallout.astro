@@ -1,0 +1,130 @@
+---
+import { FOLDER_CALLOUTS, type FolderCalloutKey } from '../config/folderCallouts';
+
+interface Props {
+  file: FolderCalloutKey;
+  label?: string;
+  message?: string;
+  dossierSection?: string;
+}
+
+const { file, label, message, dossierSection } = Astro.props;
+const callout = FOLDER_CALLOUTS[file];
+const visibleLabel = label ?? callout.label;
+const visibleMessage = message ?? callout.message;
+const messageId = `folder-callout-${file}-message`;
+---
+
+<figure
+  class="folder-mascot-callout"
+  data-folder-mascot-callout
+  data-callout={file}
+  data-dossier-section={dossierSection}
+  aria-labelledby={messageId}
+>
+  <img
+    src={callout.asset}
+    width="1200"
+    height="900"
+    loading="lazy"
+    decoding="async"
+    alt=""
+  />
+  <figcaption class="folder-mascot-callout__copy">
+    <span class="folder-mascot-callout__label">{visibleLabel}</span>
+    <strong id={messageId}>{visibleMessage}</strong>
+  </figcaption>
+</figure>
+
+<style>
+  .folder-mascot-callout {
+    --copy-left: 11%;
+    --copy-top: 28%;
+    --copy-width: 37%;
+    position: relative;
+    container-type: inline-size;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    margin: clamp(3rem, 7vw, 6rem) 0 0;
+    overflow: hidden;
+    border: 1px solid rgb(244 240 230 / 42%);
+    background: #123b39;
+    box-shadow: 0.55rem 0.65rem 0 rgb(8 24 23 / 24%);
+  }
+
+  .folder-mascot-callout img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .folder-mascot-callout__copy {
+    position: absolute;
+    z-index: 1;
+    top: var(--copy-top);
+    left: var(--copy-left);
+    width: var(--copy-width);
+    color: #173f3c;
+    line-height: 1;
+  }
+
+  .folder-mascot-callout__copy::before {
+    display: block;
+    width: min(5rem, 38%);
+    height: clamp(0.15rem, 0.45cqw, 0.32rem);
+    margin-bottom: clamp(0.35rem, 1.2cqw, 0.8rem);
+    background: #ed7867;
+    content: '';
+  }
+
+  .folder-mascot-callout__label {
+    display: block;
+    margin-bottom: clamp(0.3rem, 1cqw, 0.75rem);
+    font-family: var(--font-meta);
+    font-size: clamp(0.42rem, 1.25cqw, 0.82rem);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    line-height: 1.25;
+    text-transform: uppercase;
+  }
+
+  .folder-mascot-callout strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(0.82rem, 3.7cqw, 2.55rem);
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    line-height: 0.94;
+    text-transform: uppercase;
+  }
+
+  .folder-mascot-callout[data-callout='triage'] { --copy-left: 14%; --copy-top: 29%; --copy-width: 32%; }
+  .folder-mascot-callout[data-callout='chart'] { --copy-left: 14%; --copy-top: 31%; --copy-width: 29%; }
+  .folder-mascot-callout[data-callout='pairs'] { --copy-left: 10%; --copy-top: 27%; --copy-width: 38%; }
+  .folder-mascot-callout[data-callout='chain'] { --copy-left: 14%; --copy-top: 27%; --copy-width: 28%; }
+  .folder-mascot-callout[data-callout='science'] { --copy-left: 12%; --copy-top: 28%; --copy-width: 38%; }
+  .folder-mascot-callout[data-callout='market'] { --copy-left: 16%; --copy-top: 40%; --copy-width: 31%; }
+  .folder-mascot-callout[data-callout='night'] { --copy-left: 23%; --copy-top: 35%; --copy-width: 24%; }
+  .folder-mascot-callout[data-callout='sources'] { --copy-left: 10%; --copy-top: 32%; --copy-width: 33%; }
+
+  .folder-mascot-callout[data-dossier-section='mascot-commentary'] strong {
+    font-size: clamp(0.72rem, 3.1cqw, 2.15rem);
+    line-height: 0.98;
+  }
+
+  @media (min-width: 78rem) {
+    .folder-mascot-callout {
+      width: min(72rem, calc(100vw - 8rem));
+      max-width: none;
+    }
+  }
+
+  @media (max-width: 47.999rem) {
+    .folder-mascot-callout {
+      margin-top: 3rem;
+      box-shadow: 0.35rem 0.4rem 0 rgb(8 24 23 / 24%);
+    }
+  }
+</style>

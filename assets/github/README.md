@@ -18,6 +18,21 @@ The canonical character is a calm, half-lidded capybara clinician with natural w
 
 The website uses rendered plates to validate the folder-selection experience. Accessible HTML supplies every heading, paragraph and navigation target, and reduced-motion users receive a settled static state. The turntable documents the future character model; this repository does not claim that a production 3D mesh, skeleton or animation rig exists.
 
+## Website folder callouts
+
+| File | Dimensions | Intended role |
+| --- | --- | --- |
+| [Triage presenter](../../public/brand/callouts/triage-v1.png) | 1200 × 900 px, PNG | Intake note with a blank clipboard for live website typography. |
+| [The Chart presenter](../../public/brand/callouts/chart-v1.png) | 1200 × 900 px, PNG | Chart reminder with the mascot pointing to the record. |
+| [Five Pairs presenter](../../public/brand/callouts/five-pairs-v1.png) | 1200 × 900 px, PNG | Five-tab case board for the fixed quote set. |
+| [Robinhood Chain presenter](../../public/brand/callouts/robinhood-chain-v1.png) | 1200 × 900 px, PNG | Chain file with an abstract node diagram and link prop. |
+| [Science Notes presenter](../../public/brand/callouts/science-notes-v1.png) | 1200 × 900 px, PNG | Evidence folder and magnifier used on the index and five dossiers. |
+| [Market Rounds presenter](../../public/brand/callouts/market-rounds-v1.png) | 1200 × 900 px, PNG | Blank case board presented on a clinical tray. |
+| [Night Shift presenter](../../public/brand/callouts/night-shift-v1.png) | 1200 × 900 px, PNG | After-hours clipboard with coffee and crescent desk light. |
+| [Sources & Risks presenter](../../public/brand/callouts/sources-risks-v1.png) | 1200 × 900 px, PNG | Open ledger with a restrained coral receipt seal. |
+
+Erdem approved The Chart presenter as the standard for this family on 7 September 2026 and then approved applying the full set. Each raster remains text-free: the label and sentence are accessible HTML positioned over the blank paper, so copy can be corrected without regenerating artwork.
+
 ## GitHub presentation assets
 
 | File | Dimensions | Intended role |

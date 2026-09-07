@@ -1,5 +1,6 @@
 ---
 import ChartLayout from '../layouts/ChartLayout.astro';
+import FolderMascotCallout from '../components/FolderMascotCallout.astro';
 import ChainDiagram from '../components/ChainDiagram.astro';
 import { ASSET_OBSERVATION } from '../data/pairSelections';
 import { PUBLIC_REPOSITORY } from '../config/site';
@@ -22,6 +23,7 @@ import { PUBLIC_REPOSITORY } from '../config/site';
     <ChainDiagram />
     <div class="columns"><p>PAR says a multi-market launch can open one to five ordinary Uniswap v4 pools for one token in one transaction. Supply is divided equally among the chosen pools while the launch keeps one opening market-capitalization setting across them.</p><p>Each pool is still its own market. A second, third or fifth quote does not create a basket, pooled equity collateral or automatic tracking. Non-ETH quotes must be priceable by PAR’s pricer and meet its in-range depth requirement. <a href="https://par.family/docs">Read PAR documentation ↗</a></p></div>
   </section>
+  <FolderMascotCallout file="chain" />
 
   <aside class="observation" data-public-section aria-labelledby="observation-heading">
     <p class="meta">Dated specimen / Do not read as telemetry</p>

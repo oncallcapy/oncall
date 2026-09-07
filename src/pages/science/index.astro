@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import ChartLayout from '../../layouts/ChartLayout.astro';
 import ScienceNoteCard from '../../components/ScienceNoteCard.astro';
+import FolderMascotCallout from '../../components/FolderMascotCallout.astro';
 import { SELECTED_PAIR_IDENTITIES } from '../../config/scienceThemes';
 
 const order = new Map(SELECTED_PAIR_IDENTITIES.map((pair, index) => [pair.symbol, index]));
@@ -26,6 +27,7 @@ const dossiers = (await getCollection('science')).sort(
         <p>These are educational evidence readings. They do not provide diagnosis, treatment advice, a clinical guideline, issuer research, or an investment conclusion.</p>
       </div>
     </aside>
+    <FolderMascotCallout file="science" />
 
     <section class="dossier-register" aria-labelledby="dossiers-heading">
       <div class="register-heading">

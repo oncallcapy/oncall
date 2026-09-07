@@ -12,7 +12,7 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
       await page.goto(route);
       await page.evaluate(() => document.fonts.ready);
       const heading = page.getByRole('heading', { level: 1 });
-      const rail = page.getByRole('navigation');
+      const rail = page.locator('[data-file-stack]');
       if (viewport.width === 1440) {
         await expect(rail.locator('[aria-current="page"]')).toBeInViewport({ ratio: 1 });
       } else {

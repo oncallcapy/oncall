@@ -1,5 +1,6 @@
 ---
 import ChartLayout from '../layouts/ChartLayout.astro';
+import FolderMascotCallout from '../components/FolderMascotCallout.astro';
 import { PUBLIC_REPOSITORY } from '../config/site';
 const entries = [
   { number: '001', time: '02:13', text: 'ONCALL checked the chart, checked the source, then checked whether the chart had read the source. The chart declined to comment. Night shift continues.' },
@@ -17,6 +18,7 @@ const entries = [
     <div class="moon" aria-hidden="true">☾</div>
     <div><p class="meta">Editorial role / Fictional mascot humour</p><h2 id="shift-rule-heading">After-hours protocol</h2><p>Night Shift is the capybara’s voice for work, medicine, internet life and market culture. These entries are original social posts, not medical evidence, diagnosis, treatment advice or financial advice. When a joke touches a factual claim, the factual claim still needs its own file.</p></div>
   </section>
+  <FolderMascotCallout file="night" />
 
   <section class="dispatches" data-public-section aria-labelledby="dispatches-heading">
     <div class="dispatch-heading"><div><p class="meta">Outgoing tray / X-ready</p><h2 id="dispatches-heading">Three notes before sunrise</h2></div><span class="stamp" aria-hidden="true">ON<br />SHIFT</span></div>
