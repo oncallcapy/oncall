@@ -22,15 +22,16 @@ The website uses rendered plates to validate the folder-selection experience. Ac
 
 | File | Dimensions | Intended role |
 | --- | --- | --- |
+| [Approved GitHub cover v2](oncall-github-cover-v2-1280x640.png) | 1280 × 640 px, PNG | Current README cover approved by Erdem on 7 September 2026; composed specifically for GitHub with the canonical mascot and three-line public-case-file identity. |
 | [Original repository preview](oncall-repository-preview-source.png) | 1774 × 887 px, PNG | Source-size version of the first repository case-file preview. |
-| [GitHub repository preview](oncall-repository-preview-1280x640.png) | 1280 × 640 px, PNG | Prepared social-preview crop retained for repository settings and historical README use. |
+| [Earlier GitHub repository preview](oncall-repository-preview-1280x640.png) | 1280 × 640 px, PNG | Earlier social-preview composition retained for visual history. |
 | [Evidence architecture](oncall-evidence-architecture.svg) | 1200 × 1220 viewBox, SVG | Accessible research-to-review diagram with the separate technical verification branch. |
 
 The evidence diagram uses deep ink green `#183C3C`, petrol teal `#287C78`, warm fur `#C69C72`, ivory `#F4F0E6` and coral `#ED806B`. It contains no scripts or external resources. Its five research associations are editorial metadata and do not imply company sponsorship, endorsement, clinical validation or investment analysis.
 
 ## Provenance and reuse
 
-The cinematic concept images and mascot studies were generated specifically for ONCALL through OpenAI image-generation sessions, selected and approved by Erdem on 6 September 2026, then committed as fixed project assets. The website compositions, labels and interactions are original project work. Mosby's Files informed the broad idea of a tactile file-based experience; no Mosby's Files image, code, copy or animation asset is included here.
+The cinematic concept images and mascot studies were generated specifically for ONCALL through OpenAI image-generation sessions, selected and approved by Erdem on 6 September 2026, then committed as fixed project assets. The GitHub-specific v2 cover was generated from the approved character and records-room references and approved by Erdem on 7 September 2026. The website compositions, labels and interactions are original project work. Mosby's Files informed the broad idea of a tactile file-based experience; no Mosby's Files image, code, copy or animation asset is included here.
 
 Approval records a project design decision. It does not establish exclusive rights, trademark clearance or freedom from coincidental similarity. The repository currently contains no standalone license granting third parties permission to reuse these images. The repository owner should complete the intended license and name/trademark review before offering the assets for reuse.
 
