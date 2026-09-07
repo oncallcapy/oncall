@@ -4,7 +4,7 @@ import '../styles/editorial-file.css';
 import { ClientRouter } from 'astro:transitions';
 import ChartHeader from '../components/ChartHeader.astro';
 import CinematicStage from '../components/CinematicStage.astro';
-import { PUBLIC_REPOSITORY } from '../config/site';
+import { PUBLIC_SOCIAL_LINKS } from '../config/site';
 
 interface Props {
   title?: string;
@@ -36,7 +36,9 @@ const isOpening = (Astro.url.pathname.replace(/\/+$/, '') || '/') === '/';
         <footer class="editorial-file-footer meta">
           <span>ONCALL / Evidence first. Memes after rounds.</span>
           <span>Night-shift records room</span>
-          <a href={PUBLIC_REPOSITORY.href}>{PUBLIC_REPOSITORY.label}</a>
+          <nav class="editorial-file-footer__links" aria-label="ONCALL on the web">
+            {PUBLIC_SOCIAL_LINKS.map((link) => <a href={link.href}>{link.label}</a>)}
+          </nav>
         </footer>
       </main>
     </div>

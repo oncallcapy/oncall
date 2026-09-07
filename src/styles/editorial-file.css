@@ -31,6 +31,17 @@
   border-top: 1px solid var(--rule);
   color: var(--muted-ink);
 }
+.editorial-file-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+}
+.editorial-file-footer__links a {
+  text-decoration-color: var(--coral);
+  text-decoration-thickness: 0.12em;
+}
+.editorial-file-footer__links a:hover { color: var(--teal); }
+.editorial-file--opening .editorial-file-footer__links a:hover { color: var(--coral); }
 
 /* Science files need more breathing room than the short records. Their paper
    remains part of the same physical chart while long reading moves into flow. */
